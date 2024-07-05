@@ -24,6 +24,7 @@ import Objects.tipoHistorial;
 import TDAS.ArrayList;
 import TDAS.CircularDoublyList;
 import TDAS.DoublyLinkedList;
+import java.nio.file.StandardCopyOption;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -86,13 +87,11 @@ public class CrearVentaController implements Initializable {
 
     User usuario = App.userlogged;
     DoublyLinkedList<Vehiculos> L_Vehiculos = usuario.getMisVehiculos();
-    //ListaVehiculos catalogo = App.getCatalogo();
+    ArrayList<File> rutaImagenes;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        
-        //tipoServicio.getItems().setAll(tipoHistorial.values());
+        rutaImagenes = new ArrayList<>();
         // TODO
     }    
     
@@ -167,24 +166,18 @@ public class CrearVentaController implements Initializable {
         File imageSelected;
         FileChooser file = new FileChooser();
         file.setTitle("Seleccionar imagen");
-        file.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("*.png","*.jpg"));
+        file.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("*.png","*.jpg", "*.jpeg"));
         Stage stage = (Stage) btonSeleccionarImagen.getScene().getWindow();
         imageSelected = file.showOpenDialog(stage);
         if(imageSelected!=null){
             try{
                 Image image = new Image(new FileInputStream(imageSelected));
                 String ruta= imageSelected.getName(); // ruta para guardar la imagen;
-                Path projectDir = Paths.get("").toAbsolutePath();
-                Path rutaDestino =  projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", ruta));
-                Files.copy(imageSelected.toPath(), rutaDestino);
+                rutaImagenes.addLast(imageSelected);
                 rutaImagen.setText(imageSelected.getName());
                 imagenesPane.getChildren().add(hb);
                 cerrar.setOnMouseClicked((event)-> {
-                    try {
-                        Files.delete(rutaDestino);
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }  
+                    rutaImagenes.remove(imageSelected); 
                     imagenesPane.getChildren().remove(hb);
                 });
             }catch(FileNotFoundException e){
@@ -249,18 +242,16 @@ public class CrearVentaController implements Initializable {
                 listaAtributosAdicionales.addLast(a1);
             }
         }
-        
-        for(Node caja:imagenesPane.getChildren()){ // Recorre cada HBox para obtener ruta de las imagenes
-            HBox fila = (HBox) caja;
-            Label lb= new Label(); // Aquí se guarda el nombre de la imagen con su extension
-            for(Node elements: fila.getChildren()){
-                if(elements instanceof Label){
-                    lb = (Label) elements;
-                }
+        if(!rutaImagenes.isEmpty()){
+            for(int i=0; i<rutaImagenes.size(); i++){
+                File e = rutaImagenes.get(i);
+                Path projectDir = Paths.get("").toAbsolutePath();
+                String ruta = e.getName();
+                Path rutaDestino =  projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", ruta));
+                Files.copy(e.toPath(), rutaDestino, StandardCopyOption.REPLACE_EXISTING);
+                listaImagenes.addLast(ruta);
             }
-            String ruta =lb.getText();
-            listaImagenes.addLast(ruta); 
-        }  
+        }
     
     // Aquí se debe verificar que los campos estén llenos, que la lista de imagenes no esté vacía
         if(marca!=null && modelo!=null && year!=null && kilometraje!=null && motor!=null && ubicacion!=null && peso!=null && transmision!=null && precio!=null){
@@ -281,22 +272,29 @@ public class CrearVentaController implements Initializable {
                     L_Vehiculos = new DoublyLinkedList<>();
                 }
                 L_Vehiculos.addLast(v1);
-                usuario.setMisVehiculos(L_Vehiculos);
-               // App.ActualizarListaUsuarios();
-                Alert alert= new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText("Creación de Venta exitoso");
-                alert.setTitle("Se guardaron los datos");
+                App.userlogged.setMisVehiculos(L_Vehiculos);
+                App.catalogo.agregarVehiculo(v1); // Se agrega a la lista de vehículos en venta
+                App.ActualizarListaCars();
+                App.ActualizarListaUsuarios();
+                Alert alert= new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Creación de Venta");
+                alert.setTitle("Creacion exitosa");
+                alert.setContentText("Su vehiculo fue creado correctamente");
+                String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+                alert.getDialogPane().getStylesheets().add(css);
+                alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
                 alert.showAndWait();
-
-                //inventario.agregarVehiculo(v1); 
-
-                // Se agrega a la lista de vehículos en venta
-
+                App.setRoot("principal");; 
+                
             }else{
                 Alert alert= new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Creación de cuenta");
                 alert.setTitle("Error de pedido");
                 alert.setContentText("Debe agregar por lo menos una imagen");
+                alert.showAndWait();
+                String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+                alert.getDialogPane().getStylesheets().add(css);
+                alert.getDialogPane().getStyleClass().add("dialog-paneError");
                 alert.showAndWait();
             }   
         }else{
@@ -304,7 +302,11 @@ public class CrearVentaController implements Initializable {
             alert.setHeaderText("Creación de Vehículo");
             alert.setTitle("Error de pedido");
             alert.setContentText("Debe completar todos los campos para crear la cuenta");
-            alert.showAndWait();    
+            alert.showAndWait();
+            String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+            alert.getDialogPane().getStylesheets().add(css);
+            alert.getDialogPane().getStyleClass().add("dialog-paneError");
+            alert.showAndWait();
         }
     }
 

@@ -72,10 +72,6 @@ public class CircularDoublyList<E> implements List<E>, Serializable {
         }
     }
     
-    @Override
-    public boolean addFirst(E e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     @Override
     public boolean addLast(E e) {
@@ -99,16 +95,6 @@ public class CircularDoublyList<E> implements List<E>, Serializable {
         }
     }
 
-    @Override
-    public E removeFirst() {
-        E e = getHeader().getContent();
-        DoublyNodeList<E> header = getHeader();
-        last.setNext(header.getNext());
-        header.getNext().setPrevious(last);
-        return e;
-    }
-
-    @Override
     public E removeLast() {
        E e = last.getContent();
        DoublyNodeList<E> anterior = last.getPrevious();
@@ -150,7 +136,7 @@ public class CircularDoublyList<E> implements List<E>, Serializable {
     }
 
     @Override
-    public E set(int index, E element) {
+    public boolean remove(E e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

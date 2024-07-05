@@ -17,30 +17,25 @@ public class ArrayList<E> implements List<E>, Serializable{
     }
    
     @Override
-    public boolean addFirst(E e) {
-        
-        // no se insertan nulos
-        if(e==null){
-            return false;
-        } else if (isEmpty()){
-            elements[0] = e;
-            effectiveSize++;
-            //elements[effectiveSize ++] = e; //otra forma de hacer las 2 lineas anteriores
-            return true;
-        } else if (isFull()){
-            addCapacity();
+    public boolean remove(E e){
+        if (e == null) {
+            for (int index = 0; index < effectiveSize; index++) {
+                if (elements[index] == null) {
+                    remove(index);
+                    return true;
+                }
+            }
+        } else {
+            for (int index = 0; index < effectiveSize; index++) {
+                if (e.equals(elements[index])) {
+                    remove(index);
+                    return true;
+                }
+            }
         }
-        
-        for (int i=effectiveSize-1; i >=0; i--){
-            elements[i+1]=elements[i]; //bit shifting 
-            //desplazamiento de valores hacia la derecha, 
-            //debe empezar de atras hacia adelante
-        }
-        elements[0] = e;
-        effectiveSize++;
-        return true;
+        return false;
     }
-
+    
     @Override
     public boolean addLast(E e) {
        if (e == null) {
@@ -55,15 +50,6 @@ public class ArrayList<E> implements List<E>, Serializable{
         return true;
     }
 
-    @Override
-    public E removeFirst() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public E removeLast() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     @Override
     public int size() {
@@ -81,18 +67,21 @@ public class ArrayList<E> implements List<E>, Serializable{
     }
 
     @Override
-    public E remove(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public E remove(int index) { 
+        if (index >= effectiveSize || index < 0) {
+         return null;
+        }   
+        E element = get(index);
+        for(int i=index; i<effectiveSize-1 ; i++){
+            elements[i]= elements[i+1];
+        }
+        effectiveSize--;
+        return element;
     }
 
     @Override
     public E get(int index) {
         return elements[index];
-    }
-
-    @Override
-    public E set(int index, E element) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     private void addCapacity() {
@@ -124,7 +113,6 @@ public class ArrayList<E> implements List<E>, Serializable{
     
     @Override
     public boolean add(int index, E element) {
-        
         if(element==null){
             return false;
         } else if (isEmpty()) {
@@ -144,50 +132,5 @@ public class ArrayList<E> implements List<E>, Serializable{
         effectiveSize++;
         return true; 
     }
-    
-    public ArrayList<E> sublist(int from, int to) {
-        ArrayList<E> sublist = new ArrayList<>();
-        int contador = 0;
-        for (int i = from; i <= to; i++) {
-            sublist.add(contador, this.get(i));
-            contador++;
-        }
-        return sublist;
-    }
-   
-    public ArrayList<E> removeFirstNElements(int n) {
-        ArrayList<E> removedElements = new ArrayList<>();
-
-        int contador = 0;
-        for (int i = n; i<effectiveSize; i++) {
-            removedElements.add(contador,elements[i]);
-            contador+=1;
-        }
-
-        effectiveSize -= n;
-        return removedElements;
-    }
-
-    public ArrayList<E> rotate(int k) {
-        ArrayList<E> rotada = new ArrayList<>();
-        
-        if(elements == null || isEmpty() || k<=0) {
-            return rotada;
-        }
-        
-        int from = effectiveSize - k;
-        
-        ArrayList<E> temp = new ArrayList<>();
-        temp = this.sublist(from, effectiveSize);
-        
-        
-        for(int i = 0 ; i<k ; i++) {
-            rotada.add(i, temp.get(i));
-            rotada.addLast(this.get(i));
-        }
-        
-        return rotada;
-
-    }
-    
+       
 }

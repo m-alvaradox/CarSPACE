@@ -15,12 +15,15 @@
    <top>
       <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="30.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="84.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0">
+            <ImageView fitHeight="84.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <image>
+                  <Image url="@../../../../imagenes/logo.png" />
+               </image>
             </ImageView>
-            <Label prefHeight="35.0" prefWidth="282.0" styleClass="mensaje_bienvenido" text="Catálogo de vehículos usados" translateX="-50.0" />
+            <Label prefHeight="35.0" prefWidth="282.0" styleClass="mensaje_bienvenido" text="Catálogo de vehículos usados" translateX="-30.0" />
             <ImageView fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="15.0">
                <image>
                   <Image url="@../../../../imagenes/home_icono.png" />
@@ -70,23 +73,23 @@
                   </VBox>
                   <HBox alignment="CENTER" prefHeight="394.0" prefWidth="467.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="50.0" fitWidth="59.0" onMouseClicked="#atrasVehiculo" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../imagenes/atras_icono.png" />
                            </image>
                         </ImageView>
-                        <VBox prefHeight="394.0" prefWidth="328.0">
+                        <VBox alignment="CENTER" prefHeight="394.0" prefWidth="328.0">
                            <children>
-                              <ImageView fitHeight="189.0" fitWidth="329.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label text="Marca y modelo" />
-                              <Label text="Año" />
-                              <Label text="Kilometraje" />
-                              <Label text="Ubicación" />
-                              <Label text="Precio" />
+                              <ImageView fx:id="imagen" fitHeight="189.0" fitWidth="329.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="MarcaYModelo" styleClass="texto_principal" text="Marca y modelo" />
+                              <Label fx:id="year" styleClass="texto_principal" text="Año" />
+                              <Label fx:id="kilometraje" styleClass="texto_principal" text="Kilometraje" />
+                              <Label fx:id="ubicacion" styleClass="texto_principal" text="Ubicación" />
+                              <Label fx:id="precio" styleClass="texto_principal" text="Precio" />
                               <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#masInformacion" prefHeight="31.0" prefWidth="159.0" style="-fx-pref-width: 160;" styleClass="boton_sinEstilo" text="Más información" />
                            </children>
                         </VBox>
-                        <ImageView fitHeight="54.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="54.0" fitWidth="60.0" onMouseClicked="#siguienteVehiculo" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../imagenes/siguiente_icono.png" />
                            </image>

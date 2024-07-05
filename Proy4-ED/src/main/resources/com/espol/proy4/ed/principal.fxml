@@ -15,15 +15,18 @@
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="642.0" stylesheets="@../../../../styles/estilos.css">
          <top>
-            <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="30.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" BorderPane.alignment="TOP_LEFT">
+            <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="20.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" BorderPane.alignment="TOP_LEFT">
                <children>
-                  <ImageView fitHeight="84.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0">
+                  <ImageView fitHeight="42.0" fitWidth="222.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <image>
+                        <Image url="@../../../../imagenes/logo.png" />
+                     </image>
                   </ImageView>
-                  <Label fx:id="msgwelcome" prefHeight="35.0" prefWidth="282.0" styleClass="mensaje_bienvenido" text="¡Bienvenido/a  " translateX="-50.0" />
-                  <ImageView fitHeight="39.0" fitWidth="39.0" onMouseClicked="#abrir_configuracion" pickOnBounds="true" preserveRatio="true" translateX="26.0" translateY="-15.0">
+                  <Label fx:id="msgwelcome" prefHeight="35.0" prefWidth="209.0" styleClass="mensaje_bienvenido" text="¡Bienvenido/a  " translateX="-50.0" />
+                  <ImageView fitHeight="39.0" fitWidth="39.0" onMouseClicked="#abrir_configuracion" pickOnBounds="true" preserveRatio="true" translateX="64.0" translateY="-12.0">
                      <image>
                         <Image url="@../../../../imagenes/opcion.png" />
                      </image>

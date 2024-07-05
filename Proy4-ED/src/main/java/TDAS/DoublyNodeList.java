@@ -5,12 +5,13 @@
 package TDAS;
 
 import Objects.Vehiculos;
+import java.io.Serializable;
 
 /**
  *
  * @author USER
  */
-public class DoublyNodeList<E> {
+public class DoublyNodeList<E> implements Serializable{
     private E content;
     private DoublyNodeList<E> next;
     private DoublyNodeList<E> previous;

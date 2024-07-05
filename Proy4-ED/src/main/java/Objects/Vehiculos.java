@@ -109,6 +109,23 @@ public class Vehiculos implements Serializable {
         return ubicacion;
     }
 
+    public EstadoD getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoD estado) {
+        this.estado = estado;
+    }
+
+    public ArrayList<Historial> getHistorial() {
+        return historial;
+    }
+
+    public void setHistorial(ArrayList<Historial> historial) {
+        this.historial = historial;
+    }
+    
+
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
@@ -142,14 +159,6 @@ public class Vehiculos implements Serializable {
                 + peso + ", ubicacion=" + ubicacion + ", fotos=" + fotos + ", historial="
                 + historial + "]";
     }
-
-
-    public void AgegrarFoto(String s){
-        fotos.addLast(s);
-    }
-
-
-    
 
     @Override
     public boolean equals(Object obj) {

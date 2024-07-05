@@ -2,10 +2,11 @@ package Objects;
 import TDAS.CircularDoublyList;
 import TDAS.DoublyNodeList;
 import TDAS.DoublyLinkedList;
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Collections;
 
-public class ListaVehiculos implements Comparator{
+public class ListaVehiculos implements Comparator, Serializable{
     
     private DoublyLinkedList <Vehiculos> vehiculos = new DoublyLinkedList<>();
 

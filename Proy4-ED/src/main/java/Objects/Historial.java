@@ -4,11 +4,13 @@
  */
 package Objects;
 
+import java.io.Serializable;
+
 /**
  *
  * @author USER
  */
-public class Historial {
+public class Historial implements Serializable {
     private tipoHistorial tipo;
     private String descripcion;
     private String fecha;

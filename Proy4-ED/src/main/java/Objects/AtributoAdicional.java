@@ -4,11 +4,13 @@
  */
 package Objects;
 
+import java.io.Serializable;
+
 /**
  *
  * @author USER
  */
-public class AtributoAdicional {
+public class AtributoAdicional implements Serializable{
     private String title;
     private String descripcion;
 

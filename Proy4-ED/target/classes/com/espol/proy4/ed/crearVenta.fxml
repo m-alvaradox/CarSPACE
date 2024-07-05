@@ -19,12 +19,15 @@
    <top>
       <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="30.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" stylesheets="@../../../../styles/estilos.css" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="84.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0">
+            <ImageView fitHeight="37.0" fitWidth="189.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <image>
+                  <Image url="@../../../../imagenes/logo.png" />
+               </image>
             </ImageView>
-            <Label prefHeight="35.0" prefWidth="282.0" styleClass="mensaje_bienvenido" text="Creación de un nuevo vehículo" translateX="-50.0" />
+            <Label prefHeight="35.0" prefWidth="282.0" styleClass="mensaje_bienvenido" text="Creación de un nuevo vehículo" translateX="-30.0" />
             <ImageView fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="15.0">
                <image>
                   <Image url="@../../../../imagenes/home_icono.png" />
