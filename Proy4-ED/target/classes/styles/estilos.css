@@ -6,7 +6,11 @@
     
 }
 .fondo{
-    -fx-background-color: #89D8FF  ;
+    -fx-background-color: linear-gradient(to left,#FFFFFF,#B0E0E6)  ;
+}
+
+.fondoprincipal {
+    -fx-background-image: url("../imagenes/fondo_principal.jpg");
 }
 
 .recuadro{
@@ -48,8 +52,8 @@
     -fx-border-color:#89D8FF;
 }
 .boton_fondoAzul{
-    -fx-background-color:#5FC8FC;
-    -fx-text-fill:white;
+    -fx-background-color:#B0E0E6;
+    -fx-text-fill: #333333;
     -fx-font-family:"Arial Black";
     -fx-font-size:14px;
     -fx-text-effect: dropshadow(one-pass-box, red, 5, 0.0, 0, 0);  
@@ -61,7 +65,8 @@
 
 .mensaje_bienvenido{
     -fx-font-size:20px;
-    -fx-font-family:"Comic Sans MS";
+    -fx-font-family:"Segoe UI";
+    -fx-font-weight: bold;
     -fx-text-fill: black;
     -fx-alignment:TOP_LEFT;
 }
@@ -87,7 +92,7 @@
     -fx-border-color: black;
     -fx-border-width:0 0 2px 2px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);
-    -fx-background-color:#88D5FC;
+    -fx-background-color: linear-gradient(to left,#FFFFFF,#B0E0E6)  ;
 }
 
 .texto_principal{

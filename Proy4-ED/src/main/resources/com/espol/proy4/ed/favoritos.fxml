@@ -9,18 +9,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@../../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.espol.proy4.ed.FavoritosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@../../../../styles/estilos.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.espol.proy4.ed.FavoritosController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="642.0" stylesheets="@../../../../styles/estilos.css">
          <top>
             <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="30.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" BorderPane.alignment="TOP_LEFT">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="-125.0">
+                  <ImageView fitHeight="75.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true" translateX="-125.0">
                      <image>
-                        <Image url="@../../../../imagenes/logo.png" />
+                        <Image url="@../../../../imagenes/logo_carspace.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="label_favoritos" prefHeight="35.0" prefWidth="95.0" styleClass="mensaje_bienvenido" text="Favoritos" />
+                  <Label fx:id="label_favoritos" prefHeight="35.0" prefWidth="108.0" styleClass="mensaje_bienvenido" text="Favoritos" />
                </children>
             </HBox>
          </top>

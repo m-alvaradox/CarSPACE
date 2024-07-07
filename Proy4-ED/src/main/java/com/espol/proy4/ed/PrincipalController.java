@@ -4,8 +4,14 @@
  */
 package com.espol.proy4.ed;
 
+import Objects.Vehiculos;
+import TDAS.DoublyLinkedList;
+import TDAS.DoublyNodeList;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -29,17 +35,20 @@ public class PrincipalController implements Initializable {
     @FXML
     private ImageView imagen;
     @FXML
-    private Label modelo;
-    @FXML
     private Label precio;
     @FXML
     private Label year;
     @FXML
     private Label ubicacion;
+    @FXML
+    private Label MarcaYModelo;
     
     @FXML
     private Label msgwelcome;
     
+    
+    DoublyLinkedList<Vehiculos> catalogo;
+    public static DoublyNodeList<Vehiculos> vehiculoUsar;
     private static String rutaImagen = "src/main/resources/imagenes/" ;
     /**
      * Initializes the controller class.
@@ -49,7 +58,37 @@ public class PrincipalController implements Initializable {
         // TODO
         String msg = String.format("Hola, %s !", App.userlogged.getName());
         msgwelcome.setText(msg);
-    }    
+        
+        catalogo = App.catalogo.getVehiculos();
+        
+        if(!catalogo.isEmpty()) {
+            vehiculoUsar = catalogo.getHeader();
+            Vehiculos vehiculo = vehiculoUsar.getContent();
+            
+            MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
+            year.setText(vehiculo.getAnio()+"");
+            ubicacion.setText(vehiculo.getUbicacion());
+            precio.setText(vehiculo.getPrecio()+"");
+            
+            DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
+            Path projectDir = Paths.get("").toAbsolutePath();
+            Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
+            //imagen.setImage(new Image(getClass().getResourceAsStream("/imagenesCarros/" + rutaImagen.getContent())));
+            File archivoImagen = rutaAbsoluta.toFile();
+            if (!archivoImagen.exists()) {
+                System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
+                return;
+            }
+            
+            // Carga la nueva imagen
+            Image image1 = new Image(archivoImagen.toURI().toString());
+            imagen.setImage(image1);
+            
+        }
+        
+    }
+
+    
     
     @FXML
     private void cerrar_configuracion() throws IOException {
@@ -92,23 +131,7 @@ public class PrincipalController implements Initializable {
     private void mostrar_favoritos() throws IOException {
         App.setRoot("favoritos");
     }
-    
-    @FXML
-    private void siguiente() throws IOException { // Cambia la información
-        imagen.setImage(new Image( "" ));
-        modelo.setText("");
-        precio.setText("");
-        ubicacion.setText(""); 
-    }
-    
-    @FXML
-    private void atras() throws IOException { // Cambia la información
-        imagen.setImage(new Image( "" ));
-        modelo.setText("");
-        precio.setText("");
-        ubicacion.setText(""); 
-    }
-    
+        
     @FXML
     private void catalogo() throws IOException {
         App.setRoot("catalogo");
@@ -127,5 +150,73 @@ public class PrincipalController implements Initializable {
     @FXML
     private void masInformacion() throws IOException {
         App.setRoot("InformacionVehiculo");
+    }
+    
+    @FXML
+    private void siguienteVehiculo() throws IOException {
+        if(vehiculoUsar.getNext()!=null){
+            vehiculoUsar = vehiculoUsar.getNext();
+            Vehiculos vehiculo = vehiculoUsar.getContent();
+            MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
+            year.setText(vehiculo.getAnio()+"");
+            ubicacion.setText(vehiculo.getUbicacion());
+            precio.setText(vehiculo.getPrecio()+"");
+            DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
+            Path projectDir = Paths.get("").toAbsolutePath();
+            Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
+            File archivoImagen = rutaAbsoluta.toFile();
+            if (!archivoImagen.exists()) {
+                System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
+                return;
+            }
+
+            // Carga la nueva imagen
+            Image image1 = new Image(archivoImagen.toURI().toString());
+            imagen.setImage(image1);
+        }else {
+             //Mostrar alerta que ya no existen Vehiculos;
+            Alert alert= new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Siguiente Vehiculo");
+            alert.setTitle("No existen más datos");
+            alert.setContentText("Ya no existen más vehículos agregados");
+            String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+            alert.getDialogPane().getStylesheets().add(css);
+            alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    private void atrasVehiculo() throws IOException {
+        if(vehiculoUsar.getPrevious()!=null){
+            vehiculoUsar = vehiculoUsar.getPrevious();
+            Vehiculos vehiculo = vehiculoUsar.getContent();
+            MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
+            year.setText(vehiculo.getAnio()+"");
+            ubicacion.setText(vehiculo.getUbicacion());
+            precio.setText(vehiculo.getPrecio()+"");
+            DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
+            Path projectDir = Paths.get("").toAbsolutePath();
+            Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
+            //imagen.setImage(new Image(getClass().getResourceAsStream("/imagenesCarros/" + rutaImagen.getContent())));
+            File archivoImagen = rutaAbsoluta.toFile();
+            if (!archivoImagen.exists()) {
+                System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
+                return;
+            }
+
+            // Carga la nueva imagen
+            Image image1 = new Image(archivoImagen.toURI().toString());
+            imagen.setImage(image1);
+        }else {
+            Alert alert= new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Siguiente Vehiculo");
+            alert.setTitle("No existen más datos");
+            alert.setContentText("Este es el primer vehículo.");
+            String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+            alert.getDialogPane().getStylesheets().add(css);
+            alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
+            alert.showAndWait();
+        }
     }
 }

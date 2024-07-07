@@ -73,7 +73,7 @@ public class App extends Application {
         try(ObjectInputStream oit = new ObjectInputStream(new FileInputStream(App.filecars))) {
             cars_list = (ListaVehiculos) oit.readObject();
         } catch(Exception e) {
-            System.out.println("No hay ningun usuario por el momento");
+            System.out.println("No hay ningun vehiculo por el momento");
         }
         return cars_list;
     }
