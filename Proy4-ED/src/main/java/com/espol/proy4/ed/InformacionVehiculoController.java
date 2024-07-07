@@ -60,6 +60,8 @@ public class InformacionVehiculoController implements Initializable {
     @FXML
     private Label transmision;
     @FXML
+    private Label vendedor;
+    @FXML
     private ImageView imagen;
     @FXML
     private ImageView bttnextphoto;
@@ -102,10 +104,11 @@ public class InformacionVehiculoController implements Initializable {
         motor.setText(vehiculo.getMotor());
         ubicacion.setText(vehiculo.getUbicacion());
         kilometraje.setText(vehiculo.getKilometraje()+"");
-        precio.setText(vehiculo.getPrecio()+"");
+        precio.setText((int)vehiculo.getPrecio()+" USD");
         year.setText(vehiculo.getAnio()+"");
         peso.setText(vehiculo.getPeso()+"");
         transmision.setText(vehiculo.getTransmision());
+        vendedor.setText(""+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
         
         // Aquí se debe mostrar todos los datos
         

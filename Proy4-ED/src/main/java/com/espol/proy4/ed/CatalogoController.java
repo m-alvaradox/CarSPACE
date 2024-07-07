@@ -47,6 +47,8 @@ public class CatalogoController implements Initializable {
     @FXML
     private Label precio;
     @FXML
+    private Label vendedor;
+    @FXML
     private ImageView imagen;
     @FXML
     private ImageView bttnhouse;
@@ -86,10 +88,11 @@ public class CatalogoController implements Initializable {
             vehiculoUsar = catalogo.getHeader();
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            year.setText(vehiculo.getAnio()+"");
-            kilometraje.setText(vehiculo.getKilometraje()+"");
-            ubicacion.setText(vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+"");
+            year.setText("Año: "+vehiculo.getAnio()+"");
+            kilometraje.setText(vehiculo.getKilometraje()+" kms");
+            ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
+            precio.setText((int)vehiculo.getPrecio()+" USD");
+            vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
@@ -112,10 +115,11 @@ public class CatalogoController implements Initializable {
             vehiculoUsar = vehiculoUsar.getNext();
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            year.setText(vehiculo.getAnio()+"");
-            kilometraje.setText(vehiculo.getKilometraje()+"");
-            ubicacion.setText(vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+"");
+            year.setText("Año: "+vehiculo.getAnio()+"");
+            kilometraje.setText(vehiculo.getKilometraje()+" kms");
+            ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
+            precio.setText((int)vehiculo.getPrecio()+" USD");
+            vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
@@ -147,10 +151,11 @@ public class CatalogoController implements Initializable {
             vehiculoUsar = vehiculoUsar.getPrevious();
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            year.setText(vehiculo.getAnio()+"");
-            kilometraje.setText(vehiculo.getKilometraje()+"");
-            ubicacion.setText(vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+"");
+            year.setText("Año"+vehiculo.getAnio()+"");
+            kilometraje.setText(vehiculo.getKilometraje()+" kms");
+            ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
+            precio.setText((int)vehiculo.getPrecio()+" USD");
+            vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));

@@ -88,9 +88,9 @@ public class PrincipalController implements Initializable {
             
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             year.setText(vehiculo.getAnio()+"");
-            ubicacion.setText(vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+" USD");
-            kilometraje.setText(vehiculo.getKilometraje()+" kms |");
+            ubicacion.setText(vehiculo.getUbicacion());          
+            precio.setText((int)vehiculo.getPrecio()+" USD");
+            kilometraje.setText(vehiculo.getKilometraje()+" kms | ");
             
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
@@ -105,6 +105,9 @@ public class PrincipalController implements Initializable {
             // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
+            
+            Tooltip tvendedor = new Tooltip("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
+            Tooltip.install(imagen, tvendedor);
             
         }
         
@@ -182,8 +185,8 @@ public class PrincipalController implements Initializable {
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             year.setText(vehiculo.getAnio()+"");
             ubicacion.setText(vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+" USD");
-            kilometraje.setText(vehiculo.getKilometraje()+" kms |");
+            precio.setText((int)vehiculo.getPrecio()+" USD");
+            kilometraje.setText(vehiculo.getKilometraje()+" kms | ");
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
@@ -196,6 +199,10 @@ public class PrincipalController implements Initializable {
             // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
+            
+            Tooltip tvendedor = new Tooltip("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
+            Tooltip.install(imagen, tvendedor);
+            
         }else {
              //Mostrar alerta que ya no existen Vehiculos;
             Alert alert= new Alert(Alert.AlertType.INFORMATION);
@@ -217,8 +224,8 @@ public class PrincipalController implements Initializable {
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             year.setText(vehiculo.getAnio()+"");
             ubicacion.setText(vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+" USD");
-            kilometraje.setText(vehiculo.getKilometraje()+" kms |");
+            precio.setText((int)vehiculo.getPrecio()+" USD");
+            kilometraje.setText(vehiculo.getKilometraje()+" kms | ");
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
@@ -232,6 +239,10 @@ public class PrincipalController implements Initializable {
             // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
+            
+            Tooltip tvendedor = new Tooltip("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
+            Tooltip.install(imagen, tvendedor);
+            
         }else {
             Alert alert= new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Siguiente Vehiculo");

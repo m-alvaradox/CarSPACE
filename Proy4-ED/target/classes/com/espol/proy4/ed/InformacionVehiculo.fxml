@@ -43,7 +43,7 @@
       </HBox>
    </top>
    <center>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="231.0" prefWidth="204.0" spacing="5.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;" BorderPane.alignment="CENTER">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="235.0" spacing="5.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
                <children>
@@ -89,7 +89,7 @@
                   <Label fx:id="precio" styleClass="texto_login" text="info" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="127.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="127.0" prefHeight="21.0" prefWidth="232.0" spacing="5.0">
                <children>
                   <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -142,6 +142,17 @@
                   </ImageView>
                   <Label styleClass="text-atributos" text="Motor" />
                   <Label fx:id="motor" styleClass="texto_login" text="info" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+               <children>
+                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../imagenes/punto.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="text-atributos" text="Vendedor" />
+                  <Label fx:id="vendedor" prefHeight="21.0" prefWidth="142.0" styleClass="texto_login" text="info" />
                </children>
             </HBox>
          </children>
@@ -198,7 +209,7 @@
       </HBox>
    </right>
    <bottom>
-      <HBox prefHeight="161.0" prefWidth="642.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="143.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="156.0" prefWidth="270.0">
                <children>

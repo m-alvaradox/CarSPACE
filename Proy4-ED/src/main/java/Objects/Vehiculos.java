@@ -18,12 +18,13 @@ public class Vehiculos implements Serializable {
     private CircularDoublyList<String> fotos = new CircularDoublyList<>();
     private ArrayList<Historial> historial = new ArrayList<>();
     private ArrayList<AtributoAdicional> AtributoAdicional = new ArrayList<>();
+    private User vendedor;
 
 
 
     public Vehiculos(String marca, String modelo, int anio, double precio, int kilometraje, String motor,
             String transmision, double peso, String ubicacion,EstadoD estado,CircularDoublyList<String> fotos,
-            ArrayList<Historial> historial, ArrayList<AtributoAdicional> AtributoAdicional) {
+            ArrayList<Historial> historial, ArrayList<AtributoAdicional> AtributoAdicional, User vendedor) {
         this.marca = marca;
         this.modelo = modelo;
         this.anio = anio;
@@ -37,9 +38,12 @@ public class Vehiculos implements Serializable {
         this.historial = historial;
         this.estado = estado;
         this.AtributoAdicional = AtributoAdicional;
-
+        this.vendedor = vendedor;
     }
 
+    public User getVendedor() {
+        return vendedor;
+    }
 
     public String getMarca() {
         return marca;

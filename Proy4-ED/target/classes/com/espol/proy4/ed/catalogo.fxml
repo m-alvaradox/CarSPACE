@@ -92,6 +92,7 @@
                               <Label fx:id="kilometraje" styleClass="texto_principal" text="Kilometraje" />
                               <Label fx:id="ubicacion" styleClass="texto_principal" text="Ubicación" />
                               <Label fx:id="precio" styleClass="texto_principal" text="Precio" />
+                              <Label fx:id="vendedor" styleClass="texto_principal" text="Vendedor" />
                               <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#masInformacion" prefHeight="31.0" prefWidth="159.0" style="-fx-pref-width: 160;" styleClass="boton_sinEstilo" text="Más información" />
                            </children>
                         </VBox>
