@@ -35,6 +35,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -78,6 +79,13 @@ public class CrearVentaController implements Initializable {
     private TextField transmision;
     @FXML
     private TextField precio;
+    @FXML
+    private ImageView bttnhome;
+    @FXML
+    private ImageView bttnadd1;
+    @FXML
+    private ImageView bttnadd2;
+    
     
     
     /**
@@ -91,6 +99,14 @@ public class CrearVentaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // ToolTip
+        Tooltip tbuttonhome = new Tooltip("Página Principal");
+        Tooltip tbuttonadd1 = new Tooltip("Agregar");
+        Tooltip.install(bttnhome, tbuttonhome);
+        Tooltip.install(bttnadd1, tbuttonadd1);
+        Tooltip.install(bttnadd2, tbuttonadd1);
+        
+        
         rutaImagenes = new ArrayList<>();
         // TODO
     }    

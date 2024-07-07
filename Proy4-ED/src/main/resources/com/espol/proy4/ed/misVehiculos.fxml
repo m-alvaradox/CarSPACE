@@ -28,7 +28,7 @@
                      </image>
                   </ImageView>
                   <Label prefHeight="35.0" prefWidth="188.0" styleClass="mensaje_bienvenido" text="Mis publicaciones" translateX="-50.0" />
-                  <ImageView fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="65.0">
+                  <ImageView fx:id="bttnhome" fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="65.0">
                      <image>
                         <Image url="@../../../../imagenes/home_icono.png" />
                      </image>
@@ -148,7 +148,7 @@
             </VBox>
          </center>
          <left>
-            <ImageView fitHeight="79.0" fitWidth="44.0" onMouseClicked="#atrasVehiculo" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <ImageView fx:id="bttnbackcar" fitHeight="79.0" fitWidth="44.0" onMouseClicked="#atrasVehiculo" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
                   <Image url="@../../../../imagenes/atras_icono.png" />
                </image>
@@ -165,19 +165,19 @@
                            </VBox.margin></ImageView>
                         <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="125.0" spacing="15.0">
                            <children>
-                              <ImageView fitHeight="28.0" fitWidth="28.0" onMouseClicked="#editarVehiculo" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="bttnedit" fitHeight="28.0" fitWidth="28.0" onMouseClicked="#editarVehiculo" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../imagenes/editar.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="bttndelete" fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../imagenes/borrar.png" />
                                  </image>
                               </ImageView>
                               <HBox alignment="CENTER" onMouseClicked="#atrasImagen" prefHeight="61.0" prefWidth="55.0" style="-fx-border-color: black; -fx-background-color: white;">
                                  <children>
-                                    <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-bprder-color: black;">
+                                    <ImageView fx:id="bttnbackphoto" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-bprder-color: black;">
                                        <image>
                                           <Image url="@../../../../imagenes/atras.png" />
                                        </image>
@@ -189,7 +189,7 @@
                               </HBox>
                               <HBox alignment="CENTER" onMouseClicked="#siguienteImagen" prefHeight="61.0" prefWidth="55.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1px;">
                                  <children>
-                                    <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="bttnextphoto" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../../../imagenes/siguiente.png" />
                                        </image>
@@ -206,7 +206,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <ImageView fitHeight="79.0" fitWidth="44.0" onMouseClicked="#siguienteVehiculo" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="bttnextcar" fitHeight="79.0" fitWidth="44.0" onMouseClicked="#siguienteVehiculo" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../imagenes/siguiente_icono.png" />
                      </image>

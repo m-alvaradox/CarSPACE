@@ -14,7 +14,7 @@
    <top>
       <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="10.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" BorderPane.alignment="CENTER_LEFT">
          <children>
-            <ImageView fitHeight="79.0" fitWidth="44.0" onMouseClicked="#regresar" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="bttnregreso" fitHeight="79.0" fitWidth="44.0" onMouseClicked="#regresar" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../imagenes/regresar.png" />
                </image>
@@ -31,7 +31,7 @@
                </image>
             </ImageView>
             <Label prefHeight="35.0" prefWidth="184.0" styleClass="mensaje_bienvenido" text="Info. Vehículo" translateX="25.0" />
-            <ImageView fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="115.0">
+            <ImageView fx:id="bttnhome" fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="115.0">
                <image>
                   <Image url="@../../../../imagenes/home_icono.png" />
                </image>
@@ -165,7 +165,7 @@
                         </ImageView>
                         <HBox alignment="CENTER" onMouseClicked="#atrasImagen" prefHeight="61.0" prefWidth="55.0" style="-fx-border-color: black; -fx-background-color: white;">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-bprder-color: black;">
+                              <ImageView fx:id="bttnbackphoto" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-bprder-color: black;">
                                  <image>
                                     <Image url="@../../../../imagenes/atras.png" />
                                  </image>
@@ -177,7 +177,7 @@
                         </HBox>
                         <HBox alignment="CENTER" onMouseClicked="#siguienteImagen" prefHeight="61.0" prefWidth="55.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1px;">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="bttnextphoto" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../imagenes/siguiente.png" />
                                  </image>

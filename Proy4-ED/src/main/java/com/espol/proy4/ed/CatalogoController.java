@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -47,6 +48,13 @@ public class CatalogoController implements Initializable {
     private Label precio;
     @FXML
     private ImageView imagen;
+    @FXML
+    private ImageView bttnhouse;
+    @FXML
+    private ImageView bttnadelante;
+    @FXML
+    private ImageView bttnatras;
+    
             
     
     DoublyLinkedList<Vehiculos> catalogo;
@@ -58,6 +66,18 @@ public class CatalogoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // ToolTips
+        Tooltip tbuttonhouse = new Tooltip("Página Principal");
+        Tooltip tbuttonnext = new Tooltip("Adelante");
+        Tooltip tbuttonback = new Tooltip("Atrás");
+        Tooltip.install(bttnhouse, tbuttonhouse);
+        Tooltip.install(bttnadelante, tbuttonnext);
+        Tooltip.install(bttnatras, tbuttonback);
+        
+        
+        
+        
+        
         catalogo = App.catalogo.getVehiculos();
         marcas.getItems().setAll(Marca.values());
         modelos.getItems().setAll(Modelo.values());

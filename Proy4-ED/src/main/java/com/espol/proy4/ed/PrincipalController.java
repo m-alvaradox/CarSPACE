@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -34,6 +35,12 @@ public class PrincipalController implements Initializable {
     private AnchorPane configuracion;
     @FXML
     private ImageView imagen;
+    @FXML
+    private ImageView buttonconfig;
+    @FXML
+    private ImageView bttnadelante;
+    @FXML
+    private ImageView bttnatras;
     @FXML
     private Label precio;
     @FXML
@@ -55,6 +62,15 @@ public class PrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // ToolTips
+        
+        Tooltip tbuttonconfig = new Tooltip("Configuración");
+        Tooltip tbuttonnext = new Tooltip("Adelante");
+        Tooltip tbuttonback = new Tooltip("Atrás");
+        Tooltip.install(buttonconfig, tbuttonconfig);
+        Tooltip.install(bttnadelante, tbuttonnext);
+        Tooltip.install(bttnatras, tbuttonback);
+        
         // TODO
         String msg = String.format("Hola, %s !", App.userlogged.getName());
         msgwelcome.setText(msg);

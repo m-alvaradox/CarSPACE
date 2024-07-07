@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -60,6 +61,14 @@ public class InformacionVehiculoController implements Initializable {
     private Label transmision;
     @FXML
     private ImageView imagen;
+    @FXML
+    private ImageView bttnextphoto;
+    @FXML
+    private ImageView bttnbackphoto;
+    @FXML
+    private ImageView bttnhome;
+    @FXML
+    private ImageView bttnregreso;
     
     DoublyNodeList<Vehiculos> vehiculoUsar = CatalogoController.vehiculoUsar;
     
@@ -72,6 +81,19 @@ public class InformacionVehiculoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        Tooltip tbuttonhome = new Tooltip("Página Principal");
+        Tooltip tbuttonregreso = new Tooltip("Regresar");
+        Tooltip tbuttonnextphoto = new Tooltip("Siguiente foto");
+        Tooltip tbuttonbackphoto = new Tooltip("Foto anterior");
+        Tooltip tbuttonlikeit = new Tooltip("Me gusta");
+        Tooltip tbuttonnotlikeit = new Tooltip("Ya no me gusta");
+        Tooltip.install(bttnhome, tbuttonhome);
+        Tooltip.install(bttnregreso, tbuttonregreso);
+        Tooltip.install(bttnextphoto, tbuttonnextphoto);
+        Tooltip.install(bttnbackphoto, tbuttonbackphoto);
+        Tooltip.install(favoritoSinMarcar, tbuttonlikeit);
+        Tooltip.install(favoritoMarcado, tbuttonnotlikeit);
         
         
         Vehiculos vehiculo = vehiculoUsar.getContent();

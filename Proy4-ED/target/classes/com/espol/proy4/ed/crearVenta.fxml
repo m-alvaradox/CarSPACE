@@ -28,7 +28,7 @@
                </image>
             </ImageView>
             <Label prefHeight="35.0" prefWidth="238.0" styleClass="mensaje_bienvenido" text="Vende tu vehículo !" translateX="-30.0" />
-            <ImageView fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="15.0">
+            <ImageView fx:id="bttnhome" fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="15.0">
                <image>
                   <Image url="@../../../../imagenes/home_icono.png" />
                </image>
@@ -178,7 +178,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="452.0">
                            <children>
                               <Label lineSpacing="1.0" minHeight="-Infinity" prefHeight="41.0" prefWidth="251.0" styleClass="texto_principal" text="Historial de accidentes y servicios:" wrapText="true" />
-                              <ImageView fitHeight="26.0" fitWidth="26.0" onMouseClicked="#nuevoServicio" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="bttnadd1" fitHeight="26.0" fitWidth="26.0" onMouseClicked="#nuevoServicio" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../imagenes/mas.png" />
                                  </image>
@@ -207,7 +207,7 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="29.0" prefWidth="280.0" spacing="5.0">
                                  <children>
                                     <Label styleClass="texto_principal" text="Atributos adicionales:" />
-                                    <ImageView fitHeight="26.0" fitWidth="26.0" onMouseClicked="#addAtributos" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="bttnadd2" fitHeight="26.0" fitWidth="26.0" onMouseClicked="#addAtributos" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../../../imagenes/mas.png" />
                                        </image>

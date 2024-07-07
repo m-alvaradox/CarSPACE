@@ -24,6 +24,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -67,6 +68,17 @@ public class MisVehiculosController implements Initializable {
     private BorderPane vehiculoEditar;
     @FXML
     private BorderPane vehiculoMostrado;
+    @FXML
+    private ImageView bttnhome;
+    @FXML
+    private ImageView bttnextcar;
+    @FXML
+    private ImageView bttnbackcar;
+    @FXML
+    private ImageView bttnextphoto;
+    @FXML
+    private ImageView bttnbackphoto;
+    
     
     // Todos estos campos son para editar el vehículo
     @FXML
@@ -94,7 +106,12 @@ public class MisVehiculosController implements Initializable {
     @FXML
     private ImageView imagen1;
     @FXML
+    private ImageView bttndelete;
+    @FXML
+    private ImageView bttnedit;
+    @FXML
     private ComboBox<EstadoD> estadoVehiculo;
+    
     
     User usuario;
     private DoublyLinkedList<Vehiculos> listaVehiculo;// Aquí se inicia el DoublyCircularLinkedList
@@ -106,6 +123,25 @@ public class MisVehiculosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        // Tooltip
+        Tooltip tbuttonhome = new Tooltip("Página Principal");
+        Tooltip tbuttonnextcar = new Tooltip("Siguiente publicación");
+        Tooltip tbuttonbackcar = new Tooltip("Publicación anterior");
+        Tooltip tbuttonnextphoto = new Tooltip("Siguiente foto");
+        Tooltip tbuttonbackphoto = new Tooltip("Foto anterior");
+        Tooltip tbuttondelete = new Tooltip("Eliminar");
+        Tooltip tbuttonedit = new Tooltip("Editar");
+        Tooltip.install(bttnhome, tbuttonhome);
+        Tooltip.install(bttnextcar, tbuttonnextcar);
+        Tooltip.install(bttnbackcar, tbuttonbackcar);
+        Tooltip.install(bttnextphoto, tbuttonnextphoto);
+        Tooltip.install(bttnbackphoto, tbuttonbackphoto);
+        Tooltip.install(bttndelete, tbuttondelete);
+        Tooltip.install(bttnedit, tbuttonedit);
+        
+        
+        
         estadoVehiculo.getItems().addAll(EstadoD.values());
         usuario = App.userlogged;
         
