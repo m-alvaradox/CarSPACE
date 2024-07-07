@@ -117,7 +117,12 @@
                                        <VBox.margin>
                                           <Insets bottom="10.0" />
                                        </VBox.margin></Label>
-                                    <Label fx:id="ubicacion" text="Ubicación" />
+                                    <HBox prefHeight="24.0" prefWidth="210.0">
+                                       <children>
+                                          <Label fx:id="kilometraje" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="110.0" text="Kilometro" />
+                                          <Label fx:id="ubicacion" prefHeight="17.0" prefWidth="125.0" text="Ubicación" />
+                                       </children>
+                                    </HBox>
                                     <Button mnemonicParsing="false" onAction="#masInformacion" prefHeight="31.0" prefWidth="160.0" style="-fx-pref-width: 140;" styleClass="boton_sinEstilo" text="Más información" />
                                  </children>
                               </VBox>

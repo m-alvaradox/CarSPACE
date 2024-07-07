@@ -18,7 +18,7 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
     }
     
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public DoublyNodeList<E> getHeader() {
@@ -54,7 +54,6 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
                 header.setNext(newNode);
                 last.setPrevious(header);
             }
-
             return true;
         }
         return false;
@@ -75,7 +74,7 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
             
             newNode.setPrevious(p);
             newNode.getNext().setPrevious(newNode);
-           
+                    
         }
         return false;
     }

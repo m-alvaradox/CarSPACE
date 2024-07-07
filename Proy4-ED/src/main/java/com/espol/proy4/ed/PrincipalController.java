@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.Optional;
+import java.util.PriorityQueue;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,6 +50,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private Label ubicacion;
     @FXML
+    private Label kilometraje;
+    @FXML
     private Label MarcaYModelo;
     
     @FXML
@@ -75,7 +79,8 @@ public class PrincipalController implements Initializable {
         String msg = String.format("Hola, %s !", App.userlogged.getName());
         msgwelcome.setText(msg);
         
-        catalogo = App.catalogo.getVehiculos();
+        catalogo = ordenarcatalogo();
+        
         
         if(!catalogo.isEmpty()) {
             vehiculoUsar = catalogo.getHeader();
@@ -85,6 +90,7 @@ public class PrincipalController implements Initializable {
             year.setText(vehiculo.getAnio()+"");
             ubicacion.setText(vehiculo.getUbicacion());
             precio.setText(vehiculo.getPrecio()+" USD");
+            kilometraje.setText(vehiculo.getKilometraje()+" kms |");
             
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
@@ -177,6 +183,7 @@ public class PrincipalController implements Initializable {
             year.setText(vehiculo.getAnio()+"");
             ubicacion.setText(vehiculo.getUbicacion());
             precio.setText(vehiculo.getPrecio()+" USD");
+            kilometraje.setText(vehiculo.getKilometraje()+" kms |");
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
@@ -211,6 +218,7 @@ public class PrincipalController implements Initializable {
             year.setText(vehiculo.getAnio()+"");
             ubicacion.setText(vehiculo.getUbicacion());
             precio.setText(vehiculo.getPrecio()+" USD");
+            kilometraje.setText(vehiculo.getKilometraje()+" kms |");
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
@@ -234,5 +242,45 @@ public class PrincipalController implements Initializable {
             alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
             alert.showAndWait();
         }
+    }
+
+    private DoublyLinkedList<Vehiculos> ordenarcatalogo() {
+        
+        // Implemento el comparador 
+        Comparator<Vehiculos> comparator = new Comparator<Vehiculos>() {
+            @Override
+            public int compare(Vehiculos v1, Vehiculos v2) {
+                // Primero comparar por precio
+                int comparacionPorPrecio = Double.compare(v1.getPrecio(), v2.getPrecio());
+                if (comparacionPorPrecio != 0) {
+                    return comparacionPorPrecio;
+                } else {
+                    // Si los precios son iguales, comparar por kilometraje
+                    return Integer.compare(v1.getKilometraje(), v2.getKilometraje());
+                }
+            }
+          };
+         
+        // Recojo mi lista vehiculos de App
+        DoublyLinkedList<Vehiculos> lvehiculos = App.catalogo.getVehiculos();
+         
+        PriorityQueue<Vehiculos> vehiculos_prioridad = new PriorityQueue<>(comparator);
+        
+        // Para recorrer mi lista vehiculo y agregarlos a la cola de prioridad
+        DoublyNodeList<Vehiculos> current = lvehiculos.getHeader();
+        
+        while(current != null) {
+            vehiculos_prioridad.offer(current.getContent());
+            current = current.getNext();
+        }
+        
+        // retorno una nueva lista de vehiculos ya ordenada
+        DoublyLinkedList sortedList = new DoublyLinkedList();
+        
+        while(!vehiculos_prioridad.isEmpty()) {
+            sortedList.addLast(vehiculos_prioridad.poll());
+        }
+        
+        return sortedList;  
     }
 }
