@@ -13,6 +13,13 @@
     -fx-background-image: url("../imagenes/fondo_principal.jpg");
 }
 
+.outlined-label {
+    -fx-border-color: #333333; /* color del borde */
+    -fx-border-width: 2px; /* ancho del borde */
+    -fx-padding: 5px; /* espacio alrededor del texto */
+    -fx-font-family:"Segoe UI";
+}
+
 .recuadro{
     -fx-background-color: #F6F6F6 ;
     -fx-border-radius:25px;

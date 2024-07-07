@@ -84,7 +84,7 @@ public class PrincipalController implements Initializable {
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             year.setText(vehiculo.getAnio()+"");
             ubicacion.setText(vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+"");
+            precio.setText(vehiculo.getPrecio()+" USD");
             
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
@@ -176,7 +176,7 @@ public class PrincipalController implements Initializable {
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             year.setText(vehiculo.getAnio()+"");
             ubicacion.setText(vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+"");
+            precio.setText(vehiculo.getPrecio()+" USD");
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
@@ -210,7 +210,7 @@ public class PrincipalController implements Initializable {
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             year.setText(vehiculo.getAnio()+"");
             ubicacion.setText(vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+"");
+            precio.setText(vehiculo.getPrecio()+" USD");
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));

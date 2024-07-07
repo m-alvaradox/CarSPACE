@@ -42,22 +42,36 @@
             </HBox>
          </top>
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="358.0" prefWidth="304.0" spacing="25.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;" BorderPane.alignment="CENTER">
                <children>
-                  <Label styleClass="texto_principal" text="¿Qué deseas hacer hoy?" translateY="-20.0" />
+                  <Label text="¿Qué deseas hacer hoy?" translateY="-20.0">
+                     <font>
+                        <Font name="Segoe UI Bold" size="21.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin></Label>
                   <Button mnemonicParsing="false" onAction="#catalogo" prefHeight="32.0" prefWidth="156.0" styleClass="boton_fondoAzul" text="Buscar vehículo" />
                   <Button mnemonicParsing="false" onAction="#crearVenta" prefHeight="32.0" prefWidth="154.0" styleClass="boton_fondoAzul" text="Crear venta" />
                   <Button mnemonicParsing="false" onAction="#misVehiculos" styleClass="boton_fondoAzul" text="Mis Publicaciones" />
+                  <ImageView fitHeight="97.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../imagenes/marcas_autos.png" />
+                     </image>
+                  </ImageView>
                </children>
             </VBox>
          </center>
          <right>
             <VBox alignment="TOP_CENTER" prefHeight="397.0" prefWidth="338.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label styleClass="texto_principal" text="Carros en oferta">
+                  <Label text="Aprovecha YA!">
                      <VBox.margin>
                         <Insets top="40.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Segoe UI Bold" size="24.0" />
+                     </font>
                   </Label>
                   <HBox alignment="CENTER" prefHeight="364.0" prefWidth="338.0">
                      <children>
@@ -75,9 +89,34 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </ImageView>
-                                    <Label fx:id="MarcaYModelo" text="NOMBRE" />
-                                    <Label fx:id="precio" text="PRECIO" />
-                                    <Label fx:id="year" text="Año" />
+                                    <Label fx:id="MarcaYModelo" text="NOMBRE">
+                                       <font>
+                                          <Font name="Segoe UI Black Italic" size="18.0" />
+                                       </font></Label>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="110.0" text="A tan sólo">
+                                             <font>
+                                                <Font name="Segoe UI" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="precio" prefHeight="36.0" prefWidth="142.0" text="Precio" textFill="#2e9e39">
+                                             <font>
+                                                <Font name="System Bold Italic" size="18.0" />
+                                             </font>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <Label fx:id="year" styleClass="outlined-label" text="Año">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin></Label>
                                     <Label fx:id="ubicacion" text="Ubicación" />
                                     <Button mnemonicParsing="false" onAction="#masInformacion" prefHeight="31.0" prefWidth="160.0" style="-fx-pref-width: 140;" styleClass="boton_sinEstilo" text="Más información" />
                                  </children>
