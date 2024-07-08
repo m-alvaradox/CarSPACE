@@ -79,7 +79,7 @@ public class InformacionVehiculoController implements Initializable {
     private CircularDoublyList<String> imagenes; // Imagenes que usa el vehiculo
     private DoublyNodeList<String> rutaImagen; // Nodo imagen 
     
-    private DoublyLinkedList<Vehiculos> FavVehiculos = App.userlogged.getFavVehiculos();
+    private DoublyLinkedList<Vehiculos> FavVehiculos;
     /**
      * Initializes the controller class.
      */
@@ -112,6 +112,8 @@ public class InformacionVehiculoController implements Initializable {
         vendedor.setText(""+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
         
         // Condicion favorito
+        
+        FavVehiculos = App.userlogged.getFavVehiculos();
         
         condicionfavorito(vehiculo);
         
@@ -214,7 +216,7 @@ public class InformacionVehiculoController implements Initializable {
        
        // Aquí se debe eliminar el carro de la lista de favoritos
        Vehiculos vehiculo = vehiculoUsar.getContent();
-       //FavVehiculos.eliminar2(vehiculo);
+       FavVehiculos.eliminar(vehiculo);
        App.userlogged.setFavVehiculos(FavVehiculos);
        
        favoritoSinMarcar.setOnMouseClicked(event -> {
