@@ -21,6 +21,7 @@ module-info.class
 Objects\Marca.class
 TDAS\DoublyNodeList.class
 Objects\User.class
+TDAS\ArrayList$1.class
 com\espol\proy4\ed\InformacionVehiculoController.class
 Objects\ListaVehiculos$2.class
 Objects\ListaVehiculos.class

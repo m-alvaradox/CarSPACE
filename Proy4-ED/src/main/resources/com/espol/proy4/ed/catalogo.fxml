@@ -42,7 +42,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="402.0" prefWidth="165.0" spacing="40.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;">
                      <children>
-                        <Button mnemonicParsing="false" styleClass="boton_fondoAzul" text="Buscar">
+                        <Button mnemonicParsing="false" onAction="#Buscar" styleClass="boton_fondoAzul" text="Buscar">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin></Button>
@@ -57,12 +57,12 @@
                               <Insets bottom="-20.0" />
                            </VBox.margin>
                         </ComboBox>
-                        <TextField maxWidth="-Infinity" prefHeight="27.0" prefWidth="81.0" promptText="Desde" styleClass="text-field">
+                        <TextField fx:id="RangoInicio" maxWidth="-Infinity" prefHeight="27.0" prefWidth="81.0" promptText="Desde" styleClass="text-field">
                            <VBox.margin>
                               <Insets bottom="-20.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField maxWidth="-Infinity" prefHeight="27.0" prefWidth="83.0" promptText="Hasta">
+                        <TextField fx:id="RangoFinal" maxWidth="-Infinity" prefHeight="27.0" prefWidth="83.0" promptText="Hasta">
                            <VBox.margin>
                               <Insets top="-10.0" />
                            </VBox.margin></TextField>

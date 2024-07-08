@@ -30,9 +30,9 @@ public class ListaVehiculos implements Serializable{
         return vehiculos;
     }
 
-    public List<Vehiculos> filtrarPorMarcaYModelo(String marca, String modelo) {
+    public DoublyLinkedList<Vehiculos> filtrarPorMarcaYModelo(String marca, String modelo) {
         Iterator<Vehiculos> iterator = this.iterator();
-        List<Vehiculos> resultado = new DoublyLinkedList<>();
+        DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
         
         Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<Vehiculos>() {
             @Override
@@ -55,9 +55,9 @@ public class ListaVehiculos implements Serializable{
         return resultado;
     }
     
-    public List<Vehiculos> filtrarPorRangoDePrecio(double minPrecio, double maxPrecio) {
+    public DoublyLinkedList<Vehiculos> filtrarPorRangoDePrecio(double minPrecio, double maxPrecio) {
         Iterator<Vehiculos> iterator = this.iterator();
-        List<Vehiculos> resultado = new DoublyLinkedList<>();
+        DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
         
         Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<Vehiculos>() {
             @Override
@@ -80,20 +80,20 @@ public class ListaVehiculos implements Serializable{
         return resultado;
     }
     
-    public List<Vehiculos> filtrarPorRangoDeKilometraje(int minKm, int maxKm) {
+    public DoublyLinkedList<Vehiculos> filtrarPorRangoDeKilometraje(int minKm, int maxKm) {
         Iterator<Vehiculos> iterator = this.iterator();
-        List<Vehiculos> resultado = new DoublyLinkedList<>();
+        DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
         
-        Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<Vehiculos>() {
+        Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<>() {
             @Override
             public int compare(Vehiculos v1, Vehiculos v2) {
-                return Double.compare(v1.getKilometraje(), v2.getKilometraje());
+                return Integer.compare(v1.getKilometraje(), v2.getKilometraje());
             }
         });
 
         while (iterator.hasNext()) {
             Vehiculos vehiculo = iterator.next();
-            if (vehiculo.getPrecio() >= minKm && vehiculo.getPrecio() <= maxKm) {
+            if (vehiculo.getKilometraje() >= minKm && vehiculo.getKilometraje() <= maxKm) {
                 cola.offer(vehiculo);
             }
         }
