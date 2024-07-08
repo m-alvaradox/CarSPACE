@@ -111,7 +111,7 @@ public class User implements Serializable {
 
 
     public void addFavMisvehiculos(Vehiculos vehiculo){
-        misVehiculos.addLast(vehiculo);
+        FavVehiculos.addLast(vehiculo);
 
     }
 

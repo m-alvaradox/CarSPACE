@@ -78,6 +78,8 @@ public class InformacionVehiculoController implements Initializable {
     
     private CircularDoublyList<String> imagenes; // Imagenes que usa el vehiculo
     private DoublyNodeList<String> rutaImagen; // Nodo imagen 
+    
+    private DoublyLinkedList<Vehiculos> FavVehiculos = App.userlogged.getFavVehiculos();
     /**
      * Initializes the controller class.
      */
@@ -97,7 +99,6 @@ public class InformacionVehiculoController implements Initializable {
         Tooltip.install(favoritoSinMarcar, tbuttonlikeit);
         Tooltip.install(favoritoMarcado, tbuttonnotlikeit);
         
-        
         Vehiculos vehiculo = vehiculoUsar.getContent();
         marca.setText(vehiculo.getMarca());
         modelo.setText(vehiculo.getModelo());
@@ -110,6 +111,11 @@ public class InformacionVehiculoController implements Initializable {
         transmision.setText(vehiculo.getTransmision());
         vendedor.setText(""+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
         
+        // Condicion favorito
+        
+        condicionfavorito(vehiculo);
+        
+
         // Aquí se debe mostrar todos los datos
         
         ArrayList<AtributoAdicional> listaAtributos = vehiculo.getAtributoAdicional();
@@ -186,6 +192,13 @@ public class InformacionVehiculoController implements Initializable {
        favoritoMarcado = favoritoSinMarcar;
        
        // Aquí se debe agregar a la lista de carros favoritos
+       Vehiculos vehiculo = vehiculoUsar.getContent();
+       if(FavVehiculos == null) {
+           FavVehiculos = new DoublyLinkedList<>();
+       }
+       FavVehiculos.addLast(vehiculo);
+       App.userlogged.setFavVehiculos(FavVehiculos);
+       //App.ActualizarListaUsuarios();
        
        favoritoMarcado.setOnMouseClicked((evento) -> {    
             DesmarcarFavorito(evento);
@@ -200,6 +213,9 @@ public class InformacionVehiculoController implements Initializable {
        favoritoSinMarcar = favoritoMarcado;
        
        // Aquí se debe eliminar el carro de la lista de favoritos
+       Vehiculos vehiculo = vehiculoUsar.getContent();
+       //FavVehiculos.eliminar2(vehiculo);
+       App.userlogged.setFavVehiculos(FavVehiculos);
        
        favoritoSinMarcar.setOnMouseClicked(event -> {
            try {
@@ -241,6 +257,28 @@ public class InformacionVehiculoController implements Initializable {
         Image image1 = new Image(archivoImagen.toURI().toString());
         imagen.setImage(image1);
    }
+
+    private void condicionfavorito(Vehiculos vehiculo) {
+        
+        if(FavVehiculos == null || FavVehiculos.isEmpty()) {
+            System.out.println("Lista favoritos esta vacia");
+            return;
+        }
+        DoublyNodeList<Vehiculos> current = FavVehiculos.getHeader();
+        
+            while(current != null) {
+                if (current.getContent().equals(vehiculo)) {
+                    System.out.println("Vehiculo marcado como favorito");
+                    favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
+                    favoritoSinMarcar.setId("favoritoMarcado");
+                    favoritoMarcado = favoritoSinMarcar;
+                    return;
+                } else {
+                current = current.getNext(); }
+            }
+            
+            System.out.println("Vehiculo no marcado como favorito");
+    }
    
   
 }

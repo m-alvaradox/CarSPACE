@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@../../../../styles/estilos.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.espol.proy4.ed.FavoritosController">
    <children>
@@ -19,15 +21,55 @@
                      <image>
                         <Image url="@../../../../imagenes/logo_carspace.png" />
                      </image>
+                     <HBox.margin>
+                        <Insets left="149.0" />
+                     </HBox.margin>
                   </ImageView>
-                  <Label fx:id="label_favoritos" prefHeight="35.0" prefWidth="108.0" styleClass="mensaje_bienvenido" text="Favoritos" />
+                  <Label fx:id="label_favoritos" prefHeight="35.0" prefWidth="284.0" styleClass="mensaje_bienvenido" text="Favoritos">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
                </children>
             </HBox>
          </top>
          <left>
             <AnchorPane prefHeight="398.0" prefWidth="645.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="243.0" layoutY="323.0" mnemonicParsing="false" onAction="#regresar" prefHeight="44.0" prefWidth="157.0" styleClass="boton_fondoAzul" text="Regresar" />
+                  <Button layoutX="512.0" layoutY="353.0" mnemonicParsing="false" onAction="#regresar" prefHeight="29.0" prefWidth="97.0" styleClass="boton_fondoAzul" text="Regresar" />
+                  <ImageView fitHeight="399.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../imagenes/nohayfavoritos.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bttnatras" fitHeight="55.0" fitWidth="59.0" layoutX="505.0" layoutY="272.0" onMouseClicked="#atrasVehiculo" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../imagenes/atras_icono.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bttnadelante" fitHeight="54.0" fitWidth="60.0" layoutX="574.0" layoutY="272.0" onMouseClicked="#siguienteVehiculo" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../imagenes/siguiente_icono.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="MarcaYModelo" layoutX="514.0" layoutY="93.0" text="NOMBRE">
+                     <font>
+                        <Font name="Segoe UI Black Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="precio" layoutX="522.0" layoutY="126.0" prefHeight="36.0" prefWidth="105.0" text="Precio" textFill="#2e9e39">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <Button layoutX="476.0" layoutY="169.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#masInformacion" prefHeight="31.0" prefWidth="135.0" style="-fx-pref-width: 160;" styleClass="boton_sinEstilo" text="Más información" />
+                  <ImageView fx:id="favoritoSinMarcar" fitHeight="47.0" fitWidth="48.0" layoutX="532.0" layoutY="215.0" onMouseClicked="#marcarFavorito" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../imagenes/favorito_sinMarcas.png" />
+                     </image>
+                  </ImageView>
                </children></AnchorPane>
          </left>
       </BorderPane>

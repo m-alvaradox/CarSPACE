@@ -84,10 +84,10 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
         while (cursor != null) {
             if (cursor.getContent().equals(e)) {
                 if (cursor.getPrevious() != null) {
-                    cursor.getNext().setNext(cursor.getNext());
+                    cursor.getPrevious().setNext(cursor.getNext());
                 } else {
                     header = cursor.getNext();
-                }
+                } 
                 if (cursor.getNext() != null) {
                     cursor.getNext().setPrevious(cursor.getPrevious());
                 } else {
