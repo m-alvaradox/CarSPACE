@@ -1,5 +1,7 @@
 com\espol\proy4\ed\MisVehiculosController.class
 Objects\Historial.class
+Objects\ListaVehiculos$3.class
+Objects\ListaVehiculos$VehiculosIterator.class
 TDAS\CircularDoublyList.class
 com\espol\proy4\ed\IniciarSesionController.class
 com\espol\proy4\ed\RegistroController.class
@@ -9,6 +11,7 @@ Objects\tipoHistorial.class
 Objects\EstadoD.class
 com\espol\proy4\ed\MiperfilController.class
 TDAS\List.class
+Objects\ListaVehiculos$1.class
 com\espol\proy4\ed\CrearVentaController.class
 com\espol\proy4\ed\App.class
 Objects\AtributoAdicional.class
@@ -19,6 +22,7 @@ Objects\Marca.class
 TDAS\DoublyNodeList.class
 Objects\User.class
 com\espol\proy4\ed\InformacionVehiculoController.class
+Objects\ListaVehiculos$2.class
 Objects\ListaVehiculos.class
 Objects\Vehiculos.class
 com\espol\proy4\ed\CatalogoController.class

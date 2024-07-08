@@ -156,6 +156,52 @@ public class CatalogoController implements Initializable {
         }
     }
     
+     /*
+    
+@FXML
+private void opcionElegidaMarca() {
+    Marca selectedMarca = marcas.getValue();
+    Modelo selectedModelo = modelos.getValue();
+    if (selectedMarca != null && selectedModelo != null) {
+        List<Vehiculos> vehiculosFiltrados = filtrarPorMarcaYModelo(selectedMarca.toString(), selectedModelo.toString());
+        actualizarVista(vehiculosFiltrados);
+    }
+}
+
+@FXML
+private void opcionElegidaModelo() {
+    Marca selectedMarca = marcas.getValue();
+    Modelo selectedModelo = modelos.getValue();
+    if (selectedMarca != null && selectedModelo != null) {
+        List<Vehiculos> vehiculosFiltrados = filtrarPorMarcaYModelo(selectedMarca.toString(), selectedModelo.toString());
+        actualizarVista(vehiculosFiltrados);
+    }
+}
+
+private void actualizarVista(List<Vehiculos> vehiculos) {
+    if (!vehiculos.isEmpty()) {
+        Vehiculos vehiculo = vehiculos.get(0);
+        MarcaYModelo.setText(vehiculo.getMarca() + " " + vehiculo.getModelo());
+        year.setText(String.valueOf(vehiculo.getAnio()));
+        kilometraje.setText(String.valueOf(vehiculo.getKilometraje()));
+        ubicacion.setText(vehiculo.getUbicacion());
+        precio.setText(String.valueOf(vehiculo.getPrecio()));
+        
+        // Actualiza la imagen
+        DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
+        Path projectDir = Paths.get("").toAbsolutePath();
+        Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
+        File archivoImagen = rutaAbsoluta.toFile();
+        if (!archivoImagen.exists()) {
+            System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
+            return;
+        }
+        Image image1 = new Image(archivoImagen.toURI().toString());
+        imagen.setImage(image1);
+    }
+}
+    */
+    
     private void opcionElegidaMarca(Marca option){
         // Aquí realizará la acción cuando selección alguna opción
     }
