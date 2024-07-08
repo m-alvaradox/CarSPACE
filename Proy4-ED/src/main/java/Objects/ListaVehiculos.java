@@ -21,6 +21,10 @@ public class ListaVehiculos implements Comparator, Serializable{
     public void eliminarVehiculo(Vehiculos vehiculo) {
         vehiculos.eliminar(vehiculo);
     }
+    
+    public void editarVehiculo(Vehiculos Antiguo, Vehiculos nuevo){
+        vehiculos.editarAt(Antiguo, nuevo);
+    }
 
     public DoublyLinkedList<Vehiculos> getVehiculos() {
         return vehiculos;

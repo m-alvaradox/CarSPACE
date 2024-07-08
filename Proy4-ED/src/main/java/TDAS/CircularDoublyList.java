@@ -16,6 +16,10 @@ public class CircularDoublyList<E> implements List<E>, Serializable {
     public CircularDoublyList() {
         this.last = null;
     }
+
+    public DoublyNodeList<E> getLast() {
+        return last;
+    }
     
     public DoublyNodeList<E> getHeader(){
         return last.getNext();
@@ -47,26 +51,11 @@ public class CircularDoublyList<E> implements List<E>, Serializable {
     
     public boolean removeNode(DoublyNodeList<E> nodo){
         if(nodo!=null){
-            DoublyNodeList<E> nodoEliminar=null;
-            if(last==nodo){
-                removeLast();
-                return true;
-            }else {
-                for (DoublyNodeList<E> e= getHeader(); e!=last; e=e.getNext()){
-                    if(e==nodo){
-                        nodoEliminar=nodo;
-                    }
-                }
-                if(nodoEliminar!=null){
-                    DoublyNodeList<E> anterior= nodoEliminar.getPrevious();
-                    DoublyNodeList<E> siguiente = nodoEliminar.getNext();
-                    anterior.setNext(siguiente);
-                    siguiente.setPrevious(anterior);
-                    return true;
-                }else {
-                    return false;
-                }
-            }
+           DoublyNodeList<E> anterior= nodo.getPrevious();
+           DoublyNodeList<E> siguiente = nodo.getNext();
+           anterior.setNext(siguiente);
+           siguiente.setPrevious(anterior);
+           return true;
         }else{
             return false;
         }
@@ -117,7 +106,22 @@ public class CircularDoublyList<E> implements List<E>, Serializable {
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (last == null) {
+            return; // La lista ya está vacía
+        }
+
+        DoublyNodeList<E> current = last.getNext(); // Iniciamos desde el head
+        while (current != last) {
+            DoublyNodeList<E> nextNode = current.getNext();
+            current.setPrevious(null);
+            current.setNext(null);
+            current = nextNode;
+        }
+        // Limpiar el último nodo
+        last.setPrevious(null);
+        last.setNext(null);
+
+        last = null;
     }
 
     @Override
