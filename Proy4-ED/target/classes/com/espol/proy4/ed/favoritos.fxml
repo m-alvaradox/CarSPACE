@@ -36,7 +36,7 @@
             <AnchorPane prefHeight="398.0" prefWidth="645.0" BorderPane.alignment="CENTER">
                <children>
                   <Button layoutX="512.0" layoutY="353.0" mnemonicParsing="false" onAction="#regresar" prefHeight="29.0" prefWidth="97.0" styleClass="boton_fondoAzul" text="Regresar" />
-                  <ImageView fitHeight="399.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagen" fitHeight="362.0" fitWidth="431.0" layoutX="14.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../imagenes/nohayfavoritos.png" />
                      </image>
@@ -51,12 +51,12 @@
                         <Image url="@../../../../imagenes/siguiente_icono.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="MarcaYModelo" layoutX="514.0" layoutY="93.0" text="NOMBRE">
+                  <Label fx:id="MarcaYModelo" layoutX="452.0" layoutY="92.0" prefHeight="27.0" prefWidth="179.0" text="NOMBRE">
                      <font>
                         <Font name="Segoe UI Black Italic" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="precio" layoutX="522.0" layoutY="126.0" prefHeight="36.0" prefWidth="105.0" text="Precio" textFill="#2e9e39">
+                  <Label fx:id="precio" layoutX="492.0" layoutY="119.0" prefHeight="36.0" prefWidth="105.0" text="Precio" textFill="#2e9e39">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
@@ -64,8 +64,8 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <Button layoutX="476.0" layoutY="169.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#masInformacion" prefHeight="31.0" prefWidth="135.0" style="-fx-pref-width: 160;" styleClass="boton_sinEstilo" text="Más información" />
-                  <ImageView fx:id="favoritoSinMarcar" fitHeight="47.0" fitWidth="48.0" layoutX="532.0" layoutY="215.0" onMouseClicked="#marcarFavorito" pickOnBounds="true" preserveRatio="true">
+                  <Button layoutX="453.0" layoutY="169.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#masInformacion" prefHeight="31.0" prefWidth="135.0" style="-fx-pref-width: 160;" styleClass="boton_sinEstilo" text="Más información" />
+                  <ImageView fx:id="favoritoSinMarcar" fitHeight="47.0" fitWidth="48.0" layoutX="509.0" layoutY="214.0" onMouseClicked="#marcarFavorito" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../imagenes/favorito_sinMarcas.png" />
                      </image>

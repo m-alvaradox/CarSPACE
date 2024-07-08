@@ -3,6 +3,7 @@ package Objects;
 import TDAS.ArrayList;
 import TDAS.CircularDoublyList;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Vehiculos implements Serializable {
     private String marca;
@@ -158,16 +159,37 @@ public class Vehiculos implements Serializable {
 
     @Override
     public String toString() {
-        return "Vehiculo [marca=" + marca + ", modelo=" + modelo + ", anio=" + anio + ", precio=" + precio
-                + ", kilometraje=" + kilometraje + ", motor=" + motor + ", transmision=" + transmision + ", peso="
-                + peso + ", ubicacion=" + ubicacion + ", fotos=" + fotos + ", historial="
-                + historial + "]";
+        return "Marca : " + marca + "\nModelo : " + modelo + "\nAño : " + anio + "\nPrecio : " + precio
+                + "\nKilometraje : " + kilometraje + "\nMotor : " + motor + "\nTransmision : " + transmision + "\nPeso : "
+                + peso + "\nUbicacion : " + ubicacion;
     }
 
     @Override
     public boolean equals(Object obj) {
       
-        return super.equals(obj);
+        // Verifica si el objeto es el mismo
+        if (this == obj) {
+            return true;
+        }
+        // Verifica si el objeto pasado es null o si son de diferentes clases
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        // Compara los atributos
+        Vehiculos vehiculo = (Vehiculos) obj;
+        return anio == vehiculo.anio &&
+                Objects.equals(marca, vehiculo.marca) &&
+                Objects.equals(modelo, vehiculo.modelo) &&
+                Objects.equals(anio, vehiculo.anio) &&        
+                Objects.equals(precio, vehiculo.precio) &&
+                Objects.equals(kilometraje, vehiculo.kilometraje) &&
+                Objects.equals(motor, vehiculo.motor) &&
+                Objects.equals(transmision, vehiculo.transmision) && 
+                Objects.equals(peso, vehiculo.peso) &&
+                Objects.equals(ubicacion, vehiculo.ubicacion) &&
+                Objects.equals(estado, vehiculo.estado);
+
+                //Objects.equals(vendedor, vehiculo.vendedor);
     }
 
     @Override

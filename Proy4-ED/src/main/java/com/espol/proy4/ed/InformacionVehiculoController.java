@@ -200,7 +200,7 @@ public class InformacionVehiculoController implements Initializable {
        }
        FavVehiculos.addLast(vehiculo);
        App.userlogged.setFavVehiculos(FavVehiculos);
-       //App.ActualizarListaUsuarios();
+       App.ActualizarListaUsuarios();
        
        favoritoMarcado.setOnMouseClicked((evento) -> {    
             DesmarcarFavorito(evento);
@@ -218,6 +218,7 @@ public class InformacionVehiculoController implements Initializable {
        Vehiculos vehiculo = vehiculoUsar.getContent();
        FavVehiculos.eliminar(vehiculo);
        App.userlogged.setFavVehiculos(FavVehiculos);
+       App.ActualizarListaUsuarios();
        
        favoritoSinMarcar.setOnMouseClicked(event -> {
            try {

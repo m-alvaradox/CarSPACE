@@ -106,8 +106,8 @@ public class PrincipalController implements Initializable {
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
             
-            Tooltip tvendedor = new Tooltip("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
-            Tooltip.install(imagen, tvendedor);
+            Tooltip tmasdatos = new Tooltip(vehiculo.toString());
+            Tooltip.install(imagen, tmasdatos);
             
         }
         
@@ -210,8 +210,8 @@ public class PrincipalController implements Initializable {
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
             
-            Tooltip tvendedor = new Tooltip("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
-            Tooltip.install(imagen, tvendedor);
+            Tooltip tmasdatos = new Tooltip(vehiculo.toString());
+            Tooltip.install(imagen, tmasdatos);
             
         }else {
              //Mostrar alerta que ya no existen Vehiculos;
@@ -250,8 +250,8 @@ public class PrincipalController implements Initializable {
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
             
-            Tooltip tvendedor = new Tooltip("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
-            Tooltip.install(imagen, tvendedor);
+            Tooltip tmasdatos = new Tooltip(vehiculo.toString());
+            Tooltip.install(imagen, tmasdatos);
             
         }else {
             Alert alert= new Alert(Alert.AlertType.INFORMATION);

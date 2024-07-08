@@ -151,7 +151,7 @@ public class CatalogoController implements Initializable {
             vehiculoUsar = vehiculoUsar.getPrevious();
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            year.setText("Año"+vehiculo.getAnio()+"");
+            year.setText("Año: "+vehiculo.getAnio()+"");
             kilometraje.setText(vehiculo.getKilometraje()+" kms");
             ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
             precio.setText((int)vehiculo.getPrecio()+" USD");
