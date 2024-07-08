@@ -72,8 +72,7 @@ public class InformacionVehiculoController implements Initializable {
     @FXML
     private ImageView bttnregreso;
     
-    DoublyNodeList<Vehiculos> vehiculoUsar = CatalogoController.vehiculoUsar;
-    
+    DoublyNodeList<Vehiculos> vehiculoUsar;
     
     
     private CircularDoublyList<String> imagenes; // Imagenes que usa el vehiculo
@@ -98,7 +97,7 @@ public class InformacionVehiculoController implements Initializable {
         Tooltip.install(bttnbackphoto, tbuttonbackphoto);
         Tooltip.install(favoritoSinMarcar, tbuttonlikeit);
         Tooltip.install(favoritoMarcado, tbuttonnotlikeit);
-        
+        vehiculoUsar = obtenerVehiculoUsar();
         Vehiculos vehiculo = vehiculoUsar.getContent();
         marca.setText(vehiculo.getMarca());
         modelo.setText(vehiculo.getModelo());
@@ -176,6 +175,18 @@ public class InformacionVehiculoController implements Initializable {
             paneHistorial.getChildren().add(hb);
         }
     }  
+    
+    private DoublyNodeList<Vehiculos> obtenerVehiculoUsar(){
+        DoublyNodeList<Vehiculos> vehiculo;
+        if(CatalogoController.vehiculoUsar!=null){
+            vehiculo = CatalogoController.vehiculoUsar;
+        }else if(PrincipalController.vehiculoUsar!=null){
+             vehiculo = PrincipalController.vehiculoUsar;
+        } else {
+            vehiculo = FavoritosController.vehiculoUsar;
+        }
+        return vehiculo;
+    }
     
     @FXML
     private void principal() throws IOException{
