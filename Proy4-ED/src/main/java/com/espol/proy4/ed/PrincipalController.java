@@ -89,7 +89,7 @@ public class PrincipalController implements Initializable {
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             year.setText(vehiculo.getAnio()+"");
             ubicacion.setText(vehiculo.getUbicacion());          
-            precio.setText((int)vehiculo.getPrecio()+" USD");
+            precio.setText(vehiculo.getPrecio()+" USD");
             kilometraje.setText(vehiculo.getKilometraje()+" kms | ");
             
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();

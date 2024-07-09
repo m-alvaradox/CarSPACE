@@ -224,7 +224,7 @@ public class FavoritosController implements Initializable {
         DoublyNodeList<Vehiculos> current = FavVehiculos.getHeader();
         
             while(current != null) {
-                if (current.getContent().equals(vehiculo)) {
+                if (current.getContent().equals(vehiculo)) {  // No usar equals, cambiarlo por compare de comparator
                     System.out.println("Vehiculo marcado como favorito");
                     favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
                     favoritoSinMarcar.setId("favoritoMarcado");
