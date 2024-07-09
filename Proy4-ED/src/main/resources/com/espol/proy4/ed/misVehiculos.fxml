@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@../../../../styles/estilos.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.espol.proy4.ed.MisVehiculosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@../../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.espol.proy4.ed.MisVehiculosController">
    <children>
       <BorderPane fx:id="vehiculoMostrado" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="642.0" stylesheets="@../../../../styles/estilos.css">
          <top>
             <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="30.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" BorderPane.alignment="CENTER_LEFT">
                <children>
-                  <ImageView fitHeight="75.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0">
+                  <ImageView fitHeight="74.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -27,8 +27,8 @@
                         <Image url="@../../../../imagenes/logo_carspace.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="35.0" prefWidth="188.0" styleClass="mensaje_bienvenido" text="Mis publicaciones" translateX="-50.0" />
-                  <ImageView fx:id="bttnhome" fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="65.0">
+                  <Label prefHeight="35.0" prefWidth="175.0" styleClass="mensaje_bienvenido" text="Vehículos creados" translateX="-50.0" />
+                  <ImageView fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="65.0">
                      <image>
                         <Image url="@../../../../imagenes/home_icono.png" />
                      </image>
@@ -148,7 +148,7 @@
             </VBox>
          </center>
          <left>
-            <ImageView fx:id="bttnbackcar" fitHeight="79.0" fitWidth="44.0" onMouseClicked="#atrasVehiculo" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="79.0" fitWidth="44.0" onMouseClicked="#atrasVehiculo" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
                   <Image url="@../../../../imagenes/atras_icono.png" />
                </image>
@@ -165,14 +165,12 @@
                            </VBox.margin></ImageView>
                         <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="125.0" spacing="15.0">
                            <children>
-                              <ImageView fx:id="bttnedit" fitHeight="28.0" fitWidth="28.0" onMouseClicked="#editarVehiculo" pickOnBounds="true" preserveRatio="true">
                               <Label fx:id="vehiculoEstado" styleClass="text-atributos" text="Estado" translateX="-15.0" />
                               <ImageView fitHeight="28.0" fitWidth="28.0" onMouseClicked="#editarVehiculo" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../imagenes/editar.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="bttndelete" fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                               <ImageView fitHeight="26.0" fitWidth="28.0" onMouseClicked="#removeVehiculo" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../imagenes/borrar.png" />
@@ -180,7 +178,7 @@
                               </ImageView>
                               <HBox alignment="CENTER" onMouseClicked="#atrasImagen" prefHeight="61.0" prefWidth="55.0" style="-fx-border-color: black; -fx-background-color: white;">
                                  <children>
-                                    <ImageView fx:id="bttnbackphoto" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-bprder-color: black;">
+                                    <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-bprder-color: black;">
                                        <image>
                                           <Image url="@../../../../imagenes/atras.png" />
                                        </image>
@@ -192,7 +190,7 @@
                               </HBox>
                               <HBox alignment="CENTER" onMouseClicked="#siguienteImagen" prefHeight="61.0" prefWidth="55.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1px;">
                                  <children>
-                                    <ImageView fx:id="bttnextphoto" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../../../imagenes/siguiente.png" />
                                        </image>
@@ -209,7 +207,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <ImageView fx:id="bttnextcar" fitHeight="79.0" fitWidth="44.0" onMouseClicked="#siguienteVehiculo" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="79.0" fitWidth="44.0" onMouseClicked="#siguienteVehiculo" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../imagenes/siguiente_icono.png" />
                      </image>
@@ -268,10 +266,13 @@
          <top>
             <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="30.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" BorderPane.alignment="CENTER_LEFT">
                <children>
-                  <ImageView fitHeight="84.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0">
+                  <ImageView fitHeight="72.0" fitWidth="214.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <image>
+                        <Image url="@../../../../imagenes/logo_carspace.png" />
+                     </image>
                   </ImageView>
                   <Label prefHeight="35.0" prefWidth="184.0" styleClass="mensaje_bienvenido" text="Vehículos creados" translateX="-50.0" />
                   <ImageView fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal2" pickOnBounds="true" preserveRatio="true" translateX="65.0">

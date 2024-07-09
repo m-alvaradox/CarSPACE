@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
@@ -118,6 +118,7 @@ public class MisVehiculosController implements Initializable {
     private ImageView bttndelete;
     @FXML
     private ImageView bttnedit;
+    @FXML
     private ImageView btonSeleccionarImagen;
     @FXML
     private ComboBox<EstadoD> estadoVehiculo;
@@ -957,7 +958,7 @@ public class MisVehiculosController implements Initializable {
             App.catalogo.editarVehiculo(vehiculoAntiguo, vehiculo);
             vehiculoUsar.setContent(vehiculo);
             App.userlogged.setMisVehiculos(listaVehiculo);
-            if(estado== EstadoD.NoDisponible){
+            if(estadoAntiguo==EstadoD.Disponible && estado== EstadoD.NoDisponible){
                 App.catalogo.eliminarVehiculo(vehiculoUsar.getContent());
             }
             if(estadoAntiguo== EstadoD.NoDisponible && estado==EstadoD.Disponible){
