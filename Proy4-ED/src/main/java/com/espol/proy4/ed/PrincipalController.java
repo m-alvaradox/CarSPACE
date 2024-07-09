@@ -155,9 +155,10 @@ public class PrincipalController implements Initializable {
     @FXML
     private void mostrar_favoritos() throws IOException {
         vehiculoUsar=null;
-        if(App.userlogged.getFavVehiculos() != null) {
+        if(App.userlogged.getFavVehiculos() != null && !App.userlogged.getFavVehiculos().isEmpty()) {
             App.setRoot("favoritos");
         } else {
+            System.out.println("Lista favoritos está vacia");
             Alert alert= new Alert(AlertType.ERROR);
             alert.setHeaderText("Ver favoritos");
             alert.setTitle("Error");

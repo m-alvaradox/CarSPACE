@@ -161,7 +161,7 @@ public class Vehiculos implements Serializable {
     public String toString() {
         return "Marca : " + marca + "\nModelo : " + modelo + "\nAño : " + anio + "\nPrecio : " + precio
                 + "\nKilometraje : " + kilometraje + "\nMotor : " + motor + "\nTransmision : " + transmision + "\nPeso : "
-                + peso + "\nUbicacion : " + ubicacion;
+                + peso + "\nUbicacion : " + ubicacion+"\nVendedor : " + vendedor.getName() + " "+vendedor.getLastname();
     }
 
     @Override
