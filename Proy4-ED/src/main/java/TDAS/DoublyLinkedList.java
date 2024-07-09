@@ -74,8 +74,21 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
             
             newNode.setPrevious(p);
             newNode.getNext().setPrevious(newNode);
-                    
+           return true;
         }
+        return false;
+    }
+    
+     public boolean editarAt(E antiguo, E nuevo){
+         
+        if (antiguo != null && nuevo!=null) {   
+            for(DoublyNodeList<E> p = header; p!=null ; p=p.getNext()){
+                if(p.getContent().equals(antiguo)){
+                    p.setContent(nuevo);
+                    return true;
+                } 
+            }  
+        } 
         return false;
     }
 

@@ -63,8 +63,8 @@ public class RegistroController {
             String naci = fecha.getValue().format(formatter);
             String contra = password.getText();
 
-            //DoublyLinkedList <Vehiculos> misvehiculos = new DoublyLinkedList<>();
-            //DoublyLinkedList <Vehiculos> FavVehiculos = new DoublyLinkedList<>();
+            DoublyLinkedList <Vehiculos> misvehiculos = new DoublyLinkedList<>();
+            DoublyLinkedList <Vehiculos> FavVehiculos = new DoublyLinkedList<>();
             // Al construir el nuevo usuario, mis listas seran null
             
             
@@ -77,7 +77,7 @@ public class RegistroController {
                 alert.setContentText(msgerr);
                 alert.showAndWait();
             } else {
-                App.createUser(new User(nom, ape, user, naci, genero, contra, null, null));
+                App.createUser(new User(nom, ape, user, naci, genero, contra, misvehiculos, FavVehiculos));
                 
                 Alert alert= new Alert(AlertType.INFORMATION);
                 alert.setHeaderText("Creación de cuenta");
