@@ -1,12 +1,16 @@
 package Objects;
-import TDAS.CircularDoublyList;
-import TDAS.DoublyNodeList;
+
 import TDAS.DoublyLinkedList;
+import TDAS.DoublyNodeList;
+import TDAS.List;
 import java.io.Serializable;
 import java.util.Comparator;
-import java.util.Collections;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
-public class ListaVehiculos implements Comparator, Serializable{
+public class ListaVehiculos implements Serializable{
     
     private DoublyLinkedList <Vehiculos> vehiculos = new DoublyLinkedList<>();
 
@@ -30,25 +34,118 @@ public class ListaVehiculos implements Comparator, Serializable{
         return vehiculos;
     }
 
-    public DoublyLinkedList<Vehiculos> ordenarPorPrecio() {
-            
+    public DoublyLinkedList<Vehiculos> filtrarPorMarcaYModelo(String marca, String modelo) {
+        Iterator<Vehiculos> iterator = this.iterator();
+        DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
+        
+        Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<Vehiculos>() {
+            @Override
+            public int compare(Vehiculos v1, Vehiculos v2) {
+                return v1.getMarca().compareToIgnoreCase(v2.getMarca());
+            }
+        });
 
-        return vehiculos;
+        while (iterator.hasNext()) {
+            Vehiculos vehiculo = iterator.next();
+            if (vehiculo.getMarca().equalsIgnoreCase(marca) && vehiculo.getModelo().equalsIgnoreCase(modelo)) {
+                cola.offer(vehiculo);
+            }
+        }
+
+        while (!cola.isEmpty()) {
+            resultado.addLast(cola.poll());
+        }
+
+        return resultado;
+    }
+    
+    public DoublyLinkedList<Vehiculos> filtrarPorRangoDePrecio(double minPrecio, double maxPrecio) {
+        Iterator<Vehiculos> iterator = this.iterator();
+        DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
+        
+        Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<Vehiculos>() {
+            @Override
+            public int compare(Vehiculos v1, Vehiculos v2) {
+                return Double.compare(v1.getPrecio(), v2.getPrecio());
+            }
+        });
+
+        while (iterator.hasNext()) {
+            Vehiculos vehiculo = iterator.next();
+            if (vehiculo.getPrecio() >= minPrecio && vehiculo.getPrecio() <= maxPrecio) {
+                cola.offer(vehiculo);
+            }
+        }
+
+        while (!cola.isEmpty()) {
+            resultado.addLast(cola.poll());
+        }
+
+        return resultado;
+    }
+    
+    public DoublyLinkedList<Vehiculos> filtrarPorRangoDeKilometraje(int minKm, int maxKm) {
+        Iterator<Vehiculos> iterator = this.iterator();
+        DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
+        
+        Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<>() {
+            @Override
+            public int compare(Vehiculos v1, Vehiculos v2) {
+                return Integer.compare(v1.getKilometraje(), v2.getKilometraje());
+            }
+        });
+
+        while (iterator.hasNext()) {
+            Vehiculos vehiculo = iterator.next();
+            if (vehiculo.getKilometraje() >= minKm && vehiculo.getKilometraje() <= maxKm) {
+                cola.offer(vehiculo);
+            }
+        }
+
+        while (!cola.isEmpty()) {
+            resultado.addLast(cola.poll());
+        }
+
+        return resultado;
     }
 
-    public DoublyLinkedList<Vehiculos> ordenarPorKilometraje(Comparator cmp) {
-        return vehiculos;
-    }
 
-    public DoublyLinkedList<Vehiculos> filtrarPorCriterios(Comparator cmp) {
-        return vehiculos;
+    
+    private class VehiculosIterator implements Iterator<Vehiculos> {
+    private DoublyNodeList<Vehiculos> cursor;
+
+    public VehiculosIterator() {
+        this.cursor = vehiculos.getHeader();
     }
 
     @Override
-    public int compare(Object o1, Object o2) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean hasNext() {
+        return cursor != null;
     }
 
+    @Override
+    public Vehiculos next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        }
+        Vehiculos vehiculo = cursor.getContent();
+        cursor = cursor.getNext();
+        return vehiculo;
+    }
+
+    
+    
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException();
+    }
+}
+ 
+    
+
+   private Iterator<Vehiculos> iterator() {
+        return new VehiculosIterator();
+    }
 
 
 

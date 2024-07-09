@@ -140,7 +140,7 @@ public class CircularDoublyList<E> implements List<E>, Serializable {
     }
 
     @Override
-    public boolean remove(E e) {
+    public boolean eliminar(E e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

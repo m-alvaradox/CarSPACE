@@ -1,8 +1,10 @@
 package TDAS;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Iterator;
 
-public class ArrayList<E> implements List<E>, Serializable{
+public class ArrayList<E>  implements List<E>, Serializable, Collection<E> {
     private E[] elements = null; //arreglo de elementos genericos
     private int capacity = 100;
     private int effectiveSize;
@@ -17,7 +19,7 @@ public class ArrayList<E> implements List<E>, Serializable{
     }
    
     @Override
-    public boolean remove(E e){
+    public boolean eliminar(E e){
         if (e == null) {
             for (int index = 0; index < effectiveSize; index++) {
                 if (elements[index] == null) {
@@ -134,6 +136,71 @@ public class ArrayList<E> implements List<E>, Serializable{
         elements[index] = element;
         effectiveSize++;
         return true; 
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+       Iterator<E> it=new Iterator<E>() {
+           int cursor = 0;
+           @Override
+           public boolean hasNext() {
+               return cursor < effectiveSize;
+           }
+
+           @Override
+           public E next() {
+               E e=elements[cursor];
+               cursor++;
+                return e;
+           }
+        };
+        return it;   
+    
+    }
+
+    @Override
+    public Object[] toArray() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean add(E e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
        
 }

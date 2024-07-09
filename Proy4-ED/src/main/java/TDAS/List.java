@@ -1,6 +1,6 @@
 package TDAS;
 
-public interface List<E> {
+public interface List<E>{
 
     public int size();
 
@@ -20,6 +20,6 @@ public interface List<E> {
 
     public String toString();
     
-    public boolean remove(E e);
+    public boolean eliminar(E e);
 
 }
