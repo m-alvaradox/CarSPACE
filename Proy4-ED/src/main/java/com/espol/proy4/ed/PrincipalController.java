@@ -154,6 +154,7 @@ public class PrincipalController implements Initializable {
     
     @FXML
     private void mostrar_favoritos() throws IOException {
+        vehiculoUsar=null;
         if(App.userlogged.getFavVehiculos() != null) {
             App.setRoot("favoritos");
         } else {
@@ -169,6 +170,7 @@ public class PrincipalController implements Initializable {
         
     @FXML
     private void catalogo() throws IOException {
+        vehiculoUsar=null;
         App.setRoot("catalogo");
     }
     

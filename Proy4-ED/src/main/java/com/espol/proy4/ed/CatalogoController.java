@@ -59,7 +59,7 @@ public class CatalogoController implements Initializable {
     
             
     
-    DoublyLinkedList<Vehiculos> catalogo;
+    public static DoublyLinkedList<Vehiculos> catalogo;
     public static DoublyNodeList<Vehiculos> vehiculoUsar;
     
     /**
@@ -186,6 +186,8 @@ public class CatalogoController implements Initializable {
     }
     @FXML
     private void principal() throws IOException {
+        vehiculoUsar=null;
+        catalogo=null;
         App.setRoot("principal");
     }
     

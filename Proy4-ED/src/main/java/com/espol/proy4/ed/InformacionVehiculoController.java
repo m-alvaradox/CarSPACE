@@ -70,7 +70,7 @@ public class InformacionVehiculoController implements Initializable {
     @FXML
     private ImageView bttnhome;
     @FXML
-    private ImageView bttnregreso;
+    private ImageView regresar;
     
     DoublyNodeList<Vehiculos> vehiculoUsar;
     
@@ -92,12 +92,34 @@ public class InformacionVehiculoController implements Initializable {
         Tooltip tbuttonlikeit = new Tooltip("Me gusta");
         Tooltip tbuttonnotlikeit = new Tooltip("Ya no me gusta");
         Tooltip.install(bttnhome, tbuttonhome);
-        Tooltip.install(bttnregreso, tbuttonregreso);
+        Tooltip.install(regresar, tbuttonregreso);
         Tooltip.install(bttnextphoto, tbuttonnextphoto);
         Tooltip.install(bttnbackphoto, tbuttonbackphoto);
         Tooltip.install(favoritoSinMarcar, tbuttonlikeit);
         Tooltip.install(favoritoMarcado, tbuttonnotlikeit);
+        
         vehiculoUsar = obtenerVehiculoUsar();
+        regresar.setOnMouseClicked((event) -> {
+            if(vehiculoUsar == CatalogoController.vehiculoUsar){
+                try {
+                    regresarCatalogo();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            } else if(vehiculoUsar == FavoritosController.vehiculoUsar){
+                try {
+                    regresarFavoritos();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            } else {
+                try {
+                    regresarPrincipal();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
         Vehiculos vehiculo = vehiculoUsar.getContent();
         marca.setText(vehiculo.getMarca());
         modelo.setText(vehiculo.getModelo());
@@ -188,14 +210,28 @@ public class InformacionVehiculoController implements Initializable {
         return vehiculo;
     }
     
+  
+    
     @FXML
     private void principal() throws IOException{
+        vehiculoUsar=null;
+        CatalogoController.vehiculoUsar=null;
         App.setRoot("principal");
     }
     
     @FXML
-    private void regresar() throws IOException{
+    private void regresarCatalogo() throws IOException{
         App.setRoot("catalogo");
+    }
+    
+    @FXML
+    private void regresarFavoritos() throws IOException{
+        App.setRoot("favoritos");
+    }
+    
+    @FXML
+    private void regresarPrincipal() throws IOException{
+        App.setRoot("principal");
     }
    
    @FXML

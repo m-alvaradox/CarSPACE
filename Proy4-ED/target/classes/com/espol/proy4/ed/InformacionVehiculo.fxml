@@ -8,252 +8,258 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@../../../../styles/estilos.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.espol.proy4.ed.InformacionVehiculoController">
-   <top>
-      <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="10.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" BorderPane.alignment="CENTER_LEFT">
-         <children>
-            <ImageView fx:id="bttnregreso" fitHeight="79.0" fitWidth="44.0" onMouseClicked="#regresar" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../imagenes/regresar.png" />
-               </image>
-               <HBox.margin>
-                  <Insets left="-115.0" />
-               </HBox.margin>
-            </ImageView>
-            <ImageView fitHeight="75.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <image>
-                  <Image url="@../../../../imagenes/logo_carspace.png" />
-               </image>
-            </ImageView>
-            <Label prefHeight="35.0" prefWidth="184.0" styleClass="mensaje_bienvenido" text="Info. Vehículo" translateX="25.0" />
-            <ImageView fx:id="bttnhome" fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="115.0">
-               <image>
-                  <Image url="@../../../../imagenes/home_icono.png" />
-               </image>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </ImageView>
-         </children>
-      </HBox>
-   </top>
-   <center>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="235.0" spacing="5.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.espol.proy4.ed.InformacionVehiculoController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@../../../../styles/estilos.css">
+         <top>
+            <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="10.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" BorderPane.alignment="CENTER_LEFT">
                <children>
-                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="regresar" fitHeight="79.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../imagenes/punto.png" />
+                        <Image url="@../../../../imagenes/regresar.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="-115.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="75.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../../imagenes/logo_carspace.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="text-atributos" text="Marca" />
-                  <Label fx:id="marca" styleClass="texto_login" text="info" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                  <Label prefHeight="35.0" prefWidth="184.0" styleClass="mensaje_bienvenido" text="Info. Vehículo" translateX="25.0" />
+                  <ImageView fx:id="bttnhome" fitHeight="39.0" fitWidth="39.0" onMouseClicked="#principal" pickOnBounds="true" preserveRatio="true" translateX="115.0">
                      <image>
-                        <Image url="@../../../../imagenes/punto.png" />
+                        <Image url="@../../../../imagenes/home_icono.png" />
                      </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </ImageView>
-                  <Label styleClass="text-atributos" text="Modelo" />
-                  <Label fx:id="modelo" styleClass="texto_login" text="info" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="49.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+         </top>
+         <center>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="235.0" spacing="5.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../imagenes/punto.png" />
-                     </image>
-                  </ImageView>
-                  <Label styleClass="text-atributos" text="Ubicación" />
-                  <Label fx:id="ubicacion" styleClass="texto_login" text="info" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="88.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../imagenes/punto.png" />
-                     </image>
-                  </ImageView>
-                  <Label styleClass="text-atributos" text="Precio" />
-                  <Label fx:id="precio" styleClass="texto_login" text="info" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="127.0" prefHeight="21.0" prefWidth="232.0" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../imagenes/punto.png" />
-                     </image>
-                  </ImageView>
-                  <Label styleClass="text-atributos" text="Kilometraje" />
-                  <Label fx:id="kilometraje" styleClass="texto_login" text="info" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="166.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../imagenes/punto.png" />
-                     </image>
-                  </ImageView>
-                  <Label styleClass="text-atributos" text="Año" />
-                  <Label fx:id="year" styleClass="texto_login" text="info" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="166.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../imagenes/punto.png" />
-                     </image>
-                  </ImageView>
-                  <Label styleClass="text-atributos" text="Peso" />
-                  <Label fx:id="peso" styleClass="texto_login" text="info" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="166.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../imagenes/punto.png" />
-                     </image>
-                  </ImageView>
-                  <Label styleClass="text-atributos" text="Transmisión" />
-                  <Label fx:id="transmision" styleClass="texto_login" text="info" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="202.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../imagenes/punto.png" />
-                     </image>
-                  </ImageView>
-                  <Label styleClass="text-atributos" text="Motor" />
-                  <Label fx:id="motor" styleClass="texto_login" text="info" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../imagenes/punto.png" />
-                     </image>
-                  </ImageView>
-                  <Label styleClass="text-atributos" text="Vendedor" />
-                  <Label fx:id="vendedor" prefHeight="21.0" prefWidth="142.0" styleClass="texto_login" text="info" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </center>
-   <right>
-      <HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="394.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="342.0">
-               <children>
-                  <ImageView fx:id="imagen" fitHeight="174.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin></ImageView>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="125.0" spacing="15.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
                      <children>
-                        <ImageView fx:id="favoritoSinMarcar" fitHeight="23.0" fitWidth="28.0" onMouseClicked="#marcarFavorito" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../imagenes/favorito_sinMarcas.png" />
+                              <Image url="@../../../../imagenes/punto.png" />
                            </image>
                         </ImageView>
-                        <HBox alignment="CENTER" onMouseClicked="#atrasImagen" prefHeight="61.0" prefWidth="55.0" style="-fx-border-color: black; -fx-background-color: white;">
-                           <children>
-                              <ImageView fx:id="bttnbackphoto" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-bprder-color: black;">
-                                 <image>
-                                    <Image url="@../../../../imagenes/atras.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER" onMouseClicked="#siguienteImagen" prefHeight="61.0" prefWidth="55.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1px;">
-                           <children>
-                              <ImageView fx:id="bttnextphoto" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../imagenes/siguiente.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
+                        <Label styleClass="text-atributos" text="Marca" />
+                        <Label fx:id="marca" styleClass="texto_login" text="info" />
                      </children>
-                     <VBox.margin>
-                        <Insets bottom="10.0" right="10.0" />
-                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="Modelo" />
+                        <Label fx:id="modelo" styleClass="texto_login" text="info" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="49.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="Ubicación" />
+                        <Label fx:id="ubicacion" styleClass="texto_login" text="info" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="88.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="Precio" />
+                        <Label fx:id="precio" styleClass="texto_login" text="info" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="127.0" prefHeight="21.0" prefWidth="232.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="Kilometraje" />
+                        <Label fx:id="kilometraje" styleClass="texto_login" text="info" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="166.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="Año" />
+                        <Label fx:id="year" styleClass="texto_login" text="info" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="166.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="Peso" />
+                        <Label fx:id="peso" styleClass="texto_login" text="info" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="166.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="Transmisión" />
+                        <Label fx:id="transmision" styleClass="texto_login" text="info" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="202.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="Motor" />
+                        <Label fx:id="motor" styleClass="texto_login" text="info" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="Vendedor" />
+                        <Label fx:id="vendedor" prefHeight="21.0" prefWidth="142.0" styleClass="texto_login" text="info" />
+                     </children>
                   </HBox>
                </children>
             </VBox>
-         </children>
-      </HBox>
-   </right>
-   <bottom>
-      <HBox prefHeight="143.0" prefWidth="640.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="156.0" prefWidth="270.0">
+         </center>
+         <right>
+            <HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="394.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label styleClass="texto_principal" text="Atributos Adicionales" />
-                  <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-max-width: 270;">
-                     <content>
-                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0">
+                  <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="342.0">
+                     <children>
+                        <ImageView fx:id="imagen" fitHeight="174.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="125.0" spacing="15.0">
                            <children>
-                              <VBox fx:id="paneAtributos" maxHeight="-Infinity" maxWidth="-Infinity">
+                              <ImageView fx:id="favoritoSinMarcar" fitHeight="23.0" fitWidth="28.0" onMouseClicked="#marcarFavorito" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../imagenes/favorito_sinMarcas.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" onMouseClicked="#atrasImagen" prefHeight="61.0" prefWidth="55.0" style="-fx-border-color: black; -fx-background-color: white;">
+                                 <children>
+                                    <ImageView fx:id="bttnbackphoto" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-bprder-color: black;">
+                                       <image>
+                                          <Image url="@../../../../imagenes/atras.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
                                  <padding>
-                                    <Insets left="15.0" />
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
-                              </VBox>
+                              </HBox>
+                              <HBox alignment="CENTER" onMouseClicked="#siguienteImagen" prefHeight="61.0" prefWidth="55.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1px;">
+                                 <children>
+                                    <ImageView fx:id="bttnextphoto" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../imagenes/siguiente.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </HBox>
                            </children>
-                        </AnchorPane>
-                     </content>
-                  </ScrollPane>
+                           <VBox.margin>
+                              <Insets bottom="10.0" right="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
-               <HBox.margin>
-                  <Insets left="50.0" top="5.0" />
-               </HBox.margin>
-            </VBox>
-            <VBox prefHeight="151.0" prefWidth="297.0">
-               <HBox.margin>
-                  <Insets left="15.0" />
-               </HBox.margin>
+            </HBox>
+         </right>
+         <bottom>
+            <HBox prefHeight="143.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="26.0" prefWidth="297.0" style="-fx-font-size: 14;" styleClass="texto_principal" text="Historial de Servicio y Accidente:" />
-                  <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-max-width: 291;">
-                     <content>
-                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0">
-                           <children>
-                              <VBox fx:id="paneHistorial" maxHeight="-Infinity" maxWidth="-Infinity">
-                                 <padding>
-                                    <Insets left="5.0" />
-                                 </padding>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </ScrollPane>
+                  <VBox prefHeight="156.0" prefWidth="270.0">
+                     <children>
+                        <Label styleClass="texto_principal" text="Atributos Adicionales" />
+                        <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-max-width: 270;">
+                           <content>
+                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0">
+                                 <children>
+                                    <VBox fx:id="paneAtributos" maxHeight="-Infinity" maxWidth="-Infinity">
+                                       <padding>
+                                          <Insets left="15.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="50.0" top="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="151.0" prefWidth="297.0">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="297.0" style="-fx-font-size: 14;" styleClass="texto_principal" text="Historial de Servicio y Accidente:" />
+                        <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-max-width: 291;">
+                           <content>
+                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0">
+                                 <children>
+                                    <VBox fx:id="paneHistorial" maxHeight="-Infinity" maxWidth="-Infinity">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-         </children>
-      </HBox>
-   </bottom>
-</BorderPane>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</StackPane>

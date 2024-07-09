@@ -92,6 +92,7 @@ public class FavoritosController implements Initializable {
  
     @FXML
     private void regresar() throws IOException{
+        vehiculoUsar=null;
         App.setRoot("principal");
     }
     
