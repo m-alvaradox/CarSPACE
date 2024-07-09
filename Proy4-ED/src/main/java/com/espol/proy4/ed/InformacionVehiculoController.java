@@ -263,7 +263,7 @@ public class InformacionVehiculoController implements Initializable {
        
        // Aquí se debe eliminar el carro de la lista de favoritos
        Vehiculos vehiculo = vehiculoUsar.getContent();
-       FavVehiculos.eliminar(vehiculo);
+       FavVehiculos.eliminar2(vehiculo);
        App.userlogged.setFavVehiculos(FavVehiculos);
        App.ActualizarListaUsuarios();
        

@@ -92,8 +92,7 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
         return false;
     }
 
-    @Override
-    public boolean eliminar(E e) {
+    public void eliminar2(E e) {
         DoublyNodeList<E> cursor = header;
         while (cursor != null) {
             if (cursor.getContent().equals(e)) {
@@ -107,11 +106,9 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
                 } else {
                      last = cursor.getPrevious();
                 }
-                return true;
             }
             cursor = cursor.getNext();
         }
-        return false;
     }
 
 
@@ -133,6 +130,28 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
     @Override
     public E get(int index) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean eliminar(E e) {
+            DoublyNodeList<E> cursor = header;
+        while (cursor != null) {
+            if (cursor.getContent().equals(e)) {
+                if (cursor.getPrevious() != null) {
+                    cursor.getPrevious().setNext(cursor.getNext());
+                } else {
+                    header = cursor.getNext();
+                } 
+                if (cursor.getNext() != null) {
+                    cursor.getNext().setPrevious(cursor.getPrevious());
+                } else {
+                     last = cursor.getPrevious();
+                }
+                return true;
+            }
+            cursor = cursor.getNext();
+        }
+        return false;
     }
 
 }

@@ -268,11 +268,12 @@ private void actualizarVista() {
     if (!catalogo.isEmpty()) {
         vehiculoUsar = catalogo.getHeader();
         Vehiculos vehiculo = vehiculoUsar.getContent();
-        MarcaYModelo.setText(vehiculo.getMarca() + " " + vehiculo.getModelo());
-        year.setText(String.valueOf(vehiculo.getAnio()));
-        kilometraje.setText(String.valueOf(vehiculo.getKilometraje()));
-        ubicacion.setText(vehiculo.getUbicacion());
-        precio.setText(String.valueOf(vehiculo.getPrecio()));
+        MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
+        year.setText("Año: "+vehiculo.getAnio()+"");
+        kilometraje.setText(vehiculo.getKilometraje()+" kms");
+        ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
+        precio.setText((int)vehiculo.getPrecio()+" USD");
+        vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
         
         // Actualiza la imagen
         DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
