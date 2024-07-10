@@ -8,7 +8,10 @@ import java.io.ObjectOutputStream;
 
 import Objects.ListaVehiculos;
 import Objects.User;
-import TDAS.ArrayList;
+import Objects.Vehiculos;
+import Objects.EstadoD;
+import TDAS.*;
+import java.util.Comparator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -113,5 +116,23 @@ public class App extends Application {
             System.out.println("Error al encontrar el archivo: " + ex.getMessage());
             ex.printStackTrace();  // Esto imprime la traza completa de la excepción
         }
+    }
+    
+    public static void EliminarVehiculoFavorito(Vehiculos v){
+        for(int i=0;i<usuarios.size();i++){
+            User usuario = usuarios.get(i);
+            DoublyLinkedList<Vehiculos> vehiculosFav = usuario.getFavVehiculos();
+            if(!vehiculosFav.isEmpty()){
+                DoublyNodeList<Vehiculos> p = vehiculosFav.getHeader();
+                while(p!=null){
+                    if(p.getContent().compareTo(v)==0){
+                        vehiculosFav.eliminar(p.getContent());
+                    }
+                    p = p.getNext();
+                }
+                usuario.setFavVehiculos(vehiculosFav);
+            }  
+        }
+        ActualizarListaUsuarios();
     }
 }

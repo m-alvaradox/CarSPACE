@@ -23,11 +23,24 @@ public class ListaVehiculos implements Serializable{
     }
 
     public void eliminarVehiculo(Vehiculos vehiculo) {
-        vehiculos.eliminar(vehiculo);
+       if( vehiculos.eliminar(vehiculo)){
+           System.out.println("Cambio Satisfactorio.");
+       }else{
+           System.out.println("Hubo Fallos");
+       }
     }
     
     public void editarVehiculo(Vehiculos Antiguo, Vehiculos nuevo){
-        vehiculos.editarAt(Antiguo, nuevo);
+        if (Antiguo != null && nuevo!=null) { 
+            DoublyNodeList<Vehiculos> p = vehiculos.getHeader();
+            while(p!=null){
+                if(p.getContent().compareTo(Antiguo)==0){
+                    p.setContent(nuevo);
+                    System.out.println("Cambio Satisfactorio.");
+                } 
+                p=p.getNext();
+            }  
+        } 
     }
 
     public DoublyLinkedList<Vehiculos> getVehiculos() {
@@ -63,7 +76,7 @@ public class ListaVehiculos implements Serializable{
         Iterator<Vehiculos> iterator = this.iterator();
         DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
         
-        Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<Vehiculos>() {
+        Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<>() {
             @Override
             public int compare(Vehiculos v1, Vehiculos v2) {
                 return Double.compare(v1.getPrecio(), v2.getPrecio());
@@ -140,8 +153,6 @@ public class ListaVehiculos implements Serializable{
         throw new UnsupportedOperationException();
     }
 }
- 
-    
 
    private Iterator<Vehiculos> iterator() {
         return new VehiculosIterator();

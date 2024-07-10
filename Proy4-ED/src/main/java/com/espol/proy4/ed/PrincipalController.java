@@ -154,8 +154,8 @@ public class PrincipalController implements Initializable {
     
     @FXML
     private void mostrar_favoritos() throws IOException {
-        vehiculoUsar=null;
         if(App.userlogged.getFavVehiculos() != null && !App.userlogged.getFavVehiculos().isEmpty()) {
+            vehiculoUsar=null;
             App.setRoot("favoritos");
         } else {
             System.out.println("Lista favoritos está vacia");
@@ -164,7 +164,11 @@ public class PrincipalController implements Initializable {
             alert.setTitle("Error");
             String msgerr = String.format("Todavía no tienes favoritos.\nNavega y guarda los vehículos de tu interés!");
             alert.setContentText(msgerr);
+            String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+            alert.getDialogPane().getStylesheets().add(css);
+            alert.getDialogPane().getStyleClass().add("dialog-paneError");
             alert.showAndWait();
+           
         }
         
     }

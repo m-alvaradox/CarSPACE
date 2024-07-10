@@ -84,6 +84,9 @@ public class RegistroController {
                 alert.setTitle("Éxito");
                 String msgconf = String.format("%s fue registrado exitosamente :D, por favor inicie sesión", user);
                 alert.setContentText(msgconf);
+                String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+                alert.getDialogPane().getStylesheets().add(css);
+                alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
                 alert.showAndWait();
                 iniciarSesion();
             }

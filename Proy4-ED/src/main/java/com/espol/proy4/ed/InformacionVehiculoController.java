@@ -263,7 +263,7 @@ public class InformacionVehiculoController implements Initializable {
        
        // Aquí se debe eliminar el carro de la lista de favoritos
        Vehiculos vehiculo = vehiculoUsar.getContent();
-       FavVehiculos.eliminar2(vehiculo);
+       FavVehiculos.eliminar(vehiculo);
        App.userlogged.setFavVehiculos(FavVehiculos);
        App.ActualizarListaUsuarios();
        
@@ -322,6 +322,9 @@ public class InformacionVehiculoController implements Initializable {
                     favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
                     favoritoSinMarcar.setId("favoritoMarcado");
                     favoritoMarcado = favoritoSinMarcar;
+                    favoritoMarcado.setOnMouseClicked((evento) -> {    
+                        DesmarcarFavorito(evento);
+                    });
                     return;
                 } else {
                 current = current.getNext(); }

@@ -78,39 +78,6 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
         }
         return false;
     }
-    
-     public boolean editarAt(E antiguo, E nuevo){
-         
-        if (antiguo != null && nuevo!=null) {   
-            for(DoublyNodeList<E> p = header; p!=null ; p=p.getNext()){
-                if(p.getContent().equals(antiguo)){
-                    p.setContent(nuevo);
-                    return true;
-                } 
-            }  
-        } 
-        return false;
-    }
-
-    public void eliminar2(E e) {
-        DoublyNodeList<E> cursor = header;
-        while (cursor != null) {
-            if (cursor.getContent().equals(e)) {
-                if (cursor.getPrevious() != null) {
-                    cursor.getPrevious().setNext(cursor.getNext());
-                } else {
-                    header = cursor.getNext();
-                } 
-                if (cursor.getNext() != null) {
-                    cursor.getNext().setPrevious(cursor.getPrevious());
-                } else {
-                     last = cursor.getPrevious();
-                }
-            }
-            cursor = cursor.getNext();
-        }
-    }
-
 
     @Override
     public void clear() {
@@ -134,7 +101,10 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
 
     @Override
     public boolean eliminar(E e) {
-            DoublyNodeList<E> cursor = header;
+        DoublyNodeList<E> cursor = header;
+        if (header == null) {
+            return false; 
+        }    
         while (cursor != null) {
             if (cursor.getContent().equals(e)) {
                 if (cursor.getPrevious() != null) {
