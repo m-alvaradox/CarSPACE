@@ -1,5 +1,5 @@
 package Objects;
 
-public enum EstadoD {
+public enum EstadoD implements Comparable<EstadoD> {
     Disponible, NoDisponible
 }

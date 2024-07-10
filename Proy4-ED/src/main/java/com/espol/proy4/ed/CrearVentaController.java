@@ -279,7 +279,7 @@ public class CrearVentaController implements Initializable {
             String ubicacion1 = ubicacion.getText();
             double peso1 = Double.parseDouble(peso.getText());
             String transmision1 = transmision.getText();
-            double precio1 = Double.parseDouble(precio.getText());
+            int precio1 = Integer.parseInt(precio.getText());
             
             if(!listaImagenes.isEmpty()){ // verifica que la lista de imagenes no esté vacía
                 // Por predeterminado se pone el Vehiculo en venta

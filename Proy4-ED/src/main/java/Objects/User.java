@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import TDAS.DoublyLinkedList;
 
-public class User implements Serializable {
+public class User implements Serializable, Comparable<User> {
 
     private String name;
     private String lastname;
@@ -113,6 +113,11 @@ public class User implements Serializable {
     public void addFavMisvehiculos(Vehiculos vehiculo){
         FavVehiculos.addLast(vehiculo);
 
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return this.username.compareTo(o.getUsername());
     }
 
 

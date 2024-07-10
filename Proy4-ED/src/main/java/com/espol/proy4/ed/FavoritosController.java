@@ -67,14 +67,17 @@ public class FavoritosController implements Initializable {
             vehiculoUsar = FavVehiculos .getHeader();
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            precio.setText((int)vehiculo.getPrecio()+" USD");
-            
-            condicionfavorito(vehiculo);
-            
+            precio.setText(vehiculo.getPrecio()+" USD");
+            //condicionfavorito(vehiculo);
+            favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
+            favoritoSinMarcar.setId("favoritoMarcado");
+            favoritoMarcado = favoritoSinMarcar;
+            favoritoMarcado.setOnMouseClicked((evento) -> {    
+            DesmarcarFavorito(evento);
+            });
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-            //imagen.setImage(new Image(getClass().getResourceAsStream("/imagenesCarros/" + rutaImagen.getContent())));
             File archivoImagen = rutaAbsoluta.toFile();
             if (!archivoImagen.exists()) {
                 System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
@@ -202,7 +205,7 @@ public class FavoritosController implements Initializable {
        
        // Aquí se debe eliminar el carro de la lista de favoritos
        Vehiculos vehiculo = vehiculoUsar.getContent();
-       FavVehiculos.eliminar2(vehiculo);
+       FavVehiculos.eliminar(vehiculo);
        App.userlogged.setFavVehiculos(FavVehiculos);
        App.ActualizarListaUsuarios();
        

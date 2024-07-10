@@ -692,10 +692,10 @@ public class MisVehiculosController implements Initializable {
         alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
         Optional<ButtonType> resultado = alert.showAndWait();
         if(resultado.isPresent()&& resultado.get() == botonSi){
-            DoublyNodeList<String> nueva= rutaTemporal.getPrevious();  // va a regresar al anterior;
-            imagenesTemporales.removeNode(rutaTemporal); // Eliminar el nodo de la imagen;
-            imagenesEliminar.addLast(rutaTemporal.getContent());
-            rutaTemporal = nueva; // Empezar en el anterior;
+            DoublyNodeList<String> nodoAEliminar = rutaTemporal;  // Guarda el nodo que se va a eliminar
+            rutaTemporal = rutaTemporal.getPrevious();  // Actualiza rutaTemporal para apuntar al nodo anterior
+            imagenesEliminar.addLast(nodoAEliminar.getContent());  // Añade el contenido del nodo a la lista de eliminados
+            imagenesTemporales.removeNode(nodoAEliminar);  // Elimina el nodo de la lista
             siguienteImagenEditar();
         } else{
             alert.close();
@@ -856,6 +856,7 @@ public class MisVehiculosController implements Initializable {
             listaVehiculo.eliminar(v);
             App.catalogo.eliminarVehiculo(v);
             App.userlogged.setMisVehiculos(listaVehiculo);
+            App.EliminarVehiculoFavorito(v);
             App.ActualizarListaCars();
             App.ActualizarListaUsuarios();
             if(copia.getNext()!=null){
@@ -909,6 +910,7 @@ public class MisVehiculosController implements Initializable {
         for( Node caja: paneAtributos1.getChildren()){
             HBox fila = (HBox) caja;
             TextField cajaTitle = new TextField();
+            //String cajaTitle = "";
             TextField cajaDescripcion = new TextField();
             for (Node elements: fila.getChildren()){
                 if(elements instanceof TextField && "title".equals(elements.getId())){
@@ -936,9 +938,9 @@ public class MisVehiculosController implements Initializable {
                   ex.printStackTrace();
             }
        }
-       EstadoD estadoAntiguo = EstadoD.valueOf(vehiculoEstado.getText());
+       EstadoD estadoAntiguo = EstadoD.valueOf(vehiculoEstado.getText());     
        Vehiculos vehiculoAntiguo = vehiculoUsar.getContent();
-       Vehiculos vehiculo = vehiculoUsar.getContent();
+       Vehiculos vehiculo = vehiculoUsar.getContent();  
        estadoVehiculo.getSelectionModel().select(vehiculo.getEstado());
         // Aquí se debe actualizar todos los datos;
        if(marca1!=null && modelo1!=null && motor1!=null && ubicacion1!=null && kilometraje1!=null && precio1!=null && year1!=null && peso1!=null && transmision1!=null){
@@ -947,35 +949,38 @@ public class MisVehiculosController implements Initializable {
             vehiculo.setMotor(motor1.getText());
             vehiculo.setUbicacion(ubicacion1.getText());
             vehiculo.setKilometraje(Integer.parseInt(kilometraje1.getText()));
-            vehiculo.setPrecio(Double.parseDouble(precio1.getText()));
+            vehiculo.setPrecio(Integer.parseInt(precio1.getText()));
             vehiculo.setAnio(Integer.parseInt(year1.getText()));
             vehiculo.setPeso(Double.parseDouble(peso1.getText()));
             vehiculo.setTransmision(transmision1.getText());
             vehiculo.setAtributoAdicional(listaAtributosAdicionales);
             vehiculo.setHistorial(listaHistorial);
             vehiculo.setEstado(estado);
-            vehiculo.setFotos(imagenesTemporales);
+            vehiculo.setFotos(imagenesTemporales);   
+            if(estadoAntiguo.compareTo(EstadoD.Disponible)==0 && estado.compareTo(EstadoD.NoDisponible)==0){
+                App.catalogo.eliminarVehiculo(vehiculoUsar.getContent());
+                App.EliminarVehiculoFavorito(vehiculo);
+            }
+            if(estadoAntiguo.compareTo(EstadoD.NoDisponible)==0  && estado.compareTo(EstadoD.Disponible)==0){
+                App.catalogo.agregarVehiculo(vehiculo);
+            }
             App.catalogo.editarVehiculo(vehiculoAntiguo, vehiculo);
             vehiculoUsar.setContent(vehiculo);
             App.userlogged.setMisVehiculos(listaVehiculo);
-            if(estadoAntiguo==EstadoD.Disponible && estado== EstadoD.NoDisponible){
-                App.catalogo.eliminarVehiculo(vehiculoUsar.getContent());
-            }
-            if(estadoAntiguo== EstadoD.NoDisponible && estado==EstadoD.Disponible){
-                App.catalogo.agregarVehiculo(vehiculo);
-            }
-            
             App.ActualizarListaCars();
             App.ActualizarListaUsuarios();
+             // Se debe mostrar un mensaje que los cambios fueron actualizados y actualizar datos;
+            Alert alert= new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Edición de Venta");
+            alert.setTitle("Cambio exitoso");
+            alert.setContentText("Su vehiculo editado fue guardado correctamente");
+            String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+            alert.getDialogPane().getStylesheets().add(css);
+            alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
+            alert.showAndWait();
             actualizarVentana();
             vehiculoMostrado.setVisible(true);
-            vehiculoEditar.setVisible(false);
-            
+            vehiculoEditar.setVisible(false);        
        }
-       
-       
-       // Se debe mostrar un mensaje que los cambios fueron actualizados y actualizar datos;
-       
-       
    }
 }

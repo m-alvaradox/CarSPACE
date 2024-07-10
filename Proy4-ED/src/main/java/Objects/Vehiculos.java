@@ -5,11 +5,11 @@ import TDAS.CircularDoublyList;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Vehiculos implements Serializable {
+public class Vehiculos implements Serializable, Comparable<Vehiculos>{
     private String marca;
     private String modelo;
     private int anio;
-    private double precio;
+    private int precio;
     private int kilometraje;
     private String motor;
     private String transmision;
@@ -23,7 +23,7 @@ public class Vehiculos implements Serializable {
 
 
 
-    public Vehiculos(String marca, String modelo, int anio, double precio, int kilometraje, String motor,
+    public Vehiculos(String marca, String modelo, int anio, int precio, int kilometraje, String motor,
             String transmision, double peso, String ubicacion,EstadoD estado,CircularDoublyList<String> fotos,
             ArrayList<Historial> historial, ArrayList<AtributoAdicional> AtributoAdicional, User vendedor) {
         this.marca = marca;
@@ -70,11 +70,11 @@ public class Vehiculos implements Serializable {
         this.anio = anio;
     }
 
-    public double getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 
@@ -161,7 +161,7 @@ public class Vehiculos implements Serializable {
     public String toString() {
         return "Marca : " + marca + "\nModelo : " + modelo + "\nAño : " + anio + "\nPrecio : " + precio
                 + "\nKilometraje : " + kilometraje + "\nMotor : " + motor + "\nTransmision : " + transmision + "\nPeso : "
-                + peso + "\nUbicacion : " + ubicacion+"\nVendedor : " + vendedor.getName() + " "+vendedor.getLastname();
+                + peso + "\nUbicacion : " + ubicacion+ "\nEstado : " + estado+"\nVendedor : " + vendedor.getName() + " "+vendedor.getLastname();
     }
 
     @Override
@@ -198,5 +198,49 @@ public class Vehiculos implements Serializable {
         return super.hashCode();
     }
 
+    @Override
+    public int compareTo(Vehiculos o) {
+        int comparison;
 
+        comparison = this.marca.compareTo(o.marca);
+        if (comparison != 0) return comparison;
+
+        comparison = this.modelo.compareTo(o.modelo);
+        if (comparison != 0) return comparison;
+
+        comparison = Integer.compare(this.anio, o.anio);
+        if (comparison != 0) return comparison;
+        
+        comparison = Integer.compare(this.precio, o.precio);
+        if (comparison != 0) return comparison;
+
+        comparison = Integer.compare(this.kilometraje, o.kilometraje);
+        if (comparison != 0) return comparison;
+
+        comparison = this.motor.compareTo(o.motor);
+        if (comparison != 0) return comparison;
+
+        comparison = this.transmision.compareTo(o.transmision);
+        if (comparison != 0) return comparison;
+
+        comparison = Double.compare(this.peso, o.peso);
+        if (comparison != 0) return comparison;
+
+        comparison = this.ubicacion.compareTo(o.ubicacion);
+        if (comparison != 0) return comparison;
+
+        comparison = this.estado.compareTo(o.estado);
+        if (comparison != 0) return comparison;
+ 
+        comparison = this.vendedor.compareTo(o.vendedor);
+        if (comparison != 0) return comparison;
+        
+        comparison = Integer.compare(this.historial.size(), o.historial.size());
+        if (comparison != 0) return comparison;
+
+        comparison = Integer.compare(this.AtributoAdicional.size(), o.AtributoAdicional.size());
+        if (comparison != 0) return comparison;
+
+        return 0;
+    }
 }
