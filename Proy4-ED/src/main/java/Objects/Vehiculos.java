@@ -3,7 +3,6 @@ package Objects;
 import TDAS.ArrayList;
 import TDAS.CircularDoublyList;
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Vehiculos implements Serializable, Comparable<Vehiculos>{
     private String marca;

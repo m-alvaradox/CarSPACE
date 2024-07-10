@@ -13,6 +13,7 @@ Objects\EstadoD.class
 com\espol\proy4\ed\MiperfilController.class
 TDAS\List.class
 Objects\ListaVehiculos$1.class
+Objects\Container.class
 com\espol\proy4\ed\CrearVentaController.class
 com\espol\proy4\ed\App.class
 Objects\AtributoAdicional.class

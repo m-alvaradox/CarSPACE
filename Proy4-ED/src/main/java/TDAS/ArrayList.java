@@ -10,7 +10,7 @@ public class ArrayList<E>  implements List<E>, Serializable, Collection<E> {
     private int effectiveSize;
     
     public ArrayList(){
-        elements = (E[])(new Object[capacity]); // SI FUNCIONA con Casting permitido con el arrayList
+        elements = (E[])(new Object[capacity]); // SI FUNCIONA con Casting permitido con el ArrayList
         effectiveSize = 0;
     }
     

@@ -5,7 +5,6 @@ import Objects.User;
 import TDAS.*;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import Objects.Vehiculos;
@@ -16,7 +15,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 
 public class RegistroController {
     

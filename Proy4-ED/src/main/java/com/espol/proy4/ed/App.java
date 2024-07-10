@@ -1,10 +1,6 @@
 package com.espol.proy4.ed;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 import Objects.*;
 import TDAS.*;
@@ -59,28 +55,30 @@ public class App extends Application {
     }
     
     // Operaciones App
-    // Metodos estaticos a utilizar en el proyecto. Validaciones, etc.
     
     public static ArrayList<User> loadUsers() {
 
         ArrayList<User> users_list = new ArrayList<>();
-
-        try(ObjectInputStream oit = new ObjectInputStream(new FileInputStream(App.fileusers))) {
-            users_list = (ArrayList<User>) oit.readObject();
-        } catch(Exception e) {
-            System.out.println("No hay ningun usuario por el momento");
+        
+        try {
+            users_list = Container.deserialize(fileusers);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println(e);
         }
+        
         return users_list;
     }
     
     public static ListaVehiculos loadCars() {
 
         ListaVehiculos cars_list = new ListaVehiculos();
-        try(ObjectInputStream oit = new ObjectInputStream(new FileInputStream(App.filecars))) {
-            cars_list = (ListaVehiculos) oit.readObject();
-        } catch(Exception e) {
-            System.out.println("No hay ningun vehiculo por el momento");
+        
+        try {
+            cars_list = Container.deserialize(filecars);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println(e);
         }
+
         return cars_list;
     }
 
@@ -101,24 +99,21 @@ public class App extends Application {
         return null;
     }
 
-    public static void ActualizarListaUsuarios(){
-        try(ObjectOutputStream out1 = new ObjectOutputStream(new FileOutputStream(fileusers))) {
-            out1.writeObject(usuarios);
-            out1.flush();
-        } catch(IOException ex) {
-            System.out.println("Error al encontrar el archivo: " + ex.getMessage());
-            ex.printStackTrace();  // Esto imprime la traza completa de la excepción
+    public static void ActualizarListaUsuarios() {
+        try {        
+            Container.serialize(usuarios, fileusers);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
     
-    public static void ActualizarListaCars(){
-        try(ObjectOutputStream out1 = new ObjectOutputStream(new FileOutputStream(filecars))) {
-            out1.writeObject(catalogo);
-            out1.flush();
-        } catch(IOException ex) {
-            System.out.println("Error al encontrar el archivo: " + ex.getMessage());
-            ex.printStackTrace();  // Esto imprime la traza completa de la excepción
+    public static void ActualizarListaCars() {
+        try {
+            Container.serialize(catalogo, filecars);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
+    
     }
     
     public static void EliminarVehiculoFavorito(Vehiculos v){

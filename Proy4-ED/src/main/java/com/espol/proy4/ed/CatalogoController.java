@@ -10,12 +10,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Objects.Marca;
-import Objects.Modelo;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collection;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

@@ -1,12 +1,9 @@
 
 package com.espol.proy4.ed;
 
-import Objects.Marca;
-import Objects.Modelo;
 import Objects.Vehiculos;
 import TDAS.DoublyLinkedList;
 import TDAS.DoublyNodeList;
-import static com.espol.proy4.ed.CatalogoController.vehiculoUsar;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
