@@ -126,7 +126,7 @@ public class InformacionVehiculoController implements Initializable {
         motor.setText(vehiculo.getMotor());
         ubicacion.setText(vehiculo.getUbicacion());
         kilometraje.setText(vehiculo.getKilometraje()+"");
-        precio.setText((int)vehiculo.getPrecio()+" USD");
+        precio.setText(vehiculo.getPrecio()+" USD");
         year.setText(vehiculo.getAnio()+"");
         peso.setText(vehiculo.getPeso()+"");
         transmision.setText(vehiculo.getTransmision());
@@ -317,7 +317,7 @@ public class InformacionVehiculoController implements Initializable {
         DoublyNodeList<Vehiculos> current = FavVehiculos.getHeader();
         
             while(current != null) {
-                if (current.getContent().equals(vehiculo)) {
+                if (current.getContent().compareTo(vehiculo) != 0) {
                     System.out.println("Vehiculo marcado como favorito");
                     favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
                     favoritoSinMarcar.setId("favoritoMarcado");

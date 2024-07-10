@@ -165,34 +165,6 @@ public class Vehiculos implements Serializable, Comparable<Vehiculos>{
     }
 
     @Override
-    public boolean equals(Object obj) {
-      
-        // Verifica si el objeto es el mismo
-        if (this == obj) {
-            return true;
-        }
-        // Verifica si el objeto pasado es null o si son de diferentes clases
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        // Compara los atributos
-        Vehiculos vehiculo = (Vehiculos) obj;
-        return anio == vehiculo.anio &&
-                Objects.equals(marca, vehiculo.marca) &&
-                Objects.equals(modelo, vehiculo.modelo) &&
-                Objects.equals(anio, vehiculo.anio) &&        
-                Objects.equals(precio, vehiculo.precio) &&
-                Objects.equals(kilometraje, vehiculo.kilometraje) &&
-                Objects.equals(motor, vehiculo.motor) &&
-                Objects.equals(transmision, vehiculo.transmision) && 
-                Objects.equals(peso, vehiculo.peso) &&
-                Objects.equals(ubicacion, vehiculo.ubicacion) &&
-                Objects.equals(estado, vehiculo.estado);
-
-                //Objects.equals(vendedor, vehiculo.vendedor);
-    }
-
-    @Override
     public int hashCode() {
         
         return super.hashCode();

@@ -172,7 +172,7 @@ public class MisVehiculosController implements Initializable {
             motor.setText(vehiculo.getMotor());
             ubicacion.setText(vehiculo.getUbicacion());
             kilometraje.setText(vehiculo.getKilometraje()+"");
-            precio.setText((int)vehiculo.getPrecio()+" USD");
+            precio.setText(vehiculo.getPrecio()+" USD");
             year.setText(vehiculo.getAnio()+"");
             peso.setText(vehiculo.getPeso()+"");
             transmision.setText(vehiculo.getTransmision());
@@ -376,7 +376,7 @@ public class MisVehiculosController implements Initializable {
             motor.setText(vehiculo.getMotor());
             ubicacion.setText(vehiculo.getUbicacion());
             kilometraje.setText(vehiculo.getKilometraje()+"");
-            precio.setText((int)vehiculo.getPrecio()+" USD");
+            precio.setText(vehiculo.getPrecio()+" USD");
             year.setText(vehiculo.getAnio()+"");
             peso.setText(vehiculo.getPeso()+"");
             transmision.setText(vehiculo.getTransmision());
@@ -469,7 +469,7 @@ public class MisVehiculosController implements Initializable {
             motor.setText(vehiculo.getMotor());
             ubicacion.setText(vehiculo.getUbicacion());
             kilometraje.setText(vehiculo.getKilometraje()+"");
-            precio.setText((int)vehiculo.getPrecio()+" USD");
+            precio.setText(vehiculo.getPrecio()+" USD");
             year.setText(vehiculo.getAnio()+"");
             peso.setText(vehiculo.getPeso()+"");
             transmision.setText(vehiculo.getTransmision());

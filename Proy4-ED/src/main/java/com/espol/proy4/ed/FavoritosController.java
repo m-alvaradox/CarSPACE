@@ -105,7 +105,7 @@ public class FavoritosController implements Initializable {
             vehiculoUsar = vehiculoUsar.getNext();
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            precio.setText((int)vehiculo.getPrecio()+" USD");
+            precio.setText(vehiculo.getPrecio()+" USD");
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
@@ -141,7 +141,7 @@ public class FavoritosController implements Initializable {
             vehiculoUsar = vehiculoUsar.getPrevious();
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            precio.setText((int)vehiculo.getPrecio()+" USD");
+            precio.setText(vehiculo.getPrecio()+" USD");
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
@@ -227,7 +227,7 @@ public class FavoritosController implements Initializable {
         DoublyNodeList<Vehiculos> current = FavVehiculos.getHeader();
         
             while(current != null) {
-                if (current.getContent().equals(vehiculo)) {  // No usar equals, cambiarlo por compare de comparator
+                if (current.getContent().compareTo(vehiculo) != 0) {
                     System.out.println("Vehiculo marcado como favorito");
                     favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
                     favoritoSinMarcar.setId("favoritoMarcado");

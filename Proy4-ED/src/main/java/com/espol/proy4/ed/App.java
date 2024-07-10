@@ -6,17 +6,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import Objects.ListaVehiculos;
-import Objects.User;
-import Objects.Vehiculos;
-import Objects.EstadoD;
+import Objects.*;
 import TDAS.*;
-import java.util.Comparator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 
@@ -29,7 +24,15 @@ public class App extends Application {
     public static String fileusers = "src\\main\\resources\\datos\\usuarios.ser";
     public static String filecars = "src\\main\\resources\\datos\\vehiculos.ser";
     public static String fileimages = "imagenes/";
+
     public static ArrayList<User> usuarios = loadUsers();
+        /* Mario Alvarado: Decidi usar un ArrayList para almacenar a los usuarios
+       porque puedo acceder rapidamente a mis elementos por indice y es eficiente
+       para lectura y busqueda. No me importa la posición donde quiero agregar el nuevo
+       usuario, solo lo agrego al final. Considero también que no estamos implementando
+       la funcionalidad de eliminar usuario en este proyecto.
+    */
+    
     public static User userlogged = null;
     public static ListaVehiculos catalogo = loadCars();
 

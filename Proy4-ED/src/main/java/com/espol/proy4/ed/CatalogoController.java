@@ -84,11 +84,7 @@ public class CatalogoController implements Initializable {
         Tooltip.install(bttnhouse, tbuttonhouse);
         Tooltip.install(bttnadelante, tbuttonnext);
         Tooltip.install(bttnatras, tbuttonback);
-        
-        
-        
-        
-        
+         
         catalogo = App.catalogo.getVehiculos();
         ObservableList<Marca> ComboMarcas = FXCollections.observableArrayList(Marca.values());
         marcas.setItems(ComboMarcas);
@@ -101,7 +97,7 @@ public class CatalogoController implements Initializable {
             year.setText("Año: "+vehiculo.getAnio()+"");
             kilometraje.setText(vehiculo.getKilometraje()+" kms");
             ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
-            precio.setText((int)vehiculo.getPrecio()+" USD");
+            precio.setText(vehiculo.getPrecio()+" USD");
             vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
@@ -137,7 +133,7 @@ public class CatalogoController implements Initializable {
             year.setText("Año: "+vehiculo.getAnio()+"");
             kilometraje.setText(vehiculo.getKilometraje()+" kms");
             ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
-            precio.setText((int)vehiculo.getPrecio()+" USD");
+            precio.setText(vehiculo.getPrecio()+" USD");
             vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
@@ -173,7 +169,7 @@ public class CatalogoController implements Initializable {
             year.setText("Año: "+vehiculo.getAnio()+"");
             kilometraje.setText(vehiculo.getKilometraje()+" kms");
             ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
-            precio.setText((int)vehiculo.getPrecio()+" USD");
+            precio.setText(vehiculo.getPrecio()+" USD");
             vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
@@ -272,7 +268,7 @@ private void actualizarVista() {
         year.setText("Año: "+vehiculo.getAnio()+"");
         kilometraje.setText(vehiculo.getKilometraje()+" kms");
         ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
-        precio.setText((int)vehiculo.getPrecio()+" USD");
+        precio.setText(vehiculo.getPrecio()+" USD");
         vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
         
         // Actualiza la imagen
