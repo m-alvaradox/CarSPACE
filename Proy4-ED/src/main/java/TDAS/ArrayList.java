@@ -48,7 +48,6 @@ public class ArrayList<E>  implements List<E>, Serializable, Collection<E> {
         }
         elements[effectiveSize] = e;
         effectiveSize++;
-        //elements[effectiveSize++] = e; otra forma de hacer las 2 lineas anteriores
         return true;
     }
 
