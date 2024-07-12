@@ -71,13 +71,15 @@ public class InformacionVehiculoController implements Initializable {
     private ImageView bttnhome;
     @FXML
     private ImageView regresar;
+    @FXML
+    private Label like;
     
     DoublyNodeList<Vehiculos> vehiculoUsar;
     
     
     private CircularDoublyList<String> imagenes; // Imagenes que usa el vehiculo
     private DoublyNodeList<String> rutaImagen; // Nodo imagen 
-    
+    private int likes;
     private DoublyLinkedList<Vehiculos> FavVehiculos;
     /**
      * Initializes the controller class.
@@ -138,7 +140,9 @@ public class InformacionVehiculoController implements Initializable {
         
         condicionfavorito(vehiculo);
         
-
+        // A cuantas personas le gustaron este vehiculo
+        likes = obtenerLikes(vehiculo);
+        like.setText(likes+"");
         // Aquí se debe mostrar todos los datos
         
         ArrayList<AtributoAdicional> listaAtributos = vehiculo.getAtributoAdicional();
@@ -158,6 +162,9 @@ public class InformacionVehiculoController implements Initializable {
         // Carga la nueva imagen
         Image image1 = new Image(archivoImagen.toURI().toString());
         imagen.setImage(image1);
+        Tooltip tlikes = new Tooltip("A "+likes+" personas le gustaron esto");
+        Tooltip.install(imagen, tlikes);
+        
         for(int i=0; i<listaAtributos.size(); i++){        // Aquí se llenan los Atributos adicionales
             AtributoAdicional a= listaAtributos.get(i);
             HBox hb = new HBox();
@@ -246,6 +253,7 @@ public class InformacionVehiculoController implements Initializable {
            FavVehiculos = new DoublyLinkedList<>();
        }
        FavVehiculos.addLast(vehiculo);
+       like.setText(Integer.parseInt(like.getText())+1+""); // Se actualiza el like
        App.userlogged.setFavVehiculos(FavVehiculos);
        App.ActualizarListaUsuarios();
        
@@ -264,6 +272,7 @@ public class InformacionVehiculoController implements Initializable {
        // Aquí se debe eliminar el carro de la lista de favoritos
        Vehiculos vehiculo = vehiculoUsar.getContent();
        FavVehiculos.eliminar(vehiculo);
+       like.setText(Integer.parseInt(like.getText())-1+""); // Se actualiza el like
        App.userlogged.setFavVehiculos(FavVehiculos);
        App.ActualizarListaUsuarios();
        
@@ -291,6 +300,9 @@ public class InformacionVehiculoController implements Initializable {
         // Carga la nueva imagen
         Image image1 = new Image(archivoImagen.toURI().toString());
         imagen.setImage(image1);
+        
+        Tooltip tlikes = new Tooltip("A "+likes+" personas le gustaron esto");
+        Tooltip.install(imagen, tlikes);
    }
    
    @FXML
@@ -306,6 +318,9 @@ public class InformacionVehiculoController implements Initializable {
         // Carga la nueva imagen
         Image image1 = new Image(archivoImagen.toURI().toString());
         imagen.setImage(image1);
+        
+        Tooltip tlikes = new Tooltip("A "+likes+" personas le gustaron esto");
+        Tooltip.install(imagen, tlikes);
    }
 
     private void condicionfavorito(Vehiculos vehiculo) {
@@ -317,7 +332,7 @@ public class InformacionVehiculoController implements Initializable {
         DoublyNodeList<Vehiculos> current = FavVehiculos.getHeader();
         
             while(current != null) {
-                if (current.getContent().compareTo(vehiculo) != 0) {
+                if (current.getContent().compareTo(vehiculo) == 0) {
                     System.out.println("Vehiculo marcado como favorito");
                     favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
                     favoritoSinMarcar.setId("favoritoMarcado");
@@ -331,6 +346,22 @@ public class InformacionVehiculoController implements Initializable {
             }
             
             System.out.println("Vehiculo no marcado como favorito");
+    }
+
+    private int obtenerLikes(Vehiculos v) {
+        
+        int contador = 0;
+        
+        for(User u : App.usuarios) {
+            DoublyNodeList<Vehiculos> current = u.getFavVehiculos().getHeader();
+            while (current != null) {
+                if(current.getContent().compareTo(v) == 0) {
+                    contador ++;
+                }
+                current = current.getNext();
+            }  
+        }
+        return contador;
     }
    
   
