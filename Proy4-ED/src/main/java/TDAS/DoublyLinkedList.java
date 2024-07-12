@@ -106,7 +106,7 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
             return false; 
         }    
         while (cursor != null) {
-            if (cursor.getContent().equals(e)) {
+            if (cursor.getContent()==e) {
                 if (cursor.getPrevious() != null) {
                     cursor.getPrevious().setNext(cursor.getNext());
                 } else {
@@ -123,5 +123,4 @@ public class DoublyLinkedList<E> implements List<E>, Serializable{
         }
         return false;
     }
-
 }

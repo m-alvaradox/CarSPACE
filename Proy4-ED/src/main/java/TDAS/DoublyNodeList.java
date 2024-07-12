@@ -4,7 +4,6 @@
  */
 package TDAS;
 
-import Objects.Vehiculos;
 import java.io.Serializable;
 
 /**
@@ -49,5 +48,4 @@ public class DoublyNodeList<E> implements Serializable{
     public void setPrevious(DoublyNodeList<E> previous) {
         this.previous = previous;
     }
-
 }

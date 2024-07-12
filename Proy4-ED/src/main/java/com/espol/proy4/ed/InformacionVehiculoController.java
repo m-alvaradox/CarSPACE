@@ -71,6 +71,8 @@ public class InformacionVehiculoController implements Initializable {
     private ImageView bttnhome;
     @FXML
     private ImageView regresar;
+    @FXML
+    private Label like;
     
     DoublyNodeList<Vehiculos> vehiculoUsar;
     
@@ -140,7 +142,7 @@ public class InformacionVehiculoController implements Initializable {
         
         // A cuantas personas le gustaron este vehiculo
         likes = obtenerLikes(vehiculo);
-
+        like.setText(likes+"");
         // Aquí se debe mostrar todos los datos
         
         ArrayList<AtributoAdicional> listaAtributos = vehiculo.getAtributoAdicional();
@@ -251,6 +253,7 @@ public class InformacionVehiculoController implements Initializable {
            FavVehiculos = new DoublyLinkedList<>();
        }
        FavVehiculos.addLast(vehiculo);
+       like.setText(Integer.parseInt(like.getText())+1+""); // Se actualiza el like
        App.userlogged.setFavVehiculos(FavVehiculos);
        App.ActualizarListaUsuarios();
        
@@ -269,6 +272,7 @@ public class InformacionVehiculoController implements Initializable {
        // Aquí se debe eliminar el carro de la lista de favoritos
        Vehiculos vehiculo = vehiculoUsar.getContent();
        FavVehiculos.eliminar(vehiculo);
+       like.setText(Integer.parseInt(like.getText())-1+""); // Se actualiza el like
        App.userlogged.setFavVehiculos(FavVehiculos);
        App.ActualizarListaUsuarios();
        
@@ -328,7 +332,7 @@ public class InformacionVehiculoController implements Initializable {
         DoublyNodeList<Vehiculos> current = FavVehiculos.getHeader();
         
             while(current != null) {
-                if (current.getContent().compareTo(vehiculo) != 0) {
+                if (current.getContent().compareTo(vehiculo) == 0) {
                     System.out.println("Vehiculo marcado como favorito");
                     favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
                     favoritoSinMarcar.setId("favoritoMarcado");
@@ -351,7 +355,7 @@ public class InformacionVehiculoController implements Initializable {
         for(User u : App.usuarios) {
             DoublyNodeList<Vehiculos> current = u.getFavVehiculos().getHeader();
             while (current != null) {
-                if(current.getContent().compareTo(v) != 0) {
+                if(current.getContent().compareTo(v) == 0) {
                     contador ++;
                 }
                 current = current.getNext();
