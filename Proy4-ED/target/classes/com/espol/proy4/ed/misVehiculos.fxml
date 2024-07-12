@@ -40,7 +40,7 @@
             </HBox>
          </top>
          <center>
-            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="231.0" prefWidth="204.0" spacing="5.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;" BorderPane.alignment="TOP_CENTER">
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="258.0" prefWidth="204.0" spacing="5.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;" BorderPane.alignment="TOP_CENTER">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
                      <children>
@@ -51,6 +51,17 @@
                         </ImageView>
                         <Label styleClass="text-atributos" text="Marca" />
                         <Label fx:id="marca" styleClass="texto_login" text="info" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="6.0" prefWidth="203.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="SubTipo" />
+                        <Label styleClass="texto_login" text="info" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
@@ -143,7 +154,7 @@
                   </HBox>
                </children>
                <BorderPane.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </BorderPane.margin>
             </VBox>
          </center>
@@ -155,7 +166,7 @@
             </ImageView>
          </left>
          <right>
-            <HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="394.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="256.0" prefWidth="394.0" BorderPane.alignment="CENTER">
                <children>
                   <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="342.0">
                      <children>
@@ -216,7 +227,7 @@
             </HBox>
          </right>
          <bottom>
-            <HBox prefHeight="161.0" prefWidth="642.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="149.0" prefWidth="642.0" BorderPane.alignment="CENTER">
                <children>
                   <VBox prefHeight="156.0" prefWidth="270.0">
                      <children>
@@ -287,7 +298,7 @@
             </HBox>
          </top>
          <center>
-            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="211.0" spacing="5.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;" BorderPane.alignment="TOP_CENTER">
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="222.0" spacing="5.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;" BorderPane.alignment="TOP_CENTER">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
                      <children>
@@ -302,6 +313,17 @@
                               <Insets left="45.0" />
                            </HBox.margin>
                         </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="8.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/punto.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="text-atributos" text="SubTipo" />
+                        <ComboBox prefWidth="150.0" styleClass="comboBox_filtros" translateX="25.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
@@ -414,7 +436,7 @@
                   </HBox>
                </children>
                <BorderPane.margin>
-                  <Insets left="10.0" top="10.0" />
+                  <Insets left="10.0" top="5.0" />
                </BorderPane.margin>
             </VBox>
          </center>
@@ -497,7 +519,7 @@
             </HBox>
          </right>
          <bottom>
-            <HBox prefHeight="161.0" prefWidth="642.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="144.0" prefWidth="642.0" BorderPane.alignment="CENTER">
                <children>
                   <VBox prefHeight="156.0" prefWidth="230.0">
                      <children>
@@ -523,7 +545,8 @@
                                           <Insets bottom="5.0" left="5.0" top="10.0" />
                                        </padding>
                                     </VBox>
-                                 </children></AnchorPane>
+                                 </children>
+                              </AnchorPane>
                            </content>
                         </ScrollPane>
                      </children>
@@ -558,7 +581,8 @@
                                           <Insets bottom="5.0" left="3.0" top="5.0" />
                                        </padding>
                                     </VBox>
-                                 </children></AnchorPane>
+                                 </children>
+                              </AnchorPane>
                            </content>
                         </ScrollPane>
                      </children>

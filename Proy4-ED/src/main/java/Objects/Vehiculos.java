@@ -14,6 +14,7 @@ public class Vehiculos implements Serializable, Comparable<Vehiculos>{
     private String transmision;
     private double peso;
     private String ubicacion;
+    private SubTipo subTipo;
     private EstadoD estado;
     private CircularDoublyList<String> fotos = new CircularDoublyList<>();
     private ArrayList<Historial> historial = new ArrayList<>();
@@ -22,10 +23,11 @@ public class Vehiculos implements Serializable, Comparable<Vehiculos>{
 
 
 
-    public Vehiculos(String marca, String modelo, int anio, int precio, int kilometraje, String motor,
+    public Vehiculos(String marca, SubTipo subTipo, String modelo, int anio, int precio, int kilometraje, String motor,
             String transmision, double peso, String ubicacion,EstadoD estado,CircularDoublyList<String> fotos,
             ArrayList<Historial> historial, ArrayList<AtributoAdicional> AtributoAdicional, User vendedor) {
         this.marca = marca;
+        this.subTipo = subTipo;
         this.modelo = modelo;
         this.anio = anio;
         this.precio = precio;
@@ -87,6 +89,14 @@ public class Vehiculos implements Serializable, Comparable<Vehiculos>{
 
     public String getMotor() {
         return motor;
+    }
+
+    public SubTipo getSubTipo() {
+        return subTipo;
+    }
+
+    public void setSubTipo(SubTipo subTipo) {
+        this.subTipo = subTipo;
     }
 
     public void setMotor(String motor) {

@@ -15,12 +15,7 @@ import java.nio.file.Paths;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import Objects.AtributoAdicional;
-import Objects.EstadoD;
-import Objects.Historial;
-import Objects.User;
-import Objects.Vehiculos;
-import Objects.tipoHistorial;
+import Objects.*;
 import TDAS.ArrayList;
 import TDAS.CircularDoublyList;
 import TDAS.DoublyLinkedList;
@@ -84,7 +79,8 @@ public class CrearVentaController implements Initializable {
     private ImageView bttnadd1;
     @FXML
     private ImageView bttnadd2;
-    
+    @FXML
+    private ComboBox<SubTipo> subTipos;
     
     
     /**
@@ -105,7 +101,7 @@ public class CrearVentaController implements Initializable {
         Tooltip.install(bttnadd1, tbuttonadd1);
         Tooltip.install(bttnadd2, tbuttonadd1);
         
-        
+        subTipos.getItems().addAll(SubTipo.values());
         rutaImagenes = new ArrayList<>();
         // TODO
     }    
@@ -269,7 +265,7 @@ public class CrearVentaController implements Initializable {
         }
     
     // Aquí se debe verificar que los campos estén llenos, que la lista de imagenes no esté vacía
-        if(marca!=null && modelo!=null && year!=null && kilometraje!=null && motor!=null && ubicacion!=null && peso!=null && transmision!=null && precio!=null){
+        if(marca!=null && modelo!=null && year!=null && kilometraje!=null && motor!=null && ubicacion!=null && peso!=null && transmision!=null && precio!=null && subTipos.getValue()!=null){
             String marca1 = marca.getText();
             String modelo1 = modelo.getText();
             int year1 = Integer.parseInt(year.getText());
@@ -279,10 +275,10 @@ public class CrearVentaController implements Initializable {
             double peso1 = Double.parseDouble(peso.getText());
             String transmision1 = transmision.getText();
             int precio1 = Integer.parseInt(precio.getText());
-            
+            SubTipo subTipo = subTipos.getValue();
             if(!listaImagenes.isEmpty()){ // verifica que la lista de imagenes no esté vacía
                 // Por predeterminado se pone el Vehiculo en venta
-                Vehiculos v1 =  new Vehiculos(marca1, modelo1, year1, precio1, kilometraje1, motor1, transmision1, peso1, ubicacion1, EstadoD.Disponible, listaImagenes, listaHistorial, listaAtributosAdicionales, usuario);
+                Vehiculos v1 =  new Vehiculos(marca1, subTipo, modelo1, year1, precio1, kilometraje1, motor1, transmision1, peso1, ubicacion1, EstadoD.Disponible, listaImagenes, listaHistorial, listaAtributosAdicionales, usuario);
                 if(L_Vehiculos==null){
                     L_Vehiculos = new DoublyLinkedList<>();
                 }

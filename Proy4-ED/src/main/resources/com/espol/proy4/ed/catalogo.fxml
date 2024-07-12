@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" stylesheets="@../../../../styles/estilos.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.espol.proy4.ed.CatalogoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" stylesheets="@../../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.espol.proy4.ed.CatalogoController">
    <top>
       <HBox alignment="CENTER" prefHeight="83.0" prefWidth="600.0" spacing="30.0" style="-fx-border-width: 0 0 1px 0; -fx-border-color: #A5A5A5;" styleClass="fondo" BorderPane.alignment="CENTER">
          <children>
@@ -41,17 +41,18 @@
          <children>
             <HBox prefHeight="405.0" prefWidth="640.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="402.0" prefWidth="165.0" spacing="40.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;">
+                  <VBox alignment="TOP_CENTER" prefHeight="402.0" prefWidth="165.0" spacing="30.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #A5A5A5;">
                      <children>
                         <Button mnemonicParsing="false" onAction="#Buscar" styleClass="boton_fondoAzul" text="Buscar">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin></Button>
-                        <ComboBox fx:id="marcas" prefWidth="150.0" promptText="Marca" styleClass="comboBox_filtros">
+                        <ComboBox fx:id="subTipos" prefWidth="150.0" promptText="SubTipos" styleClass="comboBox_filtros">
                            <VBox.margin>
                               <Insets top="-5.0" />
                            </VBox.margin>
                         </ComboBox>
+                        <ComboBox fx:id="marcas" prefWidth="150.0" promptText="Marca" styleClass="comboBox_filtros" />
                         <ComboBox fx:id="modelos" prefWidth="150.0" promptText="Modelo" styleClass="comboBox_filtros" />
                         <ComboBox fx:id="rango" prefWidth="150.0" promptText="Rango" styleClass="comboBox_filtros">
                            <VBox.margin>
@@ -60,7 +61,7 @@
                         </ComboBox>
                         <TextField fx:id="RangoInicio" maxWidth="-Infinity" prefHeight="27.0" prefWidth="81.0" promptText="Desde" styleClass="text-field">
                            <VBox.margin>
-                              <Insets bottom="-20.0" />
+                              <Insets bottom="-10.0" />
                            </VBox.margin>
                         </TextField>
                         <TextField fx:id="RangoFinal" maxWidth="-Infinity" prefHeight="27.0" prefWidth="83.0" promptText="Hasta">
