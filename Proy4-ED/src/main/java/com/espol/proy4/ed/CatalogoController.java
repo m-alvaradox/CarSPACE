@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Objects.Marca;
+import Objects.SubTipo;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -32,6 +33,8 @@ import javafx.scene.image.ImageView;
  */
 public class CatalogoController implements Initializable {
     
+    @FXML
+    private ComboBox<SubTipo> subTipos;
     @FXML
     private ComboBox<Marca> marcas;
     @FXML
@@ -85,6 +88,7 @@ public class CatalogoController implements Initializable {
         catalogo = App.catalogo.getVehiculos();
         ObservableList<Marca> ComboMarcas = FXCollections.observableArrayList(Marca.values());
         marcas.setItems(ComboMarcas);
+        subTipos.getItems().addAll(SubTipo.values());
         modelos.getItems().setAll("Elija una marca");
         rango.getItems().setAll("Kilometraje","Precio");
         if(!catalogo.isEmpty()){
@@ -99,7 +103,6 @@ public class CatalogoController implements Initializable {
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-            //imagen.setImage(new Image(getClass().getResourceAsStream("/imagenesCarros/" + rutaImagen.getContent())));
             File archivoImagen = rutaAbsoluta.toFile();
             if (!archivoImagen.exists()) {
                 System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
@@ -195,18 +198,38 @@ public class CatalogoController implements Initializable {
     
 @FXML
 private void Buscar() {
-    Marca selectedMarca = marcas.getValue();
-    String selectedModelo = (String) modelos.getValue();
-    String selectedRango = (String) rango.getValue();
-    if (selectedMarca != null && selectedModelo != null) {
-        catalogo = App.catalogo.filtrarPorMarcaYModelo(selectedMarca.toString(), selectedModelo.toString()); 
-    } else if("Kilometraje".equals(selectedRango)){
+    Marca selectedMarca= null;
+    String selectedModelo = "";
+    SubTipo subTipo=subTipos.getValue();
+    String selectedRango="";
+    if(marcas.getValue()!=null &&modelos.getValue() !=null ){
+        selectedMarca =  marcas.getValue();
+        selectedModelo = modelos.getValue().toString();
+    }
+  
+    if(rango.getValue()!=null){
+        selectedRango =  rango.getValue().toString();
+    }
+    if(selectedMarca == null && selectedModelo == null && rango.getValue()==null && subTipos.getValue()==null){
+        Alert alert= new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("Filtras Vehiculos");
+        alert.setTitle("Error al filtrar");
+        alert.setContentText("No ha seleccionado ningún itém");
+        String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+        alert.getDialogPane().getStylesheets().add(css);
+        alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
+        alert.showAndWait();
+    }else if (selectedMarca != null && selectedModelo != null) {
+        catalogo = App.catalogo.filtrarPorMarcaYModelo(selectedMarca.toString(), selectedModelo); 
+    } else if(subTipo!=null){
+        catalogo = App.catalogo.filtrarPorTipoVehiculo(subTipo);
+    }   else if("Kilometraje".equals(selectedRango)){
         String inicio = RangoInicio.getText();
         String limite = RangoFinal.getText();
         catalogo = App.catalogo.filtrarPorRangoDeKilometraje(Integer.parseInt(inicio), Integer.parseInt(limite));
     } else {
-        Double inicio = Double.valueOf(RangoInicio.getText());
-        Double limite = Double.valueOf(RangoFinal.getText());
+        int inicio = Integer.parseInt(RangoInicio.getText());
+        int limite = Integer.parseInt(RangoFinal.getText());
         catalogo = App.catalogo.filtrarPorRangoDePrecio(inicio, limite);
     }
     limpiar();
@@ -222,42 +245,39 @@ private void limpiar(){
     marcas.getSelectionModel().clearSelection();
     modelos.getSelectionModel().clearSelection();
     rango.getSelectionModel().clearSelection();
+    subTipos.getSelectionModel().clearSelection();
+    
     // Añadir elementos de prompt a los ComboBoxes
     ObservableList<Marca> ComboMarcas = FXCollections.observableArrayList();
-    ComboMarcas.add(null); // Añadir un elemento nulo como prompt
     ComboMarcas.addAll(Marca.values());
     marcas.setItems(ComboMarcas);
 
     ObservableList<String> ComboModelos = FXCollections.observableArrayList();
-    ComboModelos.add("Modelo");
     modelos.setItems(ComboModelos);
 
     ObservableList<String> ComboRango = FXCollections.observableArrayList();
+    ObservableList<SubTipo> ComboSubTipo = FXCollections.observableArrayList(SubTipo.values());
+    
     ComboRango.add("Rango");
     ComboRango.addAll("Kilometraje", "Precio");
     rango.setItems(ComboRango);
+    subTipos.setItems(ComboSubTipo);
     
     // Listener para actualizar modelos cuando se selecciona una marca
     marcas.valueProperty().addListener((observable, oldValue, newValue) -> {
         if (newValue != null) {
             ObservableList<String> modelosList = FXCollections.observableArrayList(newValue.getModelos());
-            modelosList.add(0, "Modelo");
             modelos.setItems(modelosList);
         } else {
             modelos.getItems().clear();
-            modelos.getItems().add("Modelo");
         }
-        modelos.getSelectionModel().selectFirst();
     });
-
-    // Seleccionar el primer elemento (prompt text)
-    marcas.getSelectionModel().selectFirst();
-    modelos.getSelectionModel().selectFirst();
     rango.getSelectionModel().selectFirst();
+    marcas.getSelectionModel().select(0);
 }
 
 private void actualizarVista() {
-    
+    subTipos.setPromptText("SubTipos"); 
     if (!catalogo.isEmpty()) {
         vehiculoUsar = catalogo.getHeader();
         Vehiculos vehiculo = vehiculoUsar.getContent();

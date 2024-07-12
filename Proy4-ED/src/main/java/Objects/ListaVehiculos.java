@@ -47,17 +47,34 @@ public class ListaVehiculos implements Serializable{
         return vehiculos;
     }
 
-    public DoublyLinkedList<Vehiculos> filtrarPorMarcaYModelo(String marca, String modelo) {
-        Iterator<Vehiculos> iterator = this.iterator();
-        DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
-        
-        
-        
-        
+    public DoublyLinkedList<Vehiculos> filtrarPorTipoVehiculo(SubTipo tipoVehiculo) {
+    Iterator<Vehiculos> iterator = this.iterator();
+    DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
+
     Comparator<Vehiculos> comparator = new Comparator<Vehiculos>() {
         @Override
         public int compare(Vehiculos v1, Vehiculos v2) {
-            
+            return v1.getSubTipo().compareTo(v2.getSubTipo());
+        }
+    };
+
+    while (iterator.hasNext()) {
+        Vehiculos vehiculo = iterator.next();
+        Vehiculos filtro = new Vehiculos(null,tipoVehiculo, null, 0, 0, 0, null, null, 0, null, null, null, null, null, null);
+        if (comparator.compare(vehiculo, filtro) == 0) {
+            resultado.addLast(vehiculo);
+        }
+    }
+       return resultado;
+    }
+    
+    public DoublyLinkedList<Vehiculos> filtrarPorMarcaYModelo(String marca, String modelo) {
+        Iterator<Vehiculos> iterator = this.iterator();
+        DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
+          
+    Comparator<Vehiculos> comparator = new Comparator<Vehiculos>() {
+        @Override
+        public int compare(Vehiculos v1, Vehiculos v2) {
             int marcaCompare = v1.getMarca().compareToIgnoreCase(v2.getMarca());
             if (marcaCompare == 0) {
                 return v1.getModelo().compareToIgnoreCase(v2.getModelo());
@@ -65,33 +82,26 @@ public class ListaVehiculos implements Serializable{
             return marcaCompare;
         }
     };
-        Queue<Vehiculos> cola = new PriorityQueue<>(comparator);
-    
         while (iterator.hasNext()) {
-        Vehiculos vehiculos = iterator.next();
-        cola.offer(vehiculos);
+            Vehiculos vehiculo = iterator.next();
+            Vehiculos filtro = new Vehiculos(marca,null, modelo, 0, 0, 0, null, null, 0, null, null, null, null, null, null);  // Crear filtro con marca y modelo
+            if (comparator.compare(vehiculo, filtro) == 0) {
+                resultado.addLast(vehiculo);
+             }        
         }
-
-        while (!cola.isEmpty()) {
-        Vehiculos vehiculo = iterator.next();
-        Vehiculos filtro = new Vehiculos(marca, modelo, 0, 0, 0, null, null, 0, null, null, null, null, null, null);  // Crear filtro con marca y modelo
-        if (comparator.compare(vehiculo, filtro) == 0) {
-            resultado.addLast(cola.poll());
-        }        
-      }
       return resultado;  
     }
     
     
     
-    public DoublyLinkedList<Vehiculos> filtrarPorRangoDePrecio(double minPrecio, double maxPrecio) {
+    public DoublyLinkedList<Vehiculos> filtrarPorRangoDePrecio(int minPrecio, int maxPrecio) {
         Iterator<Vehiculos> iterator = this.iterator();
         DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
         
         Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<>() {
             @Override
             public int compare(Vehiculos v1, Vehiculos v2) {
-                return Double.compare(v1.getPrecio(), v2.getPrecio());
+                return Integer.compare(v1.getPrecio(), v2.getPrecio());
             }
         });
 

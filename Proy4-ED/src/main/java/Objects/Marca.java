@@ -14,6 +14,7 @@ import java.util.function.Consumer;
  * @author USER
  */
 public enum Marca {
+    ElijaMarca("Modelo"),
     Chevrolet("Spark GT", "Sail", "Captiva", "Aveo Family"),
     Toyota("Fortuner", "Yaris", "Hilux", "Rav"),
     Kia("Sonet", "Picanto", "Sportage", "Cerato"),
