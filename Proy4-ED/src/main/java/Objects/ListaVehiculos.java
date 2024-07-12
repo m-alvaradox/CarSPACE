@@ -51,26 +51,38 @@ public class ListaVehiculos implements Serializable{
         Iterator<Vehiculos> iterator = this.iterator();
         DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
         
-        Queue<Vehiculos> cola = new PriorityQueue<>(new Comparator<Vehiculos>() {
-            @Override
-            public int compare(Vehiculos v1, Vehiculos v2) {
-                return v1.getMarca().compareToIgnoreCase(v2.getMarca());
+        
+        
+        
+    Comparator<Vehiculos> comparator = new Comparator<Vehiculos>() {
+        @Override
+        public int compare(Vehiculos v1, Vehiculos v2) {
+            
+            int marcaCompare = v1.getMarca().compareToIgnoreCase(v2.getMarca());
+            if (marcaCompare == 0) {
+                return v1.getModelo().compareToIgnoreCase(v2.getModelo());
             }
-        });
-
+            return marcaCompare;
+        }
+    };
+        Queue<Vehiculos> cola = new PriorityQueue<>(comparator);
+    
         while (iterator.hasNext()) {
-            Vehiculos vehiculo = iterator.next();
-            if (vehiculo.getMarca().equalsIgnoreCase(marca) && vehiculo.getModelo().equalsIgnoreCase(modelo)) {
-                cola.offer(vehiculo);
-            }
+        Vehiculos vehiculos = iterator.next();
+        cola.offer(vehiculos);
         }
 
         while (!cola.isEmpty()) {
+        Vehiculos vehiculo = iterator.next();
+        Vehiculos filtro = new Vehiculos(marca, modelo, 0, 0, 0, null, null, 0, null, null, null, null, null, null);  // Crear filtro con marca y modelo
+        if (comparator.compare(vehiculo, filtro) == 0) {
             resultado.addLast(cola.poll());
-        }
-
-        return resultado;
+        }        
+      }
+      return resultado;  
     }
+    
+    
     
     public DoublyLinkedList<Vehiculos> filtrarPorRangoDePrecio(double minPrecio, double maxPrecio) {
         Iterator<Vehiculos> iterator = this.iterator();
