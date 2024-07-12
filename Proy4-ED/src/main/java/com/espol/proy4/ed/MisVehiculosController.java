@@ -168,77 +168,7 @@ public class MisVehiculosController implements Initializable {
             vehiculoMostrado.setVisible(true);
             sinVehiculo.setVisible(false);
             vehiculoUsar = listaVehiculo.getHeader(); 
-            Vehiculos vehiculo = vehiculoUsar.getContent();
-            marca.setText(vehiculo.getMarca());
-            subTipo.setText(vehiculo.getSubTipo().toString());
-            modelo.setText(vehiculo.getModelo());
-            motor.setText(vehiculo.getMotor());
-            ubicacion.setText(vehiculo.getUbicacion());
-            kilometraje.setText(vehiculo.getKilometraje()+"");
-            precio.setText(vehiculo.getPrecio()+" USD");
-            year.setText(vehiculo.getAnio()+"");
-            peso.setText(vehiculo.getPeso()+"");
-            transmision.setText(vehiculo.getTransmision());
-            vehiculoEstado.setText(vehiculo.getEstado().toString());
-
-            // Aquí se debe mostrar todos los datos
-
-            ArrayList<AtributoAdicional> listaAtributos = vehiculo.getAtributoAdicional();
-            ArrayList<Historial> listaHistorial = vehiculo.gethistorial();
-
-            imagenes= vehiculo.getFotos();// Doubly linked list para mostrar imagenes
-            imagenesTemporales = copiarImagenes();
-            rutaImagen = imagenes.getHeader();
-            rutaTemporal = imagenesTemporales.getHeader();
-
-            Path projectDir = Paths.get("").toAbsolutePath();
-            Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-            File archivoImagen = rutaAbsoluta.toFile();
-            if (!archivoImagen.exists()) {
-                System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
-                return;
-            }
-            // Carga la nueva imagen
-            Image image1 = new Image(archivoImagen.toURI().toString());
-            imagen.setImage(image1);
-            for(int i=0; i<listaAtributos.size(); i++){        // Aquí se llenan los Atributos adicionales
-                AtributoAdicional a= listaAtributos.get(i);
-                HBox hb = new HBox();
-                hb.setAlignment(Pos.CENTER_LEFT);
-                hb.setSpacing(5);
-                ImageView image = new ImageView(new Image("/imagenes/punto.png"));
-                image.setFitWidth(11);
-                image.setFitHeight(8);
-                Label title = new Label();
-                title.setText(a.getTitle());
-                Label descripcion = new Label();
-                descripcion.setText(a.getDescripcion());
-                title.getStyleClass().add("text-atributos");
-                descripcion.getStyleClass().add("texto_login");
-                hb.getChildren().addAll(image, title, descripcion);
-                paneAtributos.getChildren().add(hb);
-            }
-
-            for(int i=0; i<listaHistorial.size(); i++){
-                Historial h = listaHistorial.get(i);
-                HBox hb = new HBox();
-                hb.setAlignment(Pos.CENTER_LEFT);
-                hb.setSpacing(5);
-                ImageView image = new ImageView(new Image("/imagenes/punto.png"));
-                image.setFitWidth(11);
-                image.setFitHeight(8);
-                Label tipo = new Label();
-                tipo.setText(h.getTipo().toString());
-                Label fecha = new Label();
-                fecha.setText(h.getFecha());
-                Label descripcion = new Label();
-                descripcion.setText(h.getDescripcion());
-                tipo.getStyleClass().add("text-atributos");
-                descripcion.getStyleClass().add("texto_login");
-                fecha.getStyleClass().add("texto_login");
-                hb.getChildren().addAll(image,tipo, fecha, descripcion);
-                paneHistorial.getChildren().add(hb);
-            }
+            actualizarVentana();
         } else {
             vehiculoMostrado.setVisible(false);
             sinVehiculo.setVisible(true);
@@ -291,9 +221,8 @@ public class MisVehiculosController implements Initializable {
         }
     }
     
-   private void actualizarVentana() throws IOException{
+   private void actualizarVentana() {
             Vehiculos vehiculo = vehiculoUsar.getContent();
-            //estadoVehiculo.getSelectionModel().select(vehiculo.getEstado());
             marca.setText(vehiculo.getMarca());
             subTipo.setText(vehiculo.getSubTipo().toString());
             modelo.setText(vehiculo.getModelo());
@@ -374,8 +303,7 @@ public class MisVehiculosController implements Initializable {
             paneHistorial.getChildren().clear();
             vehiculoUsar = vehiculoUsar.getNext();
             actualizarVentana();
-        } else {
-                
+        } else {         
             //Mostrar alerta que ya no existen Vehiculos;
             Alert alert= new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Siguiente Vehiculo");
@@ -385,8 +313,7 @@ public class MisVehiculosController implements Initializable {
             alert.getDialogPane().getStylesheets().add(css);
             alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
             alert.showAndWait();
-       }
-        
+       }  
     }
    
    @FXML
@@ -397,8 +324,7 @@ public class MisVehiculosController implements Initializable {
             paneHistorial.getChildren().clear();
             vehiculoUsar = vehiculoUsar.getPrevious();
             actualizarVentana();
-       } else {
-           
+       } else {     
            // Mostrar alerta que ya no existen más vehiculos a mostrar;
            Alert alert= new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Siguiente Vehiculo");
@@ -408,8 +334,7 @@ public class MisVehiculosController implements Initializable {
             alert.getDialogPane().getStylesheets().add(css);
             alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
             alert.showAndWait();
-       }
-       
+       }    
    }
    
    @FXML
@@ -423,7 +348,6 @@ public class MisVehiculosController implements Initializable {
             System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
             return;
         }
-
         // Carga la nueva imagen
         Image image1 = new Image(archivoImagen.toURI().toString());
         imagen.setImage(image1);
@@ -469,8 +393,7 @@ public class MisVehiculosController implements Initializable {
         peso1.setText(vehiculo.getPeso()+"");
         transmision1.setText(vehiculo.getTransmision());
         
-        // Aquí se debe mostrar todos los datos
-        
+        // Aquí se debe mostrar todos los datos    
         ArrayList<AtributoAdicional> listaAtributos = vehiculo.getAtributoAdicional();
         ArrayList<Historial> listaHistorial = vehiculo.gethistorial();
         Path projectDir = Paths.get("").toAbsolutePath();
@@ -555,15 +478,18 @@ public class MisVehiculosController implements Initializable {
         alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
         Optional<ButtonType> resultado = alert.showAndWait();
         if(resultado.isPresent()&& resultado.get() == botonSi){
-            DoublyNodeList<String> nodoAEliminar = rutaTemporal;  // Guarda el nodo que se va a eliminar
-            rutaTemporal = rutaTemporal.getPrevious();  // Actualiza rutaTemporal para apuntar al nodo anterior
+            DoublyNodeList<String> nodoAEliminar = rutaTemporal;  // Guarda el nodo que se va a eliminar 
             imagenesEliminar.addLast(nodoAEliminar.getContent());  // Añade el contenido del nodo a la lista de eliminados
             imagenesTemporales.removeNode(nodoAEliminar);  // Elimina el nodo de la lista
-            siguienteImagenEditar();
+            if(rutaTemporal.getPrevious()!=null){
+                rutaTemporal = rutaTemporal.getPrevious();  // Actualiza rutaTemporal para apuntar al nodo anterior
+                siguienteImagenEditar();
+            } else {
+                 imagen1.setImage(new Image("/imagenes/imagen.png"));
+            }           
         } else{
             alert.close();
-        }
-       
+        }      
    }
    
    @FXML
@@ -698,7 +624,6 @@ public class MisVehiculosController implements Initializable {
             App.catalogo.eliminarVehiculo(vNuevo);
             App.EliminarVehiculoFavorito(v);
             listaVehiculo.eliminar(v);
-            //DoublyNodeList<Vehiculos> copia = vehiculoUsar;
             CircularDoublyList<String> rutaImagenes = v.getFotos();
             DoublyNodeList<String> ruta = rutaImagenes.getHeader();
             while(ruta!=rutaImagenes.getLast()){ // Se elimina las imagenes
@@ -743,9 +668,7 @@ public class MisVehiculosController implements Initializable {
        
        // Aquí se declaran las listas para historial, y atributosAdicionales
         ArrayList<Historial> listaHistorial = new ArrayList<>();
-        ArrayList<AtributoAdicional> listaAtributosAdicionales = new ArrayList<>();
-        
-        
+        ArrayList<AtributoAdicional> listaAtributosAdicionales = new ArrayList<>();       
         for(Node caja: paneHistorial1.getChildren()){ // Recorre cada VBox para el historial de Servicios y Accidentes
             HBox fila= (HBox) caja; 
             ComboBox<tipoHistorial> tipo = new ComboBox(); // Almacena el tipo de Servicio 
@@ -788,8 +711,7 @@ public class MisVehiculosController implements Initializable {
                 listaAtributosAdicionales.addLast(a1);
             }
         }
-       EstadoD estado = estadoVehiculo.getSelectionModel().getSelectedItem();
-      
+       EstadoD estado = estadoVehiculo.getSelectionModel().getSelectedItem();     
        for(int i=0; i<imagenesEliminar.size();i++){ // Se elimina las imagenes
            String ruta = imagenesEliminar.get(i);
            Path projectDir = Paths.get("").toAbsolutePath();
@@ -803,43 +725,54 @@ public class MisVehiculosController implements Initializable {
        EstadoD estadoAntiguo = EstadoD.valueOf(vehiculoEstado.getText());
        Vehiculos vehiculo = vehiculoUsar.getContent();  
         // Aquí se debe actualizar todos los datos;
-       if(marca1!=null && modelo1!=null && motor1!=null && ubicacion1!=null && kilometraje1!=null && precio1!=null && year1!=null && peso1!=null && transmision1!=null && subTipo1.getValue()!=null){
-            String marcaNueva = marca1.getText();
-            String modeloNuevo = modelo1.getText();
-            String motorNuevo = motor1.getText();
-            String ubiNuevo = ubicacion1.getText();
-            int kiloNuevo = Integer.parseInt(kilometraje1.getText());
-            int precioNuevo = Integer.parseInt(precio1.getText());
-            int yearNuevo = Integer.parseInt(year1.getText());
-            Double pesoNuevo = Double.valueOf(peso1.getText());
-            String transNuevo = transmision1.getText();
-            SubTipo stp = subTipo1.getValue();
-            Vehiculos vehiculoNuevo =  new Vehiculos(marcaNueva,stp, modeloNuevo, yearNuevo, precioNuevo, kiloNuevo, motorNuevo, transNuevo, pesoNuevo, ubiNuevo, estado, imagenesTemporales, listaHistorial, listaAtributosAdicionales, usuario);    
-            if(estadoAntiguo.compareTo(EstadoD.NoDisponible)==0  && estado.compareTo(EstadoD.Disponible)==0){
-                App.catalogo.agregarVehiculo(vehiculoNuevo);
-            }  else {
-                App.catalogo.editarVehiculo(vehiculo, vehiculoNuevo);
-            }           
-            if(estadoAntiguo.compareTo(EstadoD.Disponible)==0 && estado.compareTo(EstadoD.NoDisponible)==0){
-                App.catalogo.eliminarVehiculo(vehiculoNuevo);
-                App.EliminarVehiculoFavorito(vehiculo);
-            }  
-            vehiculoUsar.setContent(vehiculoNuevo);
-            App.userlogged.setMisVehiculos(listaVehiculo);
-            App.ActualizarListaCars();
-            App.ActualizarListaUsuarios();
-             // Se debe mostrar un mensaje que los cambios fueron actualizados y actualizar datos;
-            Alert alert= new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Edición de Venta");
-            alert.setTitle("Cambio exitoso");
-            alert.setContentText("Su vehiculo editado fue guardado correctamente");
-            String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
-            alert.getDialogPane().getStylesheets().add(css);
-            alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
-            alert.showAndWait();
-            actualizarVentana();
-            vehiculoMostrado.setVisible(true);
-            vehiculoEditar.setVisible(false);        
-       }
+        if(!imagenesTemporales.isEmpty()){
+            if(marca1!=null && modelo1!=null && motor1!=null && ubicacion1!=null && kilometraje1!=null && precio1!=null && year1!=null && peso1!=null && transmision1!=null && subTipo1.getValue()!=null){
+               String marcaNueva = marca1.getText();
+               String modeloNuevo = modelo1.getText();
+               String motorNuevo = motor1.getText();
+               String ubiNuevo = ubicacion1.getText();
+               int kiloNuevo = Integer.parseInt(kilometraje1.getText());
+               int precioNuevo = Integer.parseInt(precio1.getText());
+               int yearNuevo = Integer.parseInt(year1.getText());
+               Double pesoNuevo = Double.valueOf(peso1.getText());
+               String transNuevo = transmision1.getText();
+               SubTipo stp = subTipo1.getValue();
+               Vehiculos vehiculoNuevo =  new Vehiculos(marcaNueva,stp, modeloNuevo, yearNuevo, precioNuevo, kiloNuevo, motorNuevo, transNuevo, pesoNuevo, ubiNuevo, estado, imagenesTemporales, listaHistorial, listaAtributosAdicionales, usuario);    
+               if(estadoAntiguo.compareTo(EstadoD.NoDisponible)==0  && estado.compareTo(EstadoD.Disponible)==0){
+                   App.catalogo.agregarVehiculo(vehiculoNuevo);
+               }  else {
+                   App.catalogo.editarVehiculo(vehiculo, vehiculoNuevo);
+               }           
+               if(estadoAntiguo.compareTo(EstadoD.Disponible)==0 && estado.compareTo(EstadoD.NoDisponible)==0){
+                   App.catalogo.eliminarVehiculo(vehiculoNuevo);
+                   App.EliminarVehiculoFavorito(vehiculo);
+               }  
+               vehiculoUsar.setContent(vehiculoNuevo);
+               App.userlogged.setMisVehiculos(listaVehiculo);
+               App.ActualizarListaCars();
+               App.ActualizarListaUsuarios();
+                // Se debe mostrar un mensaje que los cambios fueron actualizados y actualizar datos;
+               Alert alert= new Alert(Alert.AlertType.INFORMATION);
+               alert.setHeaderText("Edición de Venta");
+               alert.setTitle("Cambio exitoso");
+               alert.setContentText("Su vehiculo editado fue guardado correctamente");
+               String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+               alert.getDialogPane().getStylesheets().add(css);
+               alert.getDialogPane().getStyleClass().add("dialog-paneConfirmacion");
+               alert.showAndWait();
+               actualizarVentana();
+               vehiculoMostrado.setVisible(true);
+               vehiculoEditar.setVisible(false);        
+          }   
+        } else {
+                Alert alert= new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Edición de vehiculo");
+                alert.setTitle("Error al guardar los cambios");
+                alert.setContentText("Debe tener una imagen por los menos.");
+                String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+                alert.getDialogPane().getStylesheets().add(css);
+                alert.getDialogPane().getStyleClass().add("dialog-paneError");
+                alert.showAndWait();
+        }
    }
 }

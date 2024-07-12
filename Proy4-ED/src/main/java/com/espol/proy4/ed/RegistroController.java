@@ -64,15 +64,16 @@ public class RegistroController {
             DoublyLinkedList <Vehiculos> misvehiculos = new DoublyLinkedList<>();
             DoublyLinkedList <Vehiculos> FavVehiculos = new DoublyLinkedList<>();
             // Al construir el nuevo usuario, mis listas seran null
-            
-            
+          
             if(App.contains(user) != null) {
-                
                 Alert alert= new Alert(AlertType.ERROR);
                 alert.setHeaderText("Creación de cuenta");
                 alert.setTitle("Error");
                 String msgerr = String.format("%s ya existe en el sistema", user);
                 alert.setContentText(msgerr);
+                String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
+                alert.getDialogPane().getStylesheets().add(css);
+                alert.getDialogPane().getStyleClass().add("dialog-paneError");
                 alert.showAndWait();
             } else {
                 App.createUser(new User(nom, ape, user, naci, genero, contra, misvehiculos, FavVehiculos));

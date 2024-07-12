@@ -52,8 +52,5 @@ public class MiperfilController implements Initializable {
     private void regresar() throws IOException{
         App.setRoot("principal");
     }
-
-
    
-    
 }

@@ -320,6 +320,4 @@ public class CrearVentaController implements Initializable {
             alert.showAndWait();
         }
     }
-
-
 }
