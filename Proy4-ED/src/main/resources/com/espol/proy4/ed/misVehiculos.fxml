@@ -61,7 +61,7 @@
                            </image>
                         </ImageView>
                         <Label styleClass="text-atributos" text="SubTipo" />
-                        <Label styleClass="texto_login" text="info" />
+                        <Label fx:id="subTipo" styleClass="texto_login" text="info" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">
@@ -323,7 +323,7 @@
                            </image>
                         </ImageView>
                         <Label styleClass="text-atributos" text="SubTipo" />
-                        <ComboBox prefWidth="150.0" styleClass="comboBox_filtros" translateX="25.0" />
+                        <ComboBox fx:id="subTipo1" prefWidth="150.0" styleClass="comboBox_filtros" translateX="25.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="175.0" spacing="5.0">

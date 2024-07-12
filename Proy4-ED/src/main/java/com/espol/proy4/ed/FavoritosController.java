@@ -65,7 +65,6 @@ public class FavoritosController implements Initializable {
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             precio.setText(vehiculo.getPrecio()+" USD");
-            //condicionfavorito(vehiculo);
             favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
             favoritoSinMarcar.setId("favoritoMarcado");
             favoritoMarcado = favoritoSinMarcar;
@@ -99,6 +98,12 @@ public class FavoritosController implements Initializable {
     @FXML
     private void siguienteVehiculo() throws IOException {
         if(vehiculoUsar.getNext()!=null){
+            favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
+            favoritoSinMarcar.setId("favoritoMarcado");
+            favoritoMarcado = favoritoSinMarcar;
+            favoritoMarcado.setOnMouseClicked((evento) -> {    
+            DesmarcarFavorito(evento);
+            });
             vehiculoUsar = vehiculoUsar.getNext();
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
@@ -135,6 +140,12 @@ public class FavoritosController implements Initializable {
     @FXML
     private void atrasVehiculo() throws IOException {
         if(vehiculoUsar.getPrevious()!=null){
+            favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
+            favoritoSinMarcar.setId("favoritoMarcado");
+            favoritoMarcado = favoritoSinMarcar;
+            favoritoMarcado.setOnMouseClicked((evento) -> {    
+            DesmarcarFavorito(evento);
+            });
             vehiculoUsar = vehiculoUsar.getPrevious();
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
@@ -142,7 +153,6 @@ public class FavoritosController implements Initializable {
             DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
             Path projectDir = Paths.get("").toAbsolutePath();
             Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-            //imagen.setImage(new Image(getClass().getResourceAsStream("/imagenesCarros/" + rutaImagen.getContent())));
             File archivoImagen = rutaAbsoluta.toFile();
             if (!archivoImagen.exists()) {
                 System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
@@ -215,27 +225,4 @@ public class FavoritosController implements Initializable {
        });
        
    }
-
-    private void condicionfavorito(Vehiculos vehiculo) {
-        if(FavVehiculos == null || FavVehiculos.isEmpty()) {
-            System.out.println("Lista favoritos esta vacia");
-            return;
-        }
-        DoublyNodeList<Vehiculos> current = FavVehiculos.getHeader();
-        
-            while(current != null) {
-                if (current.getContent().compareTo(vehiculo) == 0) {
-                    System.out.println("Vehiculo marcado como favorito");
-                    favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
-                    favoritoSinMarcar.setId("favoritoMarcado");
-                    favoritoMarcado = favoritoSinMarcar;
-                    return;
-                } else {
-                current = current.getNext(); }
-            }
-            
-            System.out.println("Vehiculo no marcado como favorito");
-    
-    }
-
 }

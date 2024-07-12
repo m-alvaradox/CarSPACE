@@ -38,6 +38,8 @@ public class InformacionVehiculoController implements Initializable {
     @FXML
     private ImageView favoritoMarcado;
     @FXML
+    private Label subTipo;
+    @FXML
     private VBox paneHistorial;
     @FXML
     private VBox paneAtributos; 
@@ -124,6 +126,7 @@ public class InformacionVehiculoController implements Initializable {
         });
         Vehiculos vehiculo = vehiculoUsar.getContent();
         marca.setText(vehiculo.getMarca());
+        subTipo.setText(vehiculo.getSubTipo().toString());
         modelo.setText(vehiculo.getModelo());
         motor.setText(vehiculo.getMotor());
         ubicacion.setText(vehiculo.getUbicacion());
