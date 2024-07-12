@@ -2,7 +2,6 @@ package Objects;
 
 import TDAS.DoublyLinkedList;
 import TDAS.DoublyNodeList;
-import TDAS.List;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -51,7 +50,7 @@ public class ListaVehiculos implements Serializable{
     Iterator<Vehiculos> iterator = this.iterator();
     DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
 
-    Comparator<Vehiculos> comparator = new Comparator<Vehiculos>() {
+    Comparator<Vehiculos> comparator = new Comparator<>() {
         @Override
         public int compare(Vehiculos v1, Vehiculos v2) {
             return v1.getSubTipo().compareTo(v2.getSubTipo());
@@ -72,7 +71,7 @@ public class ListaVehiculos implements Serializable{
         Iterator<Vehiculos> iterator = this.iterator();
         DoublyLinkedList<Vehiculos> resultado = new DoublyLinkedList<>();
           
-    Comparator<Vehiculos> comparator = new Comparator<Vehiculos>() {
+    Comparator<Vehiculos> comparator = new Comparator<>() {
         @Override
         public int compare(Vehiculos v1, Vehiculos v2) {
             int marcaCompare = v1.getMarca().compareToIgnoreCase(v2.getMarca());

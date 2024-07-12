@@ -78,43 +78,13 @@ public class PrincipalController implements Initializable {
         // TODO
         String msg = String.format("Hola, %s !", App.userlogged.getName());
         msgwelcome.setText(msg);
-        
-        catalogo = ordenarcatalogo();
-        
-        
+        catalogo = ordenarcatalogo();   
         if(!catalogo.isEmpty()) {
             vehiculoUsar = catalogo.getHeader();
-            Vehiculos vehiculo = vehiculoUsar.getContent();
-            
-            MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            year.setText(vehiculo.getAnio()+"");
-            ubicacion.setText(vehiculo.getUbicacion());          
-            precio.setText(vehiculo.getPrecio()+" USD");
-            kilometraje.setText(vehiculo.getKilometraje()+" kms | ");
-            
-            DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
-            Path projectDir = Paths.get("").toAbsolutePath();
-            Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-            //imagen.setImage(new Image(getClass().getResourceAsStream("/imagenesCarros/" + rutaImagen.getContent())));
-            File archivoImagen = rutaAbsoluta.toFile();
-            if (!archivoImagen.exists()) {
-                System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
-                return;
-            }
-            
-            // Carga la nueva imagen
-            Image image1 = new Image(archivoImagen.toURI().toString());
-            imagen.setImage(image1);
-            
-            Tooltip tmasdatos = new Tooltip(vehiculo.toString());
-            Tooltip.install(imagen, tmasdatos);
-            
-        }
-        
+            actualizarVentana();      
+        }       
     }
-
-    
-    
+ 
     @FXML
     private void cerrar_configuracion() throws IOException {
         configuracion.setVisible(false);
@@ -167,10 +137,8 @@ public class PrincipalController implements Initializable {
             String css = this.getClass().getResource("/styles/estilos.css").toExternalForm();
             alert.getDialogPane().getStylesheets().add(css);
             alert.getDialogPane().getStyleClass().add("dialog-paneError");
-            alert.showAndWait();
-           
-        }
-        
+            alert.showAndWait();         
+        }      
     }
         
     @FXML
@@ -194,10 +162,7 @@ public class PrincipalController implements Initializable {
         App.setRoot("InformacionVehiculo");
     }
     
-    @FXML
-    private void siguienteVehiculo() throws IOException {
-        if(vehiculoUsar.getNext()!=null){
-            vehiculoUsar = vehiculoUsar.getNext();
+    private void actualizarVentana(){
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             year.setText(vehiculo.getAnio()+"");
@@ -212,14 +177,18 @@ public class PrincipalController implements Initializable {
                 System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
                 return;
             }
-
             // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
             
             Tooltip tmasdatos = new Tooltip(vehiculo.toString());
             Tooltip.install(imagen, tmasdatos);
-            
+    }
+    @FXML
+    private void siguienteVehiculo() throws IOException {
+        if(vehiculoUsar.getNext()!=null){
+            vehiculoUsar = vehiculoUsar.getNext();
+            actualizarVentana();
         }else {
              //Mostrar alerta que ya no existen Vehiculos;
             Alert alert= new Alert(Alert.AlertType.INFORMATION);
@@ -237,29 +206,7 @@ public class PrincipalController implements Initializable {
     private void atrasVehiculo() throws IOException {
         if(vehiculoUsar.getPrevious()!=null){
             vehiculoUsar = vehiculoUsar.getPrevious();
-            Vehiculos vehiculo = vehiculoUsar.getContent();
-            MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            year.setText(vehiculo.getAnio()+"");
-            ubicacion.setText(vehiculo.getUbicacion());
-            precio.setText((int)vehiculo.getPrecio()+" USD");
-            kilometraje.setText(vehiculo.getKilometraje()+" kms | ");
-            DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
-            Path projectDir = Paths.get("").toAbsolutePath();
-            Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-            //imagen.setImage(new Image(getClass().getResourceAsStream("/imagenesCarros/" + rutaImagen.getContent())));
-            File archivoImagen = rutaAbsoluta.toFile();
-            if (!archivoImagen.exists()) {
-                System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
-                return;
-            }
-
-            // Carga la nueva imagen
-            Image image1 = new Image(archivoImagen.toURI().toString());
-            imagen.setImage(image1);
-            
-            Tooltip tmasdatos = new Tooltip(vehiculo.toString());
-            Tooltip.install(imagen, tmasdatos);
-            
+            actualizarVentana();
         }else {
             Alert alert= new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Siguiente Vehiculo");

@@ -50,18 +50,22 @@ public class CircularDoublyList<E> implements List<E>, Serializable {
     }
     
     public boolean removeNode(DoublyNodeList<E> nodo){
-        if(nodo!=null){
-            DoublyNodeList<E> anterior= nodo.getPrevious();
-            DoublyNodeList<E> siguiente = nodo.getNext();
-            anterior.setNext(siguiente);
-            siguiente.setPrevious(anterior);
-            if(last==nodo){
-                last=anterior;
-                last.setNext(siguiente);
-            }else if(getHeader()==nodo){
-                last.setNext(siguiente);
-                siguiente.setPrevious(last);
-            }
+        if(nodo!=null){   
+            if(nodo==last && nodo==getHeader()){
+                last=null;
+            } else {
+                DoublyNodeList<E> anterior= nodo.getPrevious();
+                DoublyNodeList<E> siguiente = nodo.getNext();
+                anterior.setNext(siguiente);
+                siguiente.setPrevious(anterior);
+                if(last==nodo){
+                    last=anterior;
+                    last.setNext(siguiente);
+                }else if(getHeader()==nodo){
+                    last.setNext(siguiente);
+                    siguiente.setPrevious(last);
+                }
+            }        
            return true;
         }else{
             return false;

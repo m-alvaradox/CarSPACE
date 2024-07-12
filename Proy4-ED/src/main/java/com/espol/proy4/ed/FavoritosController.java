@@ -62,30 +62,7 @@ public class FavoritosController implements Initializable {
         
         if(!FavVehiculos .isEmpty()){
             vehiculoUsar = FavVehiculos .getHeader();
-            Vehiculos vehiculo = vehiculoUsar.getContent();
-            MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            precio.setText(vehiculo.getPrecio()+" USD");
-            favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
-            favoritoSinMarcar.setId("favoritoMarcado");
-            favoritoMarcado = favoritoSinMarcar;
-            favoritoMarcado.setOnMouseClicked((evento) -> {    
-            DesmarcarFavorito(evento);
-            });
-            DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
-            Path projectDir = Paths.get("").toAbsolutePath();
-            Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-            File archivoImagen = rutaAbsoluta.toFile();
-            if (!archivoImagen.exists()) {
-                System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
-                return;
-            }
-
-            // Carga la nueva imagen
-            Image image1 = new Image(archivoImagen.toURI().toString());
-            imagen.setImage(image1);
-            
-            Tooltip tmasdatos = new Tooltip(vehiculo.toString());
-            Tooltip.install(imagen, tmasdatos);
+            actualizarVentana();
         }  
     }
  
@@ -95,16 +72,13 @@ public class FavoritosController implements Initializable {
         App.setRoot("principal");
     }
     
-    @FXML
-    private void siguienteVehiculo() throws IOException {
-        if(vehiculoUsar.getNext()!=null){
+    private void actualizarVentana() {
             favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
             favoritoSinMarcar.setId("favoritoMarcado");
             favoritoMarcado = favoritoSinMarcar;
             favoritoMarcado.setOnMouseClicked((evento) -> {    
             DesmarcarFavorito(evento);
             });
-            vehiculoUsar = vehiculoUsar.getNext();
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             precio.setText(vehiculo.getPrecio()+" USD");
@@ -119,11 +93,16 @@ public class FavoritosController implements Initializable {
 
             // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
-            imagen.setImage(image1);
-            
+            imagen.setImage(image1);         
             Tooltip tmasdatos = new Tooltip(vehiculo.toString());
             Tooltip.install(imagen, tmasdatos);
-            
+    }
+    
+    @FXML
+    private void siguienteVehiculo() throws IOException {
+        if(vehiculoUsar.getNext()!=null){
+            vehiculoUsar = vehiculoUsar.getNext();
+            actualizarVentana();       
         }else {
              //Mostrar alerta que ya no existen Vehiculos;
             Alert alert= new Alert(Alert.AlertType.INFORMATION);
@@ -140,32 +119,8 @@ public class FavoritosController implements Initializable {
     @FXML
     private void atrasVehiculo() throws IOException {
         if(vehiculoUsar.getPrevious()!=null){
-            favoritoSinMarcar.setImage(new Image("/imagenes/favorito_marcado.png"));
-            favoritoSinMarcar.setId("favoritoMarcado");
-            favoritoMarcado = favoritoSinMarcar;
-            favoritoMarcado.setOnMouseClicked((evento) -> {    
-            DesmarcarFavorito(evento);
-            });
             vehiculoUsar = vehiculoUsar.getPrevious();
-            Vehiculos vehiculo = vehiculoUsar.getContent();
-            MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            precio.setText(vehiculo.getPrecio()+" USD");
-            DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
-            Path projectDir = Paths.get("").toAbsolutePath();
-            Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-            File archivoImagen = rutaAbsoluta.toFile();
-            if (!archivoImagen.exists()) {
-                System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
-                return;
-            }
-
-            // Carga la nueva imagen
-            Image image1 = new Image(archivoImagen.toURI().toString());
-            imagen.setImage(image1);
-            
-            Tooltip tmasdatos = new Tooltip(vehiculo.toString());
-            Tooltip.install(imagen, tmasdatos);
-            
+            actualizarVentana();
         }else {
             Alert alert= new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Siguiente Vehiculo");

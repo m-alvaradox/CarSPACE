@@ -91,29 +91,6 @@ public class CatalogoController implements Initializable {
         subTipos.getItems().addAll(SubTipo.values());
         modelos.getItems().setAll("Elija una marca");
         rango.getItems().setAll("Kilometraje","Precio");
-        if(!catalogo.isEmpty()){
-            vehiculoUsar = catalogo.getHeader();
-            Vehiculos vehiculo = vehiculoUsar.getContent();
-            MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            year.setText("Año: "+vehiculo.getAnio()+"");
-            kilometraje.setText(vehiculo.getKilometraje()+" kms");
-            ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+" USD");
-            vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
-            DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
-            Path projectDir = Paths.get("").toAbsolutePath();
-            Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-            File archivoImagen = rutaAbsoluta.toFile();
-            if (!archivoImagen.exists()) {
-                System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
-                return;
-            }
-
-            // Carga la nueva imagen
-            Image image1 = new Image(archivoImagen.toURI().toString());
-            imagen.setImage(image1);
-        }
-        
         marcas.valueProperty().addListener((observable, oldValue, newValue) -> {
             if( newValue!=null){
                 ObservableList<String> ComboModelos = FXCollections.observableArrayList(newValue.getModelos());
@@ -121,13 +98,14 @@ public class CatalogoController implements Initializable {
             }else{
                 modelos.getItems().clear();
             }
-        });   
+        }); 
+        if(!catalogo.isEmpty()){
+            vehiculoUsar = catalogo.getHeader();
+            actualizarInfo();   
+        }
     } 
     
-    @FXML
-    private void siguienteVehiculo() throws IOException {
-        if(vehiculoUsar.getNext()!=null){
-            vehiculoUsar = vehiculoUsar.getNext();
+    private void actualizarInfo() {
             Vehiculos vehiculo = vehiculoUsar.getContent();
             MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
             year.setText("Año: "+vehiculo.getAnio()+"");
@@ -143,10 +121,17 @@ public class CatalogoController implements Initializable {
                 System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
                 return;
             }
-
             // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
+    }
+    
+    
+    @FXML
+    private void siguienteVehiculo() throws IOException {
+        if(vehiculoUsar.getNext()!=null){
+            vehiculoUsar = vehiculoUsar.getNext();
+            actualizarInfo();
         }else {
              //Mostrar alerta que ya no existen Vehiculos;
             Alert alert= new Alert(Alert.AlertType.INFORMATION);
@@ -164,26 +149,7 @@ public class CatalogoController implements Initializable {
     private void atrasVehiculo() throws IOException {
         if(vehiculoUsar.getPrevious()!=null){
             vehiculoUsar = vehiculoUsar.getPrevious();
-            Vehiculos vehiculo = vehiculoUsar.getContent();
-            MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-            year.setText("Año: "+vehiculo.getAnio()+"");
-            kilometraje.setText(vehiculo.getKilometraje()+" kms");
-            ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
-            precio.setText(vehiculo.getPrecio()+" USD");
-            vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
-            DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
-            Path projectDir = Paths.get("").toAbsolutePath();
-            Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-            //imagen.setImage(new Image(getClass().getResourceAsStream("/imagenesCarros/" + rutaImagen.getContent())));
-            File archivoImagen = rutaAbsoluta.toFile();
-            if (!archivoImagen.exists()) {
-                System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
-                return;
-            }
-
-            // Carga la nueva imagen
-            Image image1 = new Image(archivoImagen.toURI().toString());
-            imagen.setImage(image1);
+            actualizarInfo();
         }else {
             Alert alert= new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Siguiente Vehiculo");
@@ -276,29 +242,10 @@ private void limpiar(){
     marcas.getSelectionModel().select(0);
 }
 
-private void actualizarVista() {
-    subTipos.setPromptText("SubTipos"); 
+private void actualizarVista() { 
     if (!catalogo.isEmpty()) {
         vehiculoUsar = catalogo.getHeader();
-        Vehiculos vehiculo = vehiculoUsar.getContent();
-        MarcaYModelo.setText(vehiculo.getMarca()+" "+vehiculo.getModelo());
-        year.setText("Año: "+vehiculo.getAnio()+"");
-        kilometraje.setText(vehiculo.getKilometraje()+" kms");
-        ubicacion.setText("Ubicación: "+vehiculo.getUbicacion());
-        precio.setText(vehiculo.getPrecio()+" USD");
-        vendedor.setText("Vendedor: "+vehiculo.getVendedor().getName()+" "+vehiculo.getVendedor().getLastname());
-        
-        // Actualiza la imagen
-        DoublyNodeList<String> rutaImagen = vehiculo.getFotos().getHeader();
-        Path projectDir = Paths.get("").toAbsolutePath();
-        Path rutaAbsoluta = projectDir.resolve(Paths.get("src/main/resources/imagenesCarros", rutaImagen.getContent()));
-        File archivoImagen = rutaAbsoluta.toFile();
-        if (!archivoImagen.exists()) {
-            System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
-            return;
-        }
-        Image image1 = new Image(archivoImagen.toURI().toString());
-        imagen.setImage(image1);
+        actualizarInfo();
     }
 }
        
