@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.espol.proy4.ed;
 
 import Objects.Vehiculos;
@@ -27,11 +23,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-/**
- * FXML Controller class
- *
- * @author USER
- */
 public class PrincipalController implements Initializable {
     @FXML
     private AnchorPane configuracion;
@@ -61,12 +52,9 @@ public class PrincipalController implements Initializable {
     DoublyLinkedList<Vehiculos> catalogo;
     public static DoublyNodeList<Vehiculos> vehiculoUsar;
     private static String rutaImagen = "src/main/resources/imagenes/" ;
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // ToolTips
         
         Tooltip tbuttonconfig = new Tooltip("Configuración");
         Tooltip tbuttonnext = new Tooltip("Adelante");
@@ -74,8 +62,7 @@ public class PrincipalController implements Initializable {
         Tooltip.install(buttonconfig, tbuttonconfig);
         Tooltip.install(bttnadelante, tbuttonnext);
         Tooltip.install(bttnatras, tbuttonback);
-        
-        // TODO
+
         String msg = String.format("Hola, %s !", App.userlogged.getName());
         msgwelcome.setText(msg);
         catalogo = ordenarcatalogo();   
@@ -177,7 +164,6 @@ public class PrincipalController implements Initializable {
                 System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
                 return;
             }
-            // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
             
@@ -220,8 +206,6 @@ public class PrincipalController implements Initializable {
     }
 
     private DoublyLinkedList<Vehiculos> ordenarcatalogo() {
-        
-        // Implemento el comparador 
         Comparator<Vehiculos> comparator = new Comparator<Vehiculos>() {
             @Override
             public int compare(Vehiculos v1, Vehiculos v2) {

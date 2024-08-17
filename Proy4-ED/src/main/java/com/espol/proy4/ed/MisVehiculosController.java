@@ -1,7 +1,3 @@
-    /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.espol.proy4.ed;
 
 import Objects.*;
@@ -38,11 +34,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author USER
- */
 public class MisVehiculosController implements Initializable {
     
     @FXML
@@ -252,7 +243,6 @@ public class MisVehiculosController implements Initializable {
                 System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
                 return;
             }
-            // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
             for(int i=0; i<listaAtributos.size(); i++){        // Aquí se llenan los Atributos adicionales
@@ -348,7 +338,7 @@ public class MisVehiculosController implements Initializable {
             System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
             return;
         }
-        // Carga la nueva imagen
+
         Image image1 = new Image(archivoImagen.toURI().toString());
         imagen.setImage(image1);
    }
@@ -364,7 +354,6 @@ public class MisVehiculosController implements Initializable {
             System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
             return;
         }
-            // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
    }
@@ -403,7 +392,6 @@ public class MisVehiculosController implements Initializable {
             System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
             return;
         }
-        // Carga la nueva imagen
         Image image1 = new Image(archivoImagen.toURI().toString());
         imagen1.setImage(image1);
         for(int i=0; i<listaAtributos.size(); i++){        // Aquí se llenan los Atributos adicionales
@@ -531,7 +519,6 @@ public class MisVehiculosController implements Initializable {
             System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
             return;
         }
-            // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen1.setImage(image1);
    }
@@ -546,7 +533,6 @@ public class MisVehiculosController implements Initializable {
             System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
             return;
         }
-            // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen1.setImage(image1);
    }

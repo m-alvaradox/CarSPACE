@@ -1,16 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
- */
 package Objects;
 
 import TDAS.*;
 
-
-/**
- *
- * @author USER
- */
 public enum Marca {
     ElijaMarca("Modelo"),
     Chevrolet("Spark GT", "Sail", "Captiva", "Aveo Family"),

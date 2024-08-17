@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.espol.proy4.ed;
 
 import java.io.File;
@@ -38,11 +34,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author USER
- */
 public class CrearVentaController implements Initializable {
     
     @FXML
@@ -82,19 +73,12 @@ public class CrearVentaController implements Initializable {
     @FXML
     private ComboBox<SubTipo> subTipos;
     
-    
-    /**
-     * Initializes the controller class.
-     * 
-     */
-
     User usuario = App.userlogged;
     DoublyLinkedList<Vehiculos> L_Vehiculos = usuario.getMisVehiculos();
     ArrayList<File> rutaImagenes;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // ToolTip
         Tooltip tbuttonhome = new Tooltip("Página Principal");
         Tooltip tbuttonadd1 = new Tooltip("Agregar");
         Tooltip.install(bttnhome, tbuttonhome);
@@ -103,7 +87,6 @@ public class CrearVentaController implements Initializable {
         
         subTipos.getItems().addAll(SubTipo.values());
         rutaImagenes = new ArrayList<>();
-        // TODO
     }    
     
     @FXML

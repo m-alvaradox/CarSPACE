@@ -1,4 +1,3 @@
-
 package com.espol.proy4.ed;
 
 import Objects.Vehiculos;
@@ -91,7 +90,6 @@ public class FavoritosController implements Initializable {
                 return;
             }
 
-            // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);         
             Tooltip tmasdatos = new Tooltip(vehiculo.toString());

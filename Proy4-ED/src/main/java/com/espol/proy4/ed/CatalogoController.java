@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.espol.proy4.ed;
+
 import java.io.IOException;
 import TDAS.*;
 import Objects.*;
@@ -26,11 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/**
- * FXML Controller class
- *
- * @author USER
- */
 public class CatalogoController implements Initializable {
     
     @FXML
@@ -70,10 +62,6 @@ public class CatalogoController implements Initializable {
     
     public static DoublyLinkedList<Vehiculos> catalogo;
     public static DoublyNodeList<Vehiculos> vehiculoUsar;
-    
-    /**
-     * Initializes the controller class.
-     */
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -121,7 +109,6 @@ public class CatalogoController implements Initializable {
                 System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
                 return;
             }
-            // Carga la nueva imagen
             Image image1 = new Image(archivoImagen.toURI().toString());
             imagen.setImage(image1);
     }
@@ -203,17 +190,14 @@ private void Buscar() {
 }
 
 private void limpiar(){
-   // Restablecer campos de texto
     RangoInicio.setText(null);
     RangoFinal.setText(null);
 
-    // Limpiar ComboBoxes
     marcas.getSelectionModel().clearSelection();
     modelos.getSelectionModel().clearSelection();
     rango.getSelectionModel().clearSelection();
     subTipos.getSelectionModel().clearSelection();
     
-    // Añadir elementos de prompt a los ComboBoxes
     ObservableList<Marca> ComboMarcas = FXCollections.observableArrayList();
     ComboMarcas.addAll(Marca.values());
     marcas.setItems(ComboMarcas);

@@ -10,10 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
@@ -22,7 +18,7 @@ public class App extends Application {
     public static String fileimages = "imagenes/";
 
     public static ArrayList<User> usuarios = loadUsers();
-        /* Mario Alvarado: Decidi usar un ArrayList para almacenar a los usuarios
+        /*Decidi usar un ArrayList para almacenar a los usuarios
        porque puedo acceder rapidamente a mis elementos por indice y es eficiente
        para lectura y busqueda. No me importa la posición donde quiero agregar el nuevo
        usuario, solo lo agrego al final. Considero también que no estamos implementando

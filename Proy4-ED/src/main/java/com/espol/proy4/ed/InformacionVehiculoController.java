@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.espol.proy4.ed;
 
 import Objects.*;
@@ -26,11 +22,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-/**
- * FXML Controller class
- *
- * @author USER
- */
 public class InformacionVehiculoController implements Initializable {
     
     @FXML
@@ -79,13 +70,12 @@ public class InformacionVehiculoController implements Initializable {
     DoublyNodeList<Vehiculos> vehiculoUsar;
     
     
-    private CircularDoublyList<String> imagenes; // Imagenes que usa el vehiculo
-    private DoublyNodeList<String> rutaImagen; // Nodo imagen 
+    private CircularDoublyList<String> imagenes;
+    private DoublyNodeList<String> rutaImagen; 
     private int likes;
     private DoublyLinkedList<Vehiculos> FavVehiculos;
-    /**
-     * Initializes the controller class.
-     */
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -162,7 +152,6 @@ public class InformacionVehiculoController implements Initializable {
             return;
         }
 
-        // Carga la nueva imagen
         Image image1 = new Image(archivoImagen.toURI().toString());
         imagen.setImage(image1);
         Tooltip tlikes = new Tooltip("A "+likes+" personas le gustaron esto");
@@ -300,7 +289,7 @@ public class InformacionVehiculoController implements Initializable {
             System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
             return;
         }
-        // Carga la nueva imagen
+
         Image image1 = new Image(archivoImagen.toURI().toString());
         imagen.setImage(image1);
         
@@ -318,7 +307,7 @@ public class InformacionVehiculoController implements Initializable {
             System.out.println("La imagen no se encuentra en la ruta especificada: " + rutaAbsoluta.toString());
             return;
         }
-        // Carga la nueva imagen
+
         Image image1 = new Image(archivoImagen.toURI().toString());
         imagen.setImage(image1);
         
