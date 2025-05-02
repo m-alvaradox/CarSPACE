@@ -1,13 +1,4 @@
 # CarSPACE
-Proyecto de Estructuras de Datos
-
--- Grupo #4 --
-
-**Integrantes**
-
-- Mario Alvarado
-- Andrés Layedra
-- Melissa Suarez
 
 ****
 
